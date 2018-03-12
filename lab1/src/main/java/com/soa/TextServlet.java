@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 
 @WebServlet("/test")
 public class TextServlet extends HttpServlet {
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
