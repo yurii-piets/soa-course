@@ -1,7 +1,5 @@
 package com.soa.servlet.book;
 
-import com.soa.servlet.AuthService;
-
 import javax.inject.Inject;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

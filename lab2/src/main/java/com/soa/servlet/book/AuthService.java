@@ -1,4 +1,4 @@
-package com.soa.servlet;
+package com.soa.servlet.book;
 
 import javax.ejb.Stateful;
 import java.util.HashMap;
