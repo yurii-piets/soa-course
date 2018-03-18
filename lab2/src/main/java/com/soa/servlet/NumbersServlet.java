@@ -46,7 +46,7 @@ public class NumbersServlet extends HttpServlet {
                     .collect(Collectors.joining(", "));
 
             writer.append(s);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             writer.append("Wrong number formatting");
         }
     }
