@@ -1,4 +1,4 @@
-package com.soa;
+package com.soa.servlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +14,7 @@ public class DaneServlet extends HttpServlet {
     private static final String AGE_PARAMETER = "age";
     private static final String WOMAN_NAME_PATTERN = ".*a";
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter writer = response.getWriter();
         response.setContentType("text/html;charset=UTF-8");
@@ -30,5 +31,7 @@ public class DaneServlet extends HttpServlet {
         } else {
             writer.append("Nie jest kobietą");
         }
+
+        writer.flush();
     }
 }
