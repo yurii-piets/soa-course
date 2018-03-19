@@ -15,7 +15,7 @@ public class LoginServlet extends HttpServlet {
     private static final String LOGIN_PAGE = "<html>\n" +
             "<head><title>Login Page</title></head>\n" +
             "<body bgcolor = \"#f0f0f0\">\n" +
-            "<form action=\"http://127.0.0.1:8080/lab2-0.0.1-SNAPSHOT/login\" method=\"post\">\n" +
+            "<form action=\"http://127.0.0.1:8080/lab2/login\" method=\"post\">\n" +
             "   Login: <input type=\"text\" name=\"login\"><br>\n" +
             "   Password: <input type=\"password\">\n" +
             "   <input type=\"submit\" value=\"Submit\">\n" +
@@ -59,6 +59,6 @@ public class LoginServlet extends HttpServlet {
         }
 
         req.getSession().setAttribute("login", login);
-        resp.sendRedirect("/lab2-0.0.1-SNAPSHOT/book");
+        resp.sendRedirect("/lab2/book");
     }
 }

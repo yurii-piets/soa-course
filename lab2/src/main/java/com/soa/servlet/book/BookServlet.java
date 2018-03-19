@@ -18,7 +18,7 @@ import java.util.Map;
 public class BookServlet extends HttpServlet {
 
     private static final String SUBMIT_FORM =
-            "<form action=\"http://127.0.0.1:8080/lab2-0.0.1-SNAPSHOT/book\" method=\"post\">\n" +
+            "<form action=\"http://127.0.0.1:8080/lab2/book\" method=\"post\">\n" +
                     "   Your Name: <input type=\"name\" name=\"name\"><br>\n" +
                     "   Your Email: <input type=\"email\" name=\"email\"><br>\n" +
                     "   Comment: <input type=\"comment\" name=\"comment\"><br>\n" +
@@ -32,7 +32,7 @@ public class BookServlet extends HttpServlet {
         PrintWriter writer = resp.getWriter();
         Object login = req.getSession().getAttribute("login");
         if (login == null) {
-            resp.sendRedirect("/lab2-0.0.1-SNAPSHOT/login");
+            resp.sendRedirect("/lab2/login");
             return;
         }
 
@@ -69,7 +69,7 @@ public class BookServlet extends HttpServlet {
 
         Object login = req.getSession().getAttribute("login");
         if (login == null) {
-            resp.sendRedirect("/lab2-0.0.1-SNAPSHOT/login");
+            resp.sendRedirect("/lab2/login");
             return;
         }
 
@@ -77,6 +77,6 @@ public class BookServlet extends HttpServlet {
         currentContacts.add(contact);
         contacts.put(login.toString(), currentContacts);
 
-        resp.sendRedirect("/lab2-0.0.1-SNAPSHOT/book");
+        resp.sendRedirect("/lab2/book");
     }
 }

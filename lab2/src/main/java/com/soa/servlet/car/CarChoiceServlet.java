@@ -30,7 +30,7 @@ public class CarChoiceServlet extends HttpServlet {
         writer.println("<html>\n" +
                 "<head><title> + title + </title></head>\n" +
                 "<body bgcolor = \"#f0f0f0\">\n" +
-                "<form action=\"http://127.0.0.1:8080/lab2-0.0.1-SNAPSHOT/car\" method=\"post\">\n" +
+                "<form action=\"http://127.0.0.1:8080/lab2/car\" method=\"post\">\n" +
                 "   <select name=\"cars\">\n" +
                         carMarks +
                 "   </select>\n" +
