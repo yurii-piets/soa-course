@@ -13,7 +13,7 @@ public class FormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/form.html");
+        RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/html/form.html");
         view.forward(request, response);
     }
 }
