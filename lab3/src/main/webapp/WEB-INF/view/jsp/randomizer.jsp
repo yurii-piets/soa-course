@@ -13,14 +13,16 @@
     <input type="text" label="number">
     <input type="submit" name="signup" value="Guess">
 </form>
+<jsp:useBean id="randomizer"
+             class="com.soa.randomizer.model.RandomizerBean" scope="session"/>
 <c:choose>
-    <c:when test="${number < randomizer.getNumber()}">
+    <c:when test="${number < randomizer.number}">
         Liczba jest mniejsza ${number}
     </c:when>
-    <c:when test="${number > randomizer.getNumber()}">
+    <c:when test="${number > randomizer.number}">
         Liczba jest mniejsza ${number}
     </c:when>
-    <c:when test="${number == randomizer.getNumber()}">
+    <c:when test="${number == randomizer.number}">
         Wygrales
     </c:when>
 </c:choose>
