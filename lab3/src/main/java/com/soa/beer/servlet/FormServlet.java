@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/form")
+@WebServlet("/beer_form")
 public class FormServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/html/form.html");
+        RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/beer/html/form.html");
         view.forward(request, response);
     }
 }

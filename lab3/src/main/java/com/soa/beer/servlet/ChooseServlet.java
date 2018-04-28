@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("choose.do")
+@WebServlet("beer_choose.do")
 public class ChooseServlet extends HttpServlet {
 
     @Inject
@@ -23,7 +23,7 @@ public class ChooseServlet extends HttpServlet {
         String beerColor = request.getParameter("kolor");
         List<String> beersByType = expert.getBeersByType(beerColor);
         request.setAttribute("marki", beersByType);
-        RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/jsp/wynik.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("WEB-INF/view/beer/jsp/wynik.jsp");
         view.forward(request, response);
     }
 }
