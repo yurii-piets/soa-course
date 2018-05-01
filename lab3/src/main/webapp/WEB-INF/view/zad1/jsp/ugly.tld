@@ -1,0 +1,18 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>Example TLD</short-name>
+
+    <tag>
+        <name>welcome</name>
+        <tag-class>com.soa.zad1.tag.LoginTag</tag-class>
+        <body-content>empty</body-content>
+
+        <attribute>
+            <name>authenticated</name>
+            <required>true</required>
+            <type>boolean</type>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
