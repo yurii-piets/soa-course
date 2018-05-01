@@ -1,5 +1,7 @@
 package com.soa.zad1.sevlet;
 
+import com.soa.zad1.CurrencyUtil;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ public class ParagrafServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        CurrencyUtil.covert(1D, "usd","pln");
         RequestDispatcher view = request.getRequestDispatcher(PARAGRAF_VIEW);
         view.forward(request, response);
     }
