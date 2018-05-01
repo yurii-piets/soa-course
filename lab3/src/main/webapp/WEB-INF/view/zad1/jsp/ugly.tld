@@ -15,4 +15,26 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>users</name>
+        <tag-class>com.soa.zad1.tag.UsersTag</tag-class>
+        <body-content>tagdependent</body-content>
+
+        <attribute>
+            <name>sort</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>color</name>
+            <required>false</required>
+            <type>java.lang.String</type>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+
 </taglib>
