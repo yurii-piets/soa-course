@@ -42,7 +42,7 @@ public class UsersTag extends SimpleTagSupport {
         JspWriter out = getJspContext().getOut();
         out.write("<table>");
         out.write(sortedUsers.stream()
-                .map(u -> "<tr> <td>" + u.getLogin() + "</td> <td>" + u.getLoginDate() + "</td> </tr>")
+                .map(u -> "<tr> <td>" + u.getLogin() + "</td> <td> <font color=\"" + (color != null ? color : "") + "\" >" + u.getLoginDate() + "</span> </td> </tr>")
                 .collect(Collectors.joining()));
         out.write("</table>");
     }

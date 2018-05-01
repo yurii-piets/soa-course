@@ -6,6 +6,6 @@
     <title>Title</title>
 </head>
 <body>
-<ug:users sort="up"/>
+<ug:users sort="up" color="red"/>
 </body>
 </html>
