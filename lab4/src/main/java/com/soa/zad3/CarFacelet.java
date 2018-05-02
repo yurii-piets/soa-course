@@ -29,12 +29,4 @@ public class CarFacelet {
 		put("Dacia", Lists.newArrayList("Logan", "Duster"));
 		put("Fiat", Lists.newArrayList("126", "127", "125p"));
 	}};
-
-	public void setMark(String mark) {
-		this.mark = mark;
-	}
-
-	public String getMark() {
-		return mark;
-	}
 }

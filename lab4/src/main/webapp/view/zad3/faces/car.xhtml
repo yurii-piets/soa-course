@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -14,6 +15,7 @@
         <strong>Mark: </strong>
         <h:selectOneMenu id="selectMarka" value="#{carFacelet.mark}">
             <f:selectItems value="#{carFacelet.marks.keySet()}"/>
+            <f:ajax event="change"/>
             <f:ajax
                     event="change"
                     execute="selectMarka"
@@ -24,6 +26,7 @@
         <strong>Model: </strong>
         <h:selectOneMenu id="selectModel" value="#{carFacelet.model}">
             <f:selectItems value="#{carFacelet.marks[carFacelet.mark]}"/>
+            <f:ajax event="change"/>
         </h:selectOneMenu>
         <br/>
     </h:form>
