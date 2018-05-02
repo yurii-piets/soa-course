@@ -13,22 +13,92 @@
 
     <h:form>
         <strong>Mark: </strong>
-        <h:selectOneMenu id="selectMarka" value="#{carFacelet.mark}">
+        <h:selectOneMenu id="markSelect" value="#{carFacelet.mark}">
             <f:selectItems value="#{carFacelet.marks.keySet()}"/>
-            <f:ajax event="change"/>
             <f:ajax
                     event="change"
-                    execute="selectMarka"
-                    render="selectModel"/>
+                    listener="#{carFacelet.validate()}"
+                    execute="markSelect"
+                    render="search"/>
+            <f:ajax
+                    event="change"
+                    execute="markSelect"
+                    render="modelSelect"/>
         </h:selectOneMenu>
         <br/>
         <br/>
         <strong>Model: </strong>
-        <h:selectOneMenu id="selectModel" value="#{carFacelet.model}">
+        <h:selectOneMenu id="modelSelect" value="#{carFacelet.model}">
             <f:selectItems value="#{carFacelet.marks[carFacelet.mark]}"/>
-            <f:ajax event="change"/>
+            <f:ajax
+                    event="change"
+                    listener="#{carFacelet.validate()}"
+                    execute="modelSelect"
+                    render="search"/>
         </h:selectOneMenu>
         <br/>
+        <strong>Price: </strong>
+        From
+        <h:inputText id="fromPrice" value="#{carFacelet.priceFrom}">
+            <f:ajax
+                    event="change"
+                    listener="#{carFacelet.validate()}"
+                    execute="fromPrice"
+                    render="search"/>
+        </h:inputText>
+
+        To
+        <h:inputText id="toPrice" value="#{carFacelet.priceTo}">
+            <f:ajax
+                    event="change"
+                    listener="#{carFacelet.validate()}"
+                    execute="toPrice"
+                    render="search"/>
+        </h:inputText>
+        <br/>
+        <strong>Engine Type: </strong>
+        <h:selectOneMenu id="selectEngineType" value="#{carFacelet.engineType}">
+            <f:selectItem itemValue="ON" itemLabel="ON"/>
+            <f:selectItem itemValue="benzyna" itemLabel="benzyna"/>
+            <f:ajax
+                    event="change"
+                    listener="#{carFacelet.validate()}"
+                    execute="selectEngineType"
+                    render="search"/>
+        </h:selectOneMenu>
+        <br/>
+        <strong>Your name: </strong>
+        <h:inputText id="userName" value="#{carFacelet.userName}">
+            <f:ajax
+                    event="change"
+                    listener="#{carFacelet.validate()}"
+                    execute="userName"
+                    render="search"/>
+        </h:inputText>
+        <br/>
+        <strong>Phone: </strong>
+        <h:inputText id="userPhone" value="#{carFacelet.userPhone}">
+            <f:ajax
+                    event="change"
+                    listener="#{carFacelet.validate()}"
+                    execute="userPhone"
+                    render="search"/>
+        </h:inputText>
+
+        <br/>
+        <h:commandButton id="search" value="Search" disabled="#{!carFacelet.validate()}">
+            <f:ajax event="click" render="results" listener="#{carFacelet.results()}"/>
+        </h:commandButton>
+
+        <h:commandButton id="clear" value="Clear" action="#{carFacelet.clear()}" onchange="submit()"/>
     </h:form>
+
+    <h:dataTable id="results" value="#{carFacelet.results()}" var="result">
+        <h:column>
+            <f:facet name="header">Results</f:facet>
+            <h:outputText value="#{result}"/>
+        </h:column>
+    </h:dataTable>
+
 </h:body>
 </html>
