@@ -33,8 +33,6 @@ public class CarFacelet {
 
     private String userPhone;
 
-    private boolean valid = false;
-
     public List<String> results() {
         List<String> results = new ArrayList<>();
         if(engineType == null){
@@ -51,15 +49,13 @@ public class CarFacelet {
     }
 
     public boolean validate() {
-        this.valid = this.mark != null
+        return this.mark != null
                 && this.model != null
                 && this.priceFrom != null
                 && this.priceTo != null
                 && this.engineType != null
                 && this.userName != null
                 && priceFrom <= priceTo;
-
-        return valid;
     }
 
     public void clear() {
@@ -69,7 +65,6 @@ public class CarFacelet {
         this.priceTo = null;
         this.engineType = null;
         this.userName = null;
-        this.valid = false;
     }
 
     private Map<String, List<String>> marks = new HashMap<String, List<String>>() {{
