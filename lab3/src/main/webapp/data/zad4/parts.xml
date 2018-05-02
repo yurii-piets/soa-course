@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<parts>
+    <part id="0">
+        <name>Monitor</name>
+        <price>400</price>
+    </part>
+    <part id="1">
+        <name>Klawiatura</name>
+        <price>100</price>
+    </part>
+    <part id="2">
+        <name>Myszka</name>
+        <price>10</price>
+    </part>
+</parts>
