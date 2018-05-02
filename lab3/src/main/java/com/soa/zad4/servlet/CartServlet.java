@@ -28,6 +28,19 @@ public class CartServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String type = request.getParameter("type");
+		Long productId = Long.valueOf(request.getParameter("id"));
+		switch (type){
+		case "inc":
+			cart.add(productId);
+			break;
+		case "dec":
+			cart.remove(productId);
+			break;
+		case "clr":
+			cart.clear(productId);
+			break;
+		}
+		doGet(request, response);
 	}
 }
