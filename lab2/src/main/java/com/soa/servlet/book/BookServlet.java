@@ -14,11 +14,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-@WebServlet("/book")
+@WebServlet("/books")
 public class BookServlet extends HttpServlet {
 
     private static final String SUBMIT_FORM =
-            "<form action=\"http://127.0.0.1:8080/lab2/book\" method=\"post\">\n" +
+            "<form action=\"http://127.0.0.1:8080/lab2/books\" method=\"post\">\n" +
                     "   Your Name: <input type=\"name\" name=\"name\"><br>\n" +
                     "   Your Email: <input type=\"email\" name=\"email\"><br>\n" +
                     "   Comment: <input type=\"comment\" name=\"comment\"><br>\n" +
@@ -77,6 +77,6 @@ public class BookServlet extends HttpServlet {
         currentContacts.add(contact);
         contacts.put(login.toString(), currentContacts);
 
-        resp.sendRedirect("/lab2/book");
+        resp.sendRedirect("/lab2/books");
     }
 }

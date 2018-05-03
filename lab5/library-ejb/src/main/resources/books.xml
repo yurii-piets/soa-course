@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<books>
+    <book>
+        <isbn>1</isbn>
+        <title>Title 1</title>
+        <author>Author 1</author>
+    </book>
+    <book>
+        <isbn>2</isbn>
+        <title>Title 2</title>
+        <author>Author 2</author>
+    </book>
+    <book>
+        <isbn>3</isbn>
+        <title>Title 3</title>
+        <author>Author 3</author>
+    </book>
+</books>

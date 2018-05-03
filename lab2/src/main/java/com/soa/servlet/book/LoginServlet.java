@@ -59,6 +59,6 @@ public class LoginServlet extends HttpServlet {
         }
 
         req.getSession().setAttribute("login", login);
-        resp.sendRedirect("/lab2/book");
+        resp.sendRedirect("/lab2/books");
     }
 }
