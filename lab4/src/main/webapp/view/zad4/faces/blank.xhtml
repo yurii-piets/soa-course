@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head><title>Zadanie 4</title></h:head>
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            Plec:
+            <h:selectOneRadio id="plecSelect" value="#{userFacelet.sex}" required="true">
+                <f:selectItem itemValue="m" itemLabel="mezyczyzna"/>
+                <f:selectItem itemValue="f" itemLabel="kobieta"/>
+                <f:ajax event="change" execute="plecSelect" render="@form" />
+            </h:selectOneRadio>
+            Imie:
+            <h:inputText id="imieInput" value="#{userFacelet.name}" required="true" immediate="true"/>
+            e-mail:
+            <h:inputText id="mailInput" value="#{userFacelet.email}" required="true" immediate="true"/>
+            age:
+            <h:inputText id="wiekInput" value="#{userFacelet.age}">
+                <f:validateLongRange maximum="100" minimum="10"/>
+            </h:inputText>
+            Wyksztalcenie:
+            <h:selectOneRadio id="wyksztalcenieSelect" value="#{userFacelet.education}">
+                <f:selectItem itemValue="podstawowe" itemLabel="podstawowe"/>
+                <f:selectItem itemValue="zawodowe" itemLabel="zawodowe"/>
+                <f:selectItem itemValue="wyzsze" itemLabel="wyzsze"/>
+            </h:selectOneRadio>
+            Wzrost:
+            <h:inputText id="wzrostInput" value="#{userFacelet.height}" immediate="true">
+                <f:validateLongRange minimum="150" maximum="185" disabled="#{userFacelet.sex.equals('m')}"/>
+                <f:validateLongRange minimum="165" maximum="200" disabled="#{userFacelet.sex.equals('f')}"/>
+            </h:inputText>
+            <h:outputText value="Obwod biustu:" rendered="#{userFacelet.sex.equals('f')}" />
+            <h:inputText id="biustInput" value="#{userFacelet.brest}" rendered="#{userFacelet.sex.equals('f')}"/>
+            <h:outputText value="Rozmiar miseczki:" rendered="#{userFacelet.sex.equals('f')}" />
+            <h:inputText id="miseczkaInput" value="#{userFacelet.miseczka}" rendered="#{userFacelet.sex.equals('f')}"/>
+            <h:outputText value="Rozmiar biodra:" rendered="#{userFacelet.sex.equals('f')}" />
+            <h:inputText id="biodraInput" value="#{userFacelet.biodra}" rendered="#{userFacelet.sex.equals('f')}"/>
+            <h:outputText value="Obwod w talii:" rendered="#{userFacelet.sex.equals('f')}" />
+            <h:inputText id="taliaInput" value="#{userFacelet.talia}" rendered="#{userFacelet.sex.equals('f')}"/>
+            <h:outputText value="Dlugosc nogi:" rendered="#{userFacelet.sex.equals('f')}" />
+            <h:inputText id="nogaInput" value="#{userFacelet.nogi}" rendered="#{userFacelet.sex.equals('f')}"/>
+            <h:outputText value="Obwod klatki:" rendered="#{userFacelet.sex.equals('m')}" />
+            <h:inputText id="klatkaInput" value="#{userFacelet.klatka}" rendered="#{userFacelet.sex.equals('m')}"/>
+            <h:outputText value="Obwod w pasie:" rendered="#{userFacelet.sex.equals('m')}" />
+            <h:inputText id="pasInput" value="#{userFacelet.pas}" rendered="#{userFacelet.sex.equals('m')}"/>
+            <h:outputText value="Długosc nogi:" rendered="#{userFacelet.sex.equals('m')}" />
+            <h:inputText id="nogiInput1" value="#{userFacelet.nogi}" rendered="#{userFacelet.sex.equals('m')}"/>
+        </h:panelGrid>
+        <h:commandButton id="submitBlank" value="Wyslij" type="submit" action="extraBlank"/>
+    </h:form>
+
+    <h:panelGrid columns="1">
+        <h:message for = "imieInput" style = "color:red" />
+        <h:message for= "mailInput" style="color:red"/>
+        <h:message for= "wzrostInput" style="color:red" />
+        <h:message for= "wiekInput" style="color:red" />
+    </h:panelGrid>
+
+</h:body>
+</html>
