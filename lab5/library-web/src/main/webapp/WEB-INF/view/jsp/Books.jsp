@@ -4,25 +4,32 @@
 <head>
     <title>Books</title>
 </head>
+<style>
+    form {
+        display: inline;
+    }
+</style>
 <body>
 <c:forEach items="${books}" var="book">
     <h1><c:out value="${book.title}"/></h1>
     (<c:out value="${book.author}"/>)
-    <form action="/lab5/library" method="post">
-        <input type="hidden" name="isbn" value="<c:out value="${book.isbn}"/>"/>
-        <input type="hidden" name="operation" value="reserve"/>
-        <input type="submit" value="Reserve" <c:if test="${book.reserved}">disabled</c:if>/>
-    </form>
-    <form action="/lab5/library" method="post">
-        <input type="hidden" name="isbn" value="<c:out value="${book.isbn}"/>"/>
-        <input type="hidden" name="operation" value="rent"/>
-        <input type="submit" value="Rent" <c:if test="${book.rented}">disabled</c:if>/>
-    </form>
-    <form action="/lab5/library" method="post">
-        <input type="hidden" name="isbn" value="<c:out value="${book.isbn}"/>"/>
-        <input type="hidden" name="operation" value="retrieve"/>
-        <input type="submit" value="Rent" <c:if test="${!book.rented && !book.reserved}">disabled</c:if>/>
-    </form>
+    <div style="display: block">
+        <form action="/lab5/library" method="post">
+            <input type="hidden" name="isbn" value="<c:out value="${book.isbn}"/>"/>
+            <input type="hidden" name="operation" value="reserve"/>
+            <input type="submit" value="Reserve" <c:if test="${book.reserved || book.rented}">disabled</c:if>/>
+        </form>
+        <form action="/lab5/library" method="post">
+            <input type="hidden" name="isbn" value="<c:out value="${book.isbn}"/>"/>
+            <input type="hidden" name="operation" value="rent"/>
+            <input type="submit" value="Rent" <c:if test="${book.reserved || book.rented}">disabled</c:if>/>
+        </form>
+        <form action="/lab5/library" method="post">
+            <input type="hidden" name="isbn" value="<c:out value="${book.isbn}"/>"/>
+            <input type="hidden" name="operation" value="retrieve"/>
+            <input type="submit" value="Retrieve" <c:if test="${!book.rented && !book.reserved}">disabled</c:if>/>
+        </form>
+    </div>
 </c:forEach>
 <c:if test="${error != null}">
     Error:

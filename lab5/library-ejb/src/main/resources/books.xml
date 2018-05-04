@@ -1,18 +1,38 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <books>
     <book>
-        <isbn>1</isbn>
-        <title>Title 1</title>
-        <author>Author 1</author>
+        <author>author</author>
+        <isbn>isbn</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title</title>
     </book>
     <book>
-        <isbn>2</isbn>
-        <title>Title 2</title>
-        <author>Author 2</author>
+        <author>author1</author>
+        <isbn>isbn1</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title1</title>
     </book>
     <book>
-        <isbn>3</isbn>
-        <title>Title 3</title>
-        <author>Author 3</author>
+        <author>author2</author>
+        <isbn>isbn2</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title2</title>
+    </book>
+    <book>
+        <author>author3</author>
+        <isbn>isbn3</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title3</title>
+    </book>
+    <book>
+        <author>author4</author>
+        <isbn>isbn4</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title4</title>
     </book>
 </books>

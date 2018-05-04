@@ -4,9 +4,12 @@ import com.soa.data.Book;
 import com.soa.data.Books;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
@@ -17,17 +20,30 @@ public class BookManager {
 
     private Books books;
 
+    private File file = new File("C:/Users/Comarch/devnull/soa/lab5/library-ejb/src/main/resources/books.xml");
+
     @PostConstruct
     private void postConstruct() {
-        try{
+        try {
             JAXBContext context = JAXBContext.newInstance(Books.class);
             Unmarshaller u = context.createUnmarshaller();
-            File input = new File("C:/Users/plague/programming-projects/java/java-ee/Idea/soa/lab5/library-ejb/src/main/resources/books.xml");
-            this.books = (Books) u.unmarshal(input);
-        } catch (Exception e){
+            this.books = (Books) u.unmarshal(file);
+        } catch (Exception e) {
             this.books = new Books();
         }
 
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        try {
+            JAXBContext context = JAXBContext.newInstance(Books.class);
+            Marshaller m = context.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            m.marshal(this.books, file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void rent(String isbn) throws IllegalAccessException {
@@ -59,6 +75,6 @@ public class BookManager {
     }
 
     public List<Book> getBooks() {
-        return books.getBook();
+        return books.getBooks();
     }
 }

@@ -9,23 +9,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Setter
-@XmlRootElement
+@XmlRootElement(name = "books")
 public class Books {
 
-    @XmlElement
-    private List<Book> book = new ArrayList<>();
+    @XmlElement(name = "book")
+    private List<Book> books = new ArrayList<>();
 
     public boolean addBook(Book book){
-        return this.book.add(book);
+        return books.add(book);
     }
 
     @XmlTransient
-    public List<Book> getBook() {
-        return book;
+    public List<Book> getBooks() {
+        return books;
     }
 
     public Book getBookById(String isbn){
-        return book.stream()
+        return books.stream()
                 .filter(b -> b.getIsbn().equals(isbn))
                 .findFirst()
                 .orElse(null);
