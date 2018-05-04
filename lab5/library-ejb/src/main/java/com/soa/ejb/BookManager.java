@@ -7,12 +7,14 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.xml.bind.JAXB;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 
 @Startup
 @Singleton
@@ -21,6 +23,8 @@ public class BookManager {
     private Books books;
 
     private File file = new File("C:/Users/Comarch/devnull/soa/lab5/library-ejb/src/main/resources/books.xml");
+
+    private Logger logger = LogManager.getLogger(BookManager.class);
 
     @PostConstruct
     private void postConstruct() {
@@ -42,7 +46,7 @@ public class BookManager {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             m.marshal(this.books, file);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Unexpected:", e);
         }
     }
 
