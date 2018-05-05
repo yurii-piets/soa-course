@@ -1,3 +1,5 @@
+apply plugin: 'war'
+
 dependencies {
     compile 'com.sun.faces:jsf-api:2.1.7'
     compile 'com.sun.faces:jsf-impl:2.1.7'
