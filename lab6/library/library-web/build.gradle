@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':lab6:library:library-ejb')
+    compile group: 'jstl', name: 'jstl', version: '1.2'
+}

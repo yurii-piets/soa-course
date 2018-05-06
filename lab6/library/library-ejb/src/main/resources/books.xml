@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<books>
+    <book>
+        <author>author</author>
+        <isbn>isbn</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title</title>
+    </book>
+    <book>
+        <author>author1</author>
+        <isbn>isbn1</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title1</title>
+    </book>
+    <book>
+        <author>author2</author>
+        <isbn>isbn2</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title2</title>
+    </book>
+    <book>
+        <author>author3</author>
+        <isbn>isbn3</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title3</title>
+    </book>
+    <book>
+        <author>author4</author>
+        <isbn>isbn4</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title4</title>
+    </book>
+</books>
