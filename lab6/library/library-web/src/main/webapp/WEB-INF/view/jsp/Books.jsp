@@ -10,6 +10,14 @@
     }
 </style>
 <body>
+<form action="/lab6/library" method="post">
+    ISBN: <input type="text" name="isbn"/><br/>
+    Title: <input type="text" name="title"/><br/>
+    Author: <input type="text" name="author"/><br/>
+    <input type="hidden" name="operation" value="add"/>
+    <input type="submit" value="Add"/>
+</form>
+<hr/>
 <c:forEach items="${books}" var="book">
     <h1><c:out value="${book.title}"/></h1>
     (<c:out value="${book.author}"/>)

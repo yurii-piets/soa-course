@@ -15,7 +15,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.util.List;
+import java.util.Set;
 
 @Startup
 @Singleton
@@ -93,7 +93,7 @@ public class BookManager {
         notificationService.sendNotification("Book [" + book.getIsbn() +  "] was retried.");
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return books.getBooks();
     }
 }

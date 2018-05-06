@@ -8,11 +8,11 @@
         <title>title</title>
     </book>
     <book>
-        <author>author1</author>
-        <isbn>isbn1</isbn>
+        <author>cc</author>
+        <isbn>aa</isbn>
         <rented>false</rented>
-        <reserved>true</reserved>
-        <title>title1</title>
+        <reserved>false</reserved>
+        <title>bb</title>
     </book>
     <book>
         <author>author2</author>
@@ -22,11 +22,11 @@
         <title>title2</title>
     </book>
     <book>
-        <author>author3</author>
-        <isbn>isbn3</isbn>
+        <author>3</author>
+        <isbn>1</isbn>
         <rented>false</rented>
-        <reserved>true</reserved>
-        <title>title3</title>
+        <reserved>false</reserved>
+        <title>23</title>
     </book>
     <book>
         <author>author4</author>
@@ -34,5 +34,26 @@
         <rented>false</rented>
         <reserved>true</reserved>
         <title>title4</title>
+    </book>
+    <book>
+        <author>5</author>
+        <isbn>3</isbn>
+        <rented>false</rented>
+        <reserved>false</reserved>
+        <title>4</title>
+    </book>
+    <book>
+        <author>author3</author>
+        <isbn>isbn3</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title3</title>
+    </book>
+    <book>
+        <author>author1</author>
+        <isbn>isbn1</isbn>
+        <rented>false</rented>
+        <reserved>true</reserved>
+        <title>title1</title>
     </book>
 </books>
