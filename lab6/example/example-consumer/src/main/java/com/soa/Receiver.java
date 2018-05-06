@@ -9,7 +9,7 @@ import javax.jms.TextMessage;
 
 @MessageDriven(name = "Receiver", activationConfig = {
         @ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-        @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/ThemeListQueue"),
+        @ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/jms/ExampleQueue"),
         @ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "Auto-acknowledge")
 })
 public class Receiver implements MessageListener {

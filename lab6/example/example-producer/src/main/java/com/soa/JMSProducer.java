@@ -16,7 +16,7 @@ public class JMSProducer {
     @Resource(mappedName = "java:/ConnectionFactory")
     private ConnectionFactory connectionFactory;
 
-    @Resource(mappedName = "java:/jms/ThemeListQueue")
+    @Resource(mappedName = "java:/jms/ExampleQueue")
     private Queue queue;
 
     public void sendMessage(String message){
