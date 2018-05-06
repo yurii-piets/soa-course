@@ -15,7 +15,7 @@ public class RegisterServlet extends HttpServlet {
     private final static String REGISTER_VIEW = "WEB-INF/view/jsp/Register.jsp";
 
     @Inject
-    private JMSService jmsService;
+    private FirmProcessor firmProcessor;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +27,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String firmName = request.getParameter("firmName");
         String owner = request.getParameter("owner");
-        jmsService.sendMessage(firmName, owner);
+        firmProcessor.processFirm(firmName, owner);
         doGet(request, response);
     }
 }

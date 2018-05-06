@@ -14,7 +14,7 @@ import javax.jms.Topic;
 
 @ApplicationScoped
 @NoArgsConstructor
-public class JMSService {
+public class JMSService implements FirmProcessor {
 
     @Resource(mappedName = "java:/ConnectionFactory")
     private ConnectionFactory connectionFactory;
@@ -22,7 +22,11 @@ public class JMSService {
     @Resource(mappedName = "java:/jms/FirmTopic")
     private Topic topic;
 
-    public void sendMessage(String name, String owner) {
+    public void processFirm(String name, String owner){
+        sendMessage(name, owner);
+    }
+
+    private void sendMessage(String name, String owner) {
         try (Connection connection = connectionFactory.createConnection()) {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer publisher = session.createProducer(topic);
