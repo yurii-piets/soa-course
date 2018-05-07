@@ -1,0 +1,11 @@
+dependencies {
+    compile 'org.jboss:jboss-remote-naming:1.0.7.Final'
+    compile group: 'org.jboss.xnio', name: 'xnio-api', version: '3.4.6.Final'
+    compile 'org.jboss.xnio:xnio-nio:3.4.6.Final'
+
+    compile 'org.hornetq:hornetq-jms-client:2.2.13.Final'
+    compile 'org.hornetq:hornetq-core-client:2.2.13.Final'
+    compile 'org.wildfly:wildfly-ejb-client-bom:8.0.0.Final'
+    compile group: 'org.apache.activemq', name: 'activemq-core', version: '5.7.0'
+    compile group: 'org.apache.activemq', name: 'artemis-jms-client', version: '2.5.0'
+}
