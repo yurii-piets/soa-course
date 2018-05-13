@@ -17,7 +17,14 @@ public class Application {
         } else {
             zad1();
             zad2();
+            zad3();
         }
+    }
+
+    private static void zad3() {
+        AuthorRepository authorRepository = new AuthorRepository();
+        Collection<Author> authors = authorRepository.zad3();
+        System.out.println(authors);
     }
 
     private static void zad2() {
