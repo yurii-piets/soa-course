@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,9 +55,9 @@ public class MockDataBuilder {
         Reader reader2 = new Reader("John", "Smith");
         Reader reader3 = new Reader("Krzystof", "Krawczyk");
 
-        Rent rent1 = new Rent(book1, reader1);
-        Rent rent2 = new Rent(book2, reader2);
-        Rent rent3 = new Rent(book3, reader3);
+        Rent rent1 = new Rent(book1, reader1, new Date(2019, 1, 2));
+        Rent rent2 = new Rent(book2, reader2, new Date(2018, 2, 3));
+        Rent rent3 = new Rent(book3, reader3, new Date(2018, 4, 5));
 
         transaction.begin();
         Lists.newArrayList(author1, author2, author3).forEach(em::persist);

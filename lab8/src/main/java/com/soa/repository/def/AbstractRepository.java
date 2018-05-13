@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,17 +32,6 @@ public abstract class AbstractRepository<T> implements Repository<T>{
     public Collection<T> findAll() {
         EntityManager em = factory.createEntityManager();
         return em.createQuery("from " + type.getSimpleName()).getResultList();
-    }
-
-    @Override
-    public Collection<T> findByCriteria() {
-        return null;
-    }
-
-    @Override
-    public CriteriaBuilder getCriteriaBuilder() {
-        EntityManager em = factory.createEntityManager();
-        return em.getCriteriaBuilder();
     }
 
     @Override

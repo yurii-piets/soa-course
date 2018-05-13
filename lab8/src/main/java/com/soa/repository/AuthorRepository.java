@@ -2,14 +2,10 @@ package com.soa.repository;
 
 import com.soa.domain.Author;
 import com.soa.repository.def.AbstractRepository;
-
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.Query;
 import java.util.Collection;
-import java.util.List;
+import java.util.Date;
 
 public class AuthorRepository extends AbstractRepository<Author> {
 
@@ -17,18 +13,17 @@ public class AuthorRepository extends AbstractRepository<Author> {
         super(Author.class);
     }
 
-    @Override
-    public Collection<Author> findByCriteria() {
+    public Collection<Author> zad1() {
         EntityManager em = factory.createEntityManager();
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Author> cq = cb.createQuery(Author.class);
-        Root<Author> pet = cq.from(Author.class);
-        cq.where(cb.equal(pet.get("name"), "Joanne"));
-
-        TypedQuery<Author> query = em.createQuery(cq);
-        List<Author> authors = query.getResultList();
-
-        return authors;
+        Query query = em.createQuery("SELECT reader FROM Rent as r " +
+                "JOIN r.reader as reader " +
+                "JOIN r.book as ks " +
+                "JOIN ks.author as aut " +
+                "WHERE aut.name = :name AND aut.surname = :surname AND r.rentTime > :data1 AND r.rentTime < :data2");
+        query.setParameter("name", "Joanne");
+        query.setParameter("surname", "Rowling");
+        query.setParameter("data1", new Date(2018,1,1));
+        query.setParameter("data2", new Date(2018,6,1));
+        return query.getResultList();
     }
 }

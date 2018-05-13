@@ -2,17 +2,20 @@ package com.soa;
 
 import com.soa.domain.Author;
 import com.soa.repository.AuthorRepository;
-import com.soa.repository.def.Repository;
 
 import java.util.Collection;
 
 public class Application {
 
-    public static void main(String[] args) {
-//        new MockDataBuilder();
-        Repository<Author> authorRepository = new AuthorRepository();
+    private static final boolean create_drop = false;
 
-        Collection<Author> byCriteria = authorRepository.findByCriteria();
-        System.out.println(byCriteria);
+    public static void main(String[] args) {
+        if (create_drop) {
+            new MockDataBuilder();
+        } else {
+            AuthorRepository authorRepository = new AuthorRepository();
+            Collection<Author> authors = authorRepository.zad1();
+            System.out.println(authors);
+        }
     }
 }
