@@ -1,7 +1,9 @@
 package com.soa;
 
 import com.soa.domain.Author;
+import com.soa.domain.Reader;
 import com.soa.repository.AuthorRepository;
+import com.soa.repository.ReaderRepository;
 
 import java.util.Collection;
 
@@ -13,9 +15,20 @@ public class Application {
         if (create_drop) {
             new MockDataBuilder();
         } else {
-            AuthorRepository authorRepository = new AuthorRepository();
-            Collection<Author> authors = authorRepository.zad1();
-            System.out.println(authors);
+            zad1();
+            zad2();
         }
+    }
+
+    private static void zad2() {
+        ReaderRepository readerRepository = new ReaderRepository();
+        Collection<Reader> readers = readerRepository.zad2();
+        System.out.println(readers);
+    }
+
+    private static void zad1() {
+        AuthorRepository authorRepository = new AuthorRepository();
+        Collection<Author> authors = authorRepository.zad1();
+        System.out.println(authors);
     }
 }
