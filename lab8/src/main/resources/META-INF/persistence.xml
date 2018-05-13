@@ -7,7 +7,7 @@
         <class>com.soa.domain.Reader</class>
         <class>com.soa.domain.Book</class>
         <class>com.soa.domain.Author</class>
-        <class>com.soa.domain.Rents</class>
+        <class>com.soa.domain.Rent</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/soa_lab8"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
@@ -15,7 +15,7 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="false"/>
             <property name="hibernate.use_sql_comments" value="false"/>
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
         </properties>
     </persistence-unit>
