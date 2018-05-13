@@ -41,4 +41,16 @@ public class AuthorRepository extends AbstractRepository<Author> {
         List list = query.getResultList();
         return list;
     }
+
+    public Collection<Author> zad4() {
+        EntityManager em = factory.createEntityManager();
+        Query query = em.createQuery("SELECT aut.surname, count(*) as num " +
+                "FROM Rent as wyp " +
+                "JOIN wyp.reader as czyt " +
+                "JOIN wyp.book as ks " +
+                "JOIN ks.author as aut " +
+                "GROUP BY aut ORDER BY num DESC");
+        List resultList = query.getResultList();
+        return resultList;
+    }
 }
