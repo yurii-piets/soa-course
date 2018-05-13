@@ -11,7 +11,7 @@ import java.util.Map;
 
 public abstract class AbstractRepository<T> implements Repository<T>{
 
-    private final EntityManagerFactory factory;
+    protected final EntityManagerFactory factory;
 
     private final Class<T> type;
 
@@ -36,7 +36,7 @@ public abstract class AbstractRepository<T> implements Repository<T>{
     }
 
     @Override
-    public Collection<T> findByCriteria(CriteriaBuilder criteriaBuilder) {
+    public Collection<T> findByCriteria() {
         return null;
     }
 

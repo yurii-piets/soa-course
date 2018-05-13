@@ -6,7 +6,7 @@ import java.util.Collection;
 public interface Repository<T> {
 
     Collection<T> findAll();
-    Collection<T> findByCriteria(CriteriaBuilder criteriaBuilder);
+    Collection<T> findByCriteria();
     CriteriaBuilder getCriteriaBuilder();
 
     void save(T entity);
