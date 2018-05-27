@@ -4,6 +4,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Path("/cats")
 public class CatsController {
 
-    private final Set<Cat> cats = new HashSet<Cat>() {{
+    private final static Set<Cat> cats = new HashSet<Cat>() {{
         add(new Cat(1L, "a1", "c1"));
         add(new Cat(2L, "a2", "c2"));
         add(new Cat(3L, "a3", "c3"));
@@ -43,6 +44,20 @@ public class CatsController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response save(Cat cat) {
+        cats.add(cat);
+        return Response.accepted().build();
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response update(@PathParam("id") Long id, Cat cat) {
+        Cat oldCat = cats.stream()
+                .filter(c -> c.getId().equals(id))
+                .findAny()
+                .orElse(null);
+        cats.remove(oldCat);
+        cat.setId(id);
         cats.add(cat);
         return Response.accepted().build();
     }
