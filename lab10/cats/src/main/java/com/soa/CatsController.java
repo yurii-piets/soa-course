@@ -52,11 +52,10 @@ public class CatsController {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(@PathParam("id") Long id, Cat cat) {
-        Cat oldCat = cats.stream()
+        cats.stream()
                 .filter(c -> c.getId().equals(id))
                 .findAny()
-                .orElse(null);
-        cats.remove(oldCat);
+                .ifPresent(cats::remove);
         cat.setId(id);
         cats.add(cat);
         return Response.accepted().build();
@@ -65,11 +64,10 @@ public class CatsController {
     @DELETE
     @Path("/{id}")
     public Response deleteBydId(@PathParam("id") Long id) {
-        Cat cat = cats.stream()
+        cats.stream()
                 .filter(c -> c.getId().equals(id))
                 .findFirst()
-                .get();
-        cats.remove(cat);
+                .ifPresent(cats::remove);
         return Response.ok().build();
     }
 }
