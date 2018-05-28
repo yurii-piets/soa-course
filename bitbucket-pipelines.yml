@@ -4,4 +4,4 @@ pipelines:
   default:
     - step:
         script:
-          - gradle clean build test
+          - gradlew clean build test
