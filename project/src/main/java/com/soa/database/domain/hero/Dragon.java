@@ -1,7 +1,7 @@
 package com.soa.database.domain.hero;
 
 import com.soa.database.domain.Power;
-import com.soa.database.domain.categories.Forest;
+import com.soa.database.domain.categories.Cave;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,38 +14,38 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import static com.soa.database.domain.categories.Forest.FOREST_ID;
+import static com.soa.database.domain.categories.Cave.CAVE_ID;
 
-@Entity(name = "HR_ELF")
+@Entity(name = "HR_DRAGON")
 @Data
 @NoArgsConstructor
-public class Elf {
+public class Dragon {
 
-    private static final String ELF_ID = "elf_id";
+    public static final String DRAGON_ID = "dragon_id";
 
     @Id
     @GeneratedValue
-    @Column(name = ELF_ID)
+    @Column(name = DRAGON_ID)
     private Long id;
 
     private String name;
 
-    private Integer arrowCount;
+    private Integer gold;
 
-    @Column(name = "bow_type")
     @Enumerated(EnumType.STRING)
-    private BowType bowType;
+    private Color color;
 
     @Enumerated(EnumType.STRING)
     private Power power;
 
     @ManyToOne
-    @JoinColumn(name = FOREST_ID)
-    private Forest forest;
+    @JoinColumn(name = CAVE_ID)
+    private Cave cave;
 
-    public enum BowType {
-        BAD,
-        MIDDLE,
-        GOOD
+    public enum Color {
+        BLACK,
+        RED,
+        WHITE
     }
+
 }

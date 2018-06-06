@@ -12,7 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-@Entity
+@Entity(name = "USER_DATA")
 @Data
 @NoArgsConstructor
 public class UserData {

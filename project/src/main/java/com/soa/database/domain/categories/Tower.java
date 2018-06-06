@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+@Entity(name = "CT_TOWER")
 @Data
 @NoArgsConstructor
 public class Tower {

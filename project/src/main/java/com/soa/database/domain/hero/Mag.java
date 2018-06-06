@@ -16,14 +16,16 @@ import javax.persistence.ManyToOne;
 
 import static com.soa.database.domain.categories.Tower.TOWER_ID;
 
-@Entity
+@Entity(name = "HR_MAG")
 @Data
 @NoArgsConstructor
 public class Mag {
 
+    public static final String MAG_ID = "mag_id";
+
     @Id
     @GeneratedValue
-    @Column(name = "mag_id")
+    @Column(name = MAG_ID)
     private Long id;
 
     private String name;

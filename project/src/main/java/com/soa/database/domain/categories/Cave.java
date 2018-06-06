@@ -1,6 +1,6 @@
 package com.soa.database.domain.categories;
 
-import com.soa.database.domain.hero.Elf;
+import com.soa.database.domain.hero.Dragon;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,8 +12,7 @@ import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
-
-@Entity
+@Entity(name = "CT_CAVE")
 @Data
 @NoArgsConstructor
 public class Cave {
@@ -28,12 +27,12 @@ public class Cave {
     private Integer square;
 
     @OneToMany(mappedBy = "cave")
-    private Set<Elf> elfs;
+    private Set<Dragon> dragons;
 
-    public void addElf(Elf elf){
-        if(elfs == null) {
-            elfs = new HashSet<>();
+    public void addDragon(Dragon dragon) {
+        if (dragons == null) {
+            dragons = new HashSet<>();
         }
-        elfs.add(elf);
+        dragons.add(dragon);
     }
 }

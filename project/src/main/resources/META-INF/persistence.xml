@@ -6,8 +6,10 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.soa.database.domain.categories.Cave</class>
         <class>com.soa.database.domain.categories.Tower</class>
+        <class>com.soa.database.domain.categories.Forest</class>
         <class>com.soa.database.domain.hero.Elf</class>
         <class>com.soa.database.domain.hero.Mag</class>
+        <class>com.soa.database.domain.hero.Dragon</class>
         <class>com.soa.database.domain.UserData</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/soa_project"/>
