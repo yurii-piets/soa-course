@@ -1,7 +1,11 @@
 package com.soa.database.service;
 
-import javax.ejb.Remote;
+import com.soa.database.domain.UserData;
 
-@Remote
+import javax.ejb.Local;
+
+@Local
 public interface DataAccessService {
+
+    void save(UserData user);
 }
