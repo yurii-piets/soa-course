@@ -1,5 +1,6 @@
 package com.soa.database.domain;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -38,4 +39,12 @@ public class UserData {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @Builder
+    public UserData(Integer index, String name, String password, UserRole role) {
+        this.index = index;
+        this.name = name;
+        this.password = password;
+        this.role = role;
+    }
 }

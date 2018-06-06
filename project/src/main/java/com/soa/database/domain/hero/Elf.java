@@ -1,5 +1,7 @@
-package com.soa.database.domain;
+package com.soa.database.domain.hero;
 
+import com.soa.database.domain.Power;
+import com.soa.database.domain.categories.Cave;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import static com.soa.database.domain.Cave.CAVE_ID;
+import static com.soa.database.domain.categories.Cave.CAVE_ID;
 
 @Entity
 @Data
@@ -46,11 +48,5 @@ public class Elf {
         BAD,
         MIDDLE,
         GOOD
-    }
-
-    public enum Power {
-        POWER_1,
-        POWER_2,
-        POWER_3
     }
 }
