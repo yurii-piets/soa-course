@@ -27,11 +27,11 @@ public class UserData {
     private Long id;
 
     @NotNull
-    @Column(length = 6)
+    @Column(length = 6, unique = true)
     private Integer index;
 
     @NotNull
-    @Column(length = 50)
+    @Column(length = 50, unique = true)
     private String name;
 
     @NotNull
