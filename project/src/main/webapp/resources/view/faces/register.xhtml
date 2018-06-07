@@ -5,7 +5,7 @@
       xmlns:h="http://java.sun.com/jsf/html" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Login</title>
+    <title>Register</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
@@ -16,7 +16,7 @@
             <br/>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h1>Login</h1>
+                    <h1>Register</h1>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
@@ -24,7 +24,15 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user" style="width: auto"></i>
                             </span>
-                            <h:inputText type="text" value="#{userBean.name}" a:placeholder="Login"/>
+                            <h:inputText type="text" value="#{registerBean.name}" a:placeholder="Login"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-barcode" style="width: auto"></i>
+                            </span>
+                            <h:inputText type="text" value="#{registerBean.index}" a:placeholder="Index"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -32,10 +40,10 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-lock" style="width: auto"></i>
                             </span>
-                            <h:inputSecret type="password" value="#{userBean.password}" a:placeholder="Password"/><br/>
+                            <h:inputSecret type="password" value="#{registerBean.password}" a:placeholder="Password"/><br/>
                         </div>
                     </div>
-                    <h:commandButton styleClass="btn btn-primary" value="Enter" action="#{userBean.submit}"/><br/>
+                    <h:commandButton styleClass="btn btn-primary" value="Enter" action="#{registerBean.submit}"/><br/>
                 </div>
             </div>
         </div>
