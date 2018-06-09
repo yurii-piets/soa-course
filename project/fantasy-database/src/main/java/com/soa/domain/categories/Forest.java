@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +29,7 @@ public class Forest {
     @Column(name = "amount_of_trees")
     private Integer amountOfTrees;
 
-    @OneToMany(mappedBy = "forest")
+    @OneToMany(mappedBy = "forest", fetch = FetchType.EAGER)
     private Set<Elf> elfs;
 
     public void addElf(Elf elf) {

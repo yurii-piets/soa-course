@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Tower {
 
     private Integer height;
 
-    @OneToMany(mappedBy = "tower")
+    @OneToMany(mappedBy = "tower", fetch = FetchType.EAGER)
     private Set<Mag> mags;
 
     public void addMag(Mag mag) {

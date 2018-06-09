@@ -7,7 +7,7 @@
          id="WebApp_ID" version="2.5">
 
     <welcome-file-list>
-        <welcome-file>/resources/view/faces/register.xhtml</welcome-file>
+        <welcome-file>/view/faces/catalog.xhtml</welcome-file>
     </welcome-file-list>
 
     <servlet>

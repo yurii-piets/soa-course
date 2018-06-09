@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
+    <style>
+        h1 {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<h:body>
+    <h1>Caves</h1>
+    <ui:repeat value="#{catalogBean.caves}" var="cave">
+        <h2>Cave</h2>
+        Square: <h:outputText value="#{cave.square}"/>
+        <ui:repeat value="#{cave.dragons}" var="dragon">
+            <h:form>
+                Dragon: <h:outputText value="#{dragon.name}"/>
+                Gold: <h:outputText value="#{dragon.gold}"/>
+                Color: <h:outputText value="#{dragon.color}"/>
+                Power: <h:outputText value="#{dragon.power}"/>
+                <h:commandButton styleClass="btn btn-success" value="Mofify" action="#{dragonBean.modify}">
+                    <f:param name="dragonId" value="#{dragon.id}"/>
+                    <f:param name="name" value="#{dragon.name}"/>
+                    <f:param name="gold" value="#{dragon.gold}"/>
+                    <f:param name="color" value="#{dragon.color}"/>
+                    <f:param name="power" value="#{dragon.power}"/>
+                    <f:param name="caveId" value="#{cave.id}"/>
+                </h:commandButton>
+                <h:commandButton styleClass="btn btn-danger" value="Delete Dragon" action="#{dragonBean.delete}">
+                    <f:param name="dragonId" value="#{dragon.id}"/>
+                </h:commandButton>
+                <br/>
+                <h:commandButton styleClass="btn btn-danger" value="Drop Category" action="#{dragonBean.deleteCave}">
+                    <f:param name="caveId" value="#{cave.id}"/>
+                </h:commandButton>
+                <br/>
+            </h:form>
+        </ui:repeat>
+    </ui:repeat>
+</h:body>
+</html>

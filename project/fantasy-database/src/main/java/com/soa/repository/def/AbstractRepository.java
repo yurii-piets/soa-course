@@ -37,6 +37,11 @@ public abstract class AbstractRepository<T> implements Repository<T> {
     }
 
     @Override
+    public T findById(Long id) {
+        return entityManager.find(type, id);
+    }
+
+    @Override
     public void save(T entity) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
@@ -53,9 +58,25 @@ public abstract class AbstractRepository<T> implements Repository<T> {
     }
 
     @Override
+    public void update(T entity) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        entityManager.merge(entity);
+        transaction.commit();
+    }
+
+    @Override
     public void delete(T entity) {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
+        entityManager.remove(entity);
+        transaction.commit();
+    }
+
+    public void deleteById(Long id) {
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+        T entity = findById(id);
         entityManager.remove(entity);
         transaction.commit();
     }

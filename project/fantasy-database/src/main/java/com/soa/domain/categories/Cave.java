@@ -2,21 +2,27 @@ package com.soa.domain.categories;
 
 import com.soa.domain.hero.Dragon;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "CT_CAVE")
 @Data
 @NoArgsConstructor
-public class Cave {
+@EqualsAndHashCode(exclude = "dragons")
+@ToString(exclude = "dragons")
+public class Cave implements Serializable {
 
     public static final String CAVE_ID = "cave_id";
 
@@ -27,12 +33,12 @@ public class Cave {
 
     private Integer square;
 
-    @OneToMany(mappedBy = "cave")
-    private Set<Dragon> dragons;
+    @OneToMany(mappedBy = "cave", fetch = FetchType.EAGER)
+    private List<Dragon> dragons;
 
     public void addDragon(Dragon dragon) {
         if (dragons == null) {
-            dragons = new HashSet<>();
+            dragons = new ArrayList<>();
         }
         dragons.add(dragon);
     }

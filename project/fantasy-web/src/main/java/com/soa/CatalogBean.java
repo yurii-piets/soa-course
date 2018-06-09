@@ -9,12 +9,12 @@ import lombok.Data;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import java.util.List;
 
 @Data
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class CatalogBean {
 
     @EJB
