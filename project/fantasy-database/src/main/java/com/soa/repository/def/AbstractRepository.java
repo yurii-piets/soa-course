@@ -1,5 +1,6 @@
 package com.soa.repository.def;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -31,7 +32,8 @@ public abstract class AbstractRepository<T> implements Repository<T> {
 
     @Override
     public List<T> findAll() {
-        return entityManager.createQuery("from " + type.getSimpleName()).getResultList();
+        Entity entity = type.getAnnotation(Entity.class);
+        return entityManager.createQuery("from " + entity.name()).getResultList();
     }
 
     @Override

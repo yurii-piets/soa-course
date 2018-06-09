@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
+</head>
+<h:body>
+    <ui:repeat value="#{catalogBean.caves}" var="cave">
+        <h1>Cave</h1>
+        Square: <h:outputText value="#{cave.square}"/>
+        <ui:repeat value="#{cave.dragons}" var="dragon">
+            Dragon: <h:outputText value="#{dragon.name}"/>
+            Gold: <h:outputText value="#{dragon.gold}"/>
+            Color: <h:outputText value="#{dragon.color}"/>
+            Power: <h:outputText value="#{dragon.power}"/>
+        </ui:repeat>
+    </ui:repeat>
+
+    <ui:repeat value="#{catalogBean.forests}" var="forest">
+        <h1>Forest</h1>
+        Amount of trees: <h:outputText value="#{forest.amountOfTrees}"/>
+        <ui:repeat value="#{forest.elfs}" var="elf">
+            Elf: <h:outputText value="#{elf.name}"/>
+            Bow Type: <h:outputText value="#{elf.bowType}"/>
+            Arrow Count: <h:outputText value="#{elf.arrowCount}"/>
+            Power: <h:outputText value="#{elf.power}"/>
+        </ui:repeat>
+    </ui:repeat>
+
+    <ui:repeat value="#{catalogBean.towers}" var="tower">
+        <h1>Tower</h1>
+        Height: <h:outputText value="#{tower.height}"/>
+        <ui:repeat value="#{tower.mags}" var="mag">
+            Mag: <h:outputText value="#{mag.name}"/>
+            Element: <h:outputText value="#{mag.element}"/>
+            Mana: <h:outputText value="#{mag.mana}"/>
+            Power: <h:outputText value="#{mag.power}"/>
+        </ui:repeat>
+    </ui:repeat>
+</h:body>
+</html>
