@@ -9,6 +9,7 @@ import com.soa.repository.ForestRepository;
 import com.soa.repository.TowerRepository;
 import com.soa.repository.UserRepository;
 
+import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import java.util.List;
@@ -17,13 +18,17 @@ import java.util.List;
 @Remote(DataAccessService.class)
 public class DataAccessServiceImpl implements DataAccessService {
 
-    private CaveRepository caveRepository = new CaveRepository();
+    @EJB
+    private CaveRepository caveRepository;
 
-    private ForestRepository forestRepository = new ForestRepository();
+    @EJB
+    private ForestRepository forestRepository;
 
-    private TowerRepository towerRepository = new TowerRepository();
+    @EJB
+    private TowerRepository towerRepository;
 
-    private UserRepository userRepository = new UserRepository();
+    @EJB
+    private UserRepository userRepository;
 
     @Override
     public List<Cave> findAllCaves() {
