@@ -15,6 +15,7 @@ import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Stateless
 @Remote(DataAccessService.class)
@@ -77,6 +78,11 @@ public class DataAccessServiceImpl implements DataAccessService {
 
     @Override
     public void deleteCaveById(Long id) {
+        List<Dragon> linkedDragons = dragonRepository.findAll()
+                .stream()
+                .filter(d -> d.getCave().getId().equals(id))
+                .collect(Collectors.toList());
+        dragonRepository.delete(linkedDragons);
         caveRepository.deleteById(id);
     }
 }

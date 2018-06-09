@@ -23,11 +23,12 @@
         <h2>Cave</h2>
         Square: <h:outputText value="#{cave.square}"/>
         <ui:repeat value="#{cave.dragons}" var="dragon">
+            Dragon: <h:outputText value="#{dragon.name}"/>
+            Gold: <h:outputText value="#{dragon.gold}"/>
+            Color: <h:outputText value="#{dragon.color}"/>
+            Power: <h:outputText value="#{dragon.power}"/>
+
             <h:form>
-                Dragon: <h:outputText value="#{dragon.name}"/>
-                Gold: <h:outputText value="#{dragon.gold}"/>
-                Color: <h:outputText value="#{dragon.color}"/>
-                Power: <h:outputText value="#{dragon.power}"/>
                 <h:commandButton styleClass="btn btn-success" value="Mofify" action="#{dragonBean.modify}">
                     <f:param name="dragonId" value="#{dragon.id}"/>
                     <f:param name="name" value="#{dragon.name}"/>
@@ -40,12 +41,15 @@
                     <f:param name="dragonId" value="#{dragon.id}"/>
                 </h:commandButton>
                 <br/>
-                <h:commandButton styleClass="btn btn-danger" value="Drop Category" action="#{dragonBean.deleteCave}">
-                    <f:param name="caveId" value="#{cave.id}"/>
-                </h:commandButton>
-                <br/>
             </h:form>
         </ui:repeat>
+
+        <h:form>
+            <h:commandButton styleClass="btn btn-danger" value="Drop Category" action="#{dragonBean.deleteCave}">
+                <f:param name="caveId" value="#{cave.id}"/>
+            </h:commandButton>
+            <br/>
+        </h:form>
     </ui:repeat>
 </h:body>
 </html>

@@ -9,6 +9,10 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @Data
 @ManagedBean
@@ -36,7 +40,7 @@ public class DragonBean {
     @ManagedProperty("#{param.caveId}")
     private Long caveId;
 
-    public void modify() {
+    public void modify() throws IOException {
         dataService.update(Dragon.builder()
                 .id(dragonId)
                 .name(name)
@@ -45,13 +49,21 @@ public class DragonBean {
                 .power(power)
                 .cave(dataService.findCaveById(caveId))
                 .build());
+        reload();
     }
 
-    public void delete() {
+    public void delete() throws IOException {
         dataService.deleteDragonById(dragonId);
+        reload();
     }
 
-    public void deleteCave() {
+    public void deleteCave() throws IOException {
         dataService.deleteCaveById(caveId);
+        reload();
+    }
+
+    public void reload() throws IOException {
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        ec.redirect(((HttpServletRequest) ec.getRequest()).getRequestURI());
     }
 }
