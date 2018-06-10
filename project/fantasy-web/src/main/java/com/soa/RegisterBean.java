@@ -26,7 +26,7 @@ public class RegisterBean {
     public void submit() {
         dataService.save(UserData.builder()
                 .index(index)
-                .name(name)
+                .login(name)
                 .password(CryptoUtil.crypt(password))
                 .role(UserData.UserRole.USER)
                 .build());

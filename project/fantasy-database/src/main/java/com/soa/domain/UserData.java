@@ -47,7 +47,7 @@ public class UserData implements Serializable {
 
     @NotNull
     @Column(length = 50, unique = true)
-    private String name;
+    private String login;
 
     @NotNull
     private String password;
@@ -68,9 +68,9 @@ public class UserData implements Serializable {
     private List<Tower> towers;
 
     @Builder
-    public UserData(Integer index, String name, String password, UserRole role) {
+    public UserData(Integer index, String login, String password, UserRole role) {
         this.index = index;
-        this.name = name;
+        this.login = login;
         this.password = password;
         this.role = role;
     }
