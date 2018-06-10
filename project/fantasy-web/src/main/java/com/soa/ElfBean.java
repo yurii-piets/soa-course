@@ -1,7 +1,7 @@
 package com.soa;
 
 import com.soa.domain.Power;
-import com.soa.domain.hero.Dragon;
+import com.soa.domain.hero.Elf;
 import com.soa.service.DataAccessService;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,50 +16,50 @@ import java.io.IOException;
 @Data
 @ManagedBean
 @RequestScoped
-public class DragonBean extends AbstractHeroBean {
+public class ElfBean extends AbstractHeroBean {
 
     @EJB
     private DataAccessService dataService;
 
-    @ManagedProperty("#{param.dragonId}")
-    private Long dragonId;
+    @ManagedProperty("#{param.elfId}")
+    private Long elfId;
 
     @ManagedProperty("#{param.name}")
     private String name;
 
-    @ManagedProperty("#{param.gold}")
-    private Integer gold;
+    @ManagedProperty("#{param.arrowCount}")
+    private Integer arrowCount;
 
-    @ManagedProperty("#{param.color}")
-    private Dragon.Color color;
+    @ManagedProperty("#{param.bowType}")
+    private Elf.BowType bowType;
 
     @ManagedProperty("#{param.power}")
     private Power power;
 
-    @ManagedProperty("#{param.caveId}")
-    private Long caveId;
+    @ManagedProperty("#{param.forestId}")
+    private Long forestId;
 
     @Override
     public void modify() throws IOException {
-        dataService.update(Dragon.builder()
-                .id(dragonId)
+        dataService.update(Elf.builder()
+                .id(elfId)
                 .name(name)
-                .gold(gold)
-                .color(color)
+                .arrowCount(arrowCount)
+                .bowType(bowType)
                 .power(power)
-                .cave(dataService.findCaveById(caveId))
+                .forest(dataService.findForestById(forestId))
                 .build());
         reload();
     }
 
     @Override
     public void delete() throws IOException {
-        dataService.deleteDragonById(dragonId);
+        dataService.deleteElfById(elfId);
         reload();
     }
 
-    public void deleteCave() throws IOException {
-        dataService.deleteCaveById(caveId);
+    public void deleteForest() throws IOException {
+        dataService.deleteForestById(forestId);
         reload();
     }
 }

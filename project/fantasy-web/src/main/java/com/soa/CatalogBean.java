@@ -29,7 +29,7 @@ public class CatalogBean {
     @PostConstruct
     public void postConstruct() {
         caves = dataService.findAllCaves();
-        forests = dataService.findAllForest();
-        towers = dataService.findAllTower();
+        forests = dataService.findAllForests();
+        towers = dataService.findAllTowers();
     }
 }

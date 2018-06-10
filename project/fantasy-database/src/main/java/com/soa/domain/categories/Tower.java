@@ -2,7 +2,9 @@ package com.soa.domain.categories;
 
 import com.soa.domain.hero.Mag;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,13 +13,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "CT_TOWER")
 @Data
 @NoArgsConstructor
-public class Tower {
+@EqualsAndHashCode(exclude = "mags")
+@ToString(exclude = "mags")
+public class Tower implements Serializable {
 
     public static final String TOWER_ID = "tower_id";
 
@@ -28,12 +33,12 @@ public class Tower {
 
     private Integer height;
 
-    @OneToMany(mappedBy = "tower", fetch = FetchType.EAGER)
-    private Set<Mag> mags;
+    @OneToMany(mappedBy = "tower", fetch = FetchType.LAZY)
+    private List<Mag> mags;
 
     public void addMag(Mag mag) {
         if (mags == null) {
-            mags = new HashSet<>();
+            mags = new ArrayList<>();
         }
         mags.add(mag);
     }

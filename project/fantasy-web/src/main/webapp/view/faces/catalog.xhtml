@@ -24,8 +24,8 @@
 </head>
 <h:body>
     <script type="text/javascript">
-        function toogleDragons(id) {
-            var element = document.getElementById('dr-' + id);
+        function toogle(prefix, id) {
+            var element = document.getElementById(prefix + '-' + id);
             if (element.style.display === 'block') {
                 element.style.display = 'none';
             } else {
@@ -34,79 +34,236 @@
         }
     </script>
 
-    <h1>Caves</h1>
-    <table class="table table-hover table-striped">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Type</th>
-            <th scope="col">Square</th>
-            <th scope="col">Dragons Amount</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <ui:repeat value="#{catalogBean.caves}" var="cave">
-            <tr onclick="toogleDragons('#{cave.id}')">
-                <th scope="row">#{cave.id}</th>
-                <td>Cave</td>
-                <td><h:outputText value="#{cave.square}"/></td>
-                <td><h:outputText value="#{fn:length(cave.dragons)}"/></td>
-                <td>
-                    <h:form>
-                        <h:commandButton styleClass="btn btn-danger" value="Drop Category"
-                                         action="#{dragonBean.deleteCave}">
-                            <f:param name="caveId" value="#{cave.id}"/>
-                        </h:commandButton>
-                        <br/>
-                    </h:form>
-                </td>
-            </tr>
-        </ui:repeat>
-        </tbody>
-    </table>
-
-    <ui:repeat value="#{catalogBean.caves}" var="cave">
-        <table id="dr-#{cave.id}" class="table table-hover" style="display: none">
-            <thead>
+    <div>
+        <h1>Caves</h1>
+        <table class="table table-hover table-striped">
+            <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Gold</th>
-                <th scope="col">Color</th>
-                <th scope="col">Power</th>
+                <th scope="col">Type</th>
+                <th scope="col">Square</th>
+                <th scope="col">Dragons Amount</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
-            <ui:repeat value="#{cave.dragons}" var="dragon">
-                <tr>
-                    <th scope="row">#{dragon.id}</th>
-                    <td><h:outputText value="#{dragon.name}"/></td>
-                    <td><h:outputText value="#{dragon.gold}"/></td>
-                    <td><h:outputText value="#{dragon.color}"/></td>
-                    <td><h:outputText value="#{dragon.power}"/></td>
+            <ui:repeat value="#{catalogBean.caves}" var="cave">
+                <tr onclick="toogle('dr', '#{cave.id}')">
+                    <th scope="row">#{cave.id}</th>
+                    <td>Cave</td>
+                    <td><h:outputText value="#{cave.square}"/></td>
+                    <td><h:outputText value="#{fn:length(cave.dragons)}"/></td>
                     <td>
                         <h:form>
-                            <h:commandButton styleClass="btn btn-success" value="Modify"
-                                             action="#{dragonBean.modify}">
-                                <f:param name="dragonId" value="#{dragon.id}"/>
-                                <f:param name="name" value="#{dragon.name}"/>
-                                <f:param name="gold" value="#{dragon.gold}"/>
-                                <f:param name="color" value="#{dragon.color}"/>
-                                <f:param name="power" value="#{dragon.power}"/>
+                            <h:commandButton styleClass="btn btn-danger" value="Drop Category"
+                                             action="#{dragonBean.deleteCave}">
                                 <f:param name="caveId" value="#{cave.id}"/>
                             </h:commandButton>
-                            <h:commandButton styleClass="btn btn-danger" value="Delete Dragon"
-                                             action="#{dragonBean.delete}">
-                                <f:param name="dragonId" value="#{dragon.id}"/>
-                            </h:commandButton>
+                            <br/>
                         </h:form>
                     </td>
                 </tr>
             </ui:repeat>
             </tbody>
         </table>
-    </ui:repeat>
+
+        <ui:repeat value="#{catalogBean.caves}" var="cave">
+            <table id="dr-#{cave.id}" class="table table-hover" style="display: none">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gold</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Power</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{cave.dragons}" var="dragon">
+                    <tr>
+                        <th scope="row">#{dragon.id}</th>
+                        <td><h:outputText value="#{dragon.name}"/></td>
+                        <td><h:outputText value="#{dragon.gold}"/></td>
+                        <td><h:outputText value="#{dragon.color}"/></td>
+                        <td><h:outputText value="#{dragon.power}"/></td>
+                        <td>
+                            <h:form>
+                                <h:commandButton styleClass="btn btn-success" value="Modify"
+                                                 action="#{dragonBean.modify}">
+                                    <f:param name="dragonId" value="#{dragon.id}"/>
+                                    <f:param name="name" value="#{dragon.name}"/>
+                                    <f:param name="gold" value="#{dragon.gold}"/>
+                                    <f:param name="color" value="#{dragon.color}"/>
+                                    <f:param name="power" value="#{dragon.power}"/>
+                                    <f:param name="caveId" value="#{cave.id}"/>
+                                </h:commandButton>
+                                <h:commandButton styleClass="btn btn-danger" value="Delete Dragon"
+                                                 action="#{dragonBean.delete}">
+                                    <f:param name="dragonId" value="#{dragon.id}"/>
+                                </h:commandButton>
+                            </h:form>
+                        </td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </ui:repeat>
+    </div>
+
+    <div>
+        <h1>Forests</h1>
+        <table class="table table-hover table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Amount of trees</th>
+                <th scope="col">Elfs Amount</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <ui:repeat value="#{catalogBean.forests}" var="forest">
+                <tr onclick="toogle('el', '#{forest.id}')">
+                    <th scope="row">#{forest.id}</th>
+                    <td>Cave</td>
+                    <td><h:outputText value="#{forest.amountOfTrees}"/></td>
+                    <td><h:outputText value="#{fn:length(forest.elfs)}"/></td>
+                    <td>
+                        <h:form>
+                            <h:commandButton styleClass="btn btn-danger" value="Drop Category"
+                                             action="#{elfBean.deleteForest}">
+                                <f:param name="forestId" value="#{forest.id}"/>
+                            </h:commandButton>
+                            <br/>
+                        </h:form>
+                    </td>
+                </tr>
+            </ui:repeat>
+            </tbody>
+        </table>
+
+        <ui:repeat value="#{catalogBean.forests}" var="forest">
+            <table id="el-#{forest.id}" class="table table-hover" style="display: none">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Bow Type</th>
+                    <th scope="col">Arrow Count</th>
+                    <th scope="col">Power</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{forest.elfs}" var="elf">
+                    <tr>
+                        <th scope="row">#{elf.id}</th>
+                        <td><h:outputText value="#{elf.name}"/></td>
+                        <td><h:outputText value="#{elf.bowType}"/></td>
+                        <td><h:outputText value="#{elf.arrowCount}"/></td>
+                        <td><h:outputText value="#{elf.power}"/></td>
+                        <td>
+                            <h:form>
+                                <h:commandButton styleClass="btn btn-success" value="Modify"
+                                                 action="#{elfBean.modify}">
+                                    <f:param name="elfId" value="#{elf.id}"/>
+                                    <f:param name="name" value="#{elf.name}"/>
+                                    <f:param name="arrowCount" value="#{elf.arrowCount}"/>
+                                    <f:param name="bowType" value="#{elf.bowType}"/>
+                                    <f:param name="power" value="#{elf.power}"/>
+                                    <f:param name="forestId" value="#{forest.id}"/>
+                                </h:commandButton>
+                                <h:commandButton styleClass="btn btn-danger" value="Delete Elf"
+                                                 action="#{elfBean.delete}">
+                                    <f:param name="elfId" value="#{elf.id}"/>
+                                </h:commandButton>
+                            </h:form>
+                        </td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </ui:repeat>
+    </div>
+
+    <div>
+        <h1>Towers</h1>
+        <table class="table table-hover table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Type</th>
+                <th scope="col">Height</th>
+                <th scope="col">Mags Amount</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <ui:repeat value="#{catalogBean.towers}" var="tower">
+                <tr onclick="toogle('mg', '#{tower.id}')">
+                    <th scope="row">#{tower.id}</th>
+                    <td>Cave</td>
+                    <td><h:outputText value="#{tower.height}"/></td>
+                    <td><h:outputText value="#{fn:length(tower.mags)}"/></td>
+                    <td>
+                        <h:form>
+                            <h:commandButton styleClass="btn btn-danger" value="Drop Category"
+                                             action="#{magBean.deleteTower}">
+                                <f:param name="towerId" value="#{tower.id}"/>
+                            </h:commandButton>
+                            <br/>
+                        </h:form>
+                    </td>
+                </tr>
+            </ui:repeat>
+            </tbody>
+        </table>
+
+        <ui:repeat value="#{catalogBean.towers}" var="tower">
+            <table id="mg-#{tower.id}" class="table table-hover" style="display: none">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Element</th>
+                    <th scope="col">Mana</th>
+                    <th scope="col">Power</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <ui:repeat value="#{tower.mags}" var="mag">
+                    <tr>
+                        <th scope="row">#{mag.id}</th>
+                        <td><h:outputText value="#{mag.name}"/></td>
+                        <td><h:outputText value="#{mag.element}"/></td>
+                        <td><h:outputText value="#{mag.mana}"/></td>
+                        <td><h:outputText value="#{mag.power}"/></td>
+                        <td>
+                            <h:form>
+                                <h:commandButton styleClass="btn btn-success" value="Modify"
+                                                 action="#{magBean.modify}">
+                                    <f:param name="magId" value="#{mag.id}"/>
+                                    <f:param name="name" value="#{mag.name}"/>
+                                    <f:param name="mana" value="#{mag.mana}"/>
+                                    <f:param name="element" value="#{mag.element}"/>
+                                    <f:param name="power" value="#{mag.power}"/>
+                                    <f:param name="towerId" value="#{tower.id}"/>
+                                </h:commandButton>
+                                <h:commandButton styleClass="btn btn-danger" value="Delete Mag"
+                                                 action="#{magBean.delete}">
+                                    <f:param name="magId" value="#{mag.id}"/>
+                                </h:commandButton>
+                            </h:form>
+                        </td>
+                    </tr>
+                </ui:repeat>
+                </tbody>
+            </table>
+        </ui:repeat>
+    </div>
+
 </h:body>
 </html>

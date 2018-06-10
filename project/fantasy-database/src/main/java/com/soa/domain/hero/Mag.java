@@ -2,6 +2,7 @@ package com.soa.domain.hero;
 
 import com.soa.domain.Power;
 import com.soa.domain.categories.Tower;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,11 +15,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 @Entity(name = "HR_MAG")
 @Data
 @NoArgsConstructor
-public class Mag {
+public class Mag implements Serializable {
 
     public static final String MAG_ID = "mag_id";
 
@@ -46,5 +48,15 @@ public class Mag {
         STICK_2,
         STICK_3,
         STICK_4
+    }
+
+    @Builder
+    public Mag(Long id, String name, Integer mana, Element element, Power power, Tower tower) {
+        this.id = id;
+        this.name = name;
+        this.mana = mana;
+        this.element = element;
+        this.power = power;
+        this.tower = tower;
     }
 }

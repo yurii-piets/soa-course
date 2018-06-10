@@ -1,7 +1,7 @@
 package com.soa;
 
 import com.soa.domain.Power;
-import com.soa.domain.hero.Dragon;
+import com.soa.domain.hero.Mag;
 import com.soa.service.DataAccessService;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,50 +16,50 @@ import java.io.IOException;
 @Data
 @ManagedBean
 @RequestScoped
-public class DragonBean extends AbstractHeroBean {
+public class MagBean extends AbstractHeroBean {
 
     @EJB
     private DataAccessService dataService;
 
-    @ManagedProperty("#{param.dragonId}")
-    private Long dragonId;
+    @ManagedProperty("#{param.magId}")
+    private Long magId;
 
     @ManagedProperty("#{param.name}")
     private String name;
 
-    @ManagedProperty("#{param.gold}")
-    private Integer gold;
+    @ManagedProperty("#{param.mana}")
+    private Integer mana;
 
-    @ManagedProperty("#{param.color}")
-    private Dragon.Color color;
+    @ManagedProperty("#{param.element}")
+    private Mag.Element element;
 
     @ManagedProperty("#{param.power}")
     private Power power;
 
-    @ManagedProperty("#{param.caveId}")
-    private Long caveId;
+    @ManagedProperty("#{param.towerId}")
+    private Long towerId;
 
     @Override
     public void modify() throws IOException {
-        dataService.update(Dragon.builder()
-                .id(dragonId)
+        dataService.update(Mag.builder()
+                .id(magId)
                 .name(name)
-                .gold(gold)
-                .color(color)
+                .mana(mana)
+                .element(element)
                 .power(power)
-                .cave(dataService.findCaveById(caveId))
+                .tower(dataService.findTowerById(towerId))
                 .build());
         reload();
     }
 
     @Override
     public void delete() throws IOException {
-        dataService.deleteDragonById(dragonId);
+        dataService.deleteMagById(magId);
         reload();
     }
 
-    public void deleteCave() throws IOException {
-        dataService.deleteCaveById(caveId);
+    public void deleteTower() throws IOException {
+        dataService.deleteTowerById(towerId);
         reload();
     }
 }
