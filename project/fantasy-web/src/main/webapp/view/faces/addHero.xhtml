@@ -6,7 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Add Hero</title>
+    <title>Add/Edit Hero</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
@@ -58,6 +58,7 @@
                     <h:commandButton styleClass="btn btn-primary" action="#{addHeroBean.save}" value="Save">
                         <f:param name="heroType" value="#{addHeroBean.heroType}"/>
                         <f:param name="categoryId" value="#{addHeroBean.categoryId}"/>
+                        <f:param name="heroId" value="#{addHeroBean.heroId}"/>
                     </h:commandButton>
                 </h:form>
             </div>

@@ -15,7 +15,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import java.io.IOException;
-
 import java.util.List;
 
 @Data
@@ -26,52 +25,80 @@ public class AddHeroBean {
     @EJB
     private DataAccessService dataService;
 
+    @ManagedProperty("#{param.heroId}")
+    private Long heroId;
+
     @ManagedProperty("#{param.heroType}")
     private String heroType;
 
     @ManagedProperty("#{param.categoryId}")
     private Long categoryId;
 
+    @ManagedProperty("#{param.name}")
     private String name;
 
+    @ManagedProperty("#{param.integerParameter}")
     private Integer integerParameter;
 
+    @ManagedProperty("#{param.power}")
     private Power power;
 
+    @ManagedProperty("#{param.color}")
     private Dragon.Color color;
 
+    @ManagedProperty("#{param.bowType}")
     private Elf.BowType bowType;
 
+    @ManagedProperty("#{param.element}")
     private Mag.Element element;
 
     public void save() throws IOException {
         switch (heroType) {
             case "Dragon":
-                dataService.save(Dragon.builder()
+                Dragon dragon = Dragon.builder()
+                        .id(heroId)
                         .name(name)
                         .gold(integerParameter)
                         .color(color)
                         .power(power)
                         .cave(dataService.findCaveById(categoryId))
-                        .build());
+                        .build();
+
+                if (heroId == null) {
+                    dataService.save(dragon);
+                } else {
+                    dataService.update(dragon);
+                }
                 break;
             case "Elf":
-                dataService.save(Elf.builder()
+                Elf elf = Elf.builder()
+                        .id(heroId)
                         .name(name)
                         .arrowCount(integerParameter)
                         .bowType(bowType)
                         .power(power)
                         .forest(dataService.findForestById(categoryId))
-                        .build());
+                        .build();
+                if (heroId == null) {
+                    dataService.save(elf);
+                } else {
+                    dataService.update(elf);
+                }
                 break;
             case "Mag":
-                dataService.save(Mag.builder()
+                Mag mag = Mag.builder()
+                        .id(heroId)
                         .name(name)
                         .mana(integerParameter)
                         .element(element)
                         .power(power)
                         .tower(dataService.findTowerById(categoryId))
-                        .build());
+                        .build();
+                if (heroId == null) {
+                    dataService.save(mag);
+                } else {
+                    dataService.update(mag);
+                }
                 break;
         }
 

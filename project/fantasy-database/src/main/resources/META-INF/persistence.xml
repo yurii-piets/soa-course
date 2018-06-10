@@ -15,13 +15,13 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/soa_project"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
-            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="false"/>
             <property name="hibernate.use_sql_comments" value="false"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
 
-            <property name="javax.persistence.sql-load-script-source" value="META-INF/sql/testData.sql"/>
+            <!--<property name="javax.persistence.sql-load-script-source" value="META-INF/sql/testData.sql"/>-->
         </properties>
     </persistence-unit>
 </persistence>

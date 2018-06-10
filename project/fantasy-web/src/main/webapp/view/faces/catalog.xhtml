@@ -102,15 +102,17 @@
                         <td><h:outputText value="#{dragon.power}"/></td>
                         <td>
                             <h:form>
-                                <h:commandButton styleClass="btn btn-success" value="Modify"
-                                                 action="#{dragonBean.modify}">
-                                    <f:param name="dragonId" value="#{dragon.id}"/>
-                                    <f:param name="name" value="#{dragon.name}"/>
-                                    <f:param name="gold" value="#{dragon.gold}"/>
-                                    <f:param name="color" value="#{dragon.color}"/>
-                                    <f:param name="power" value="#{dragon.power}"/>
-                                    <f:param name="caveId" value="#{cave.id}"/>
-                                </h:commandButton>
+                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true">
+                                    <i class="glyphicon glyphicon-pencil" style="width: auto"/>
+                                    <f:param value="Dragon" name="heroType"/>
+                                    <f:param value="#{cave.id}" name="categoryId"/>
+                                    <f:param value="#{dragon.id}" name="heroId"/>
+                                    <f:param value="#{dragon.name}" name="name"/>
+                                    <f:param value="#{dragon.gold}" name="integerParameter"/>
+                                    <f:param value="#{dragon.power}" name="power"/>
+                                    <f:param value="#{dragon.color}" name="color"/>
+                                </h:link>
+
                                 <h:commandButton styleClass="btn btn-danger" value="Delete Dragon"
                                                  action="#{dragonBean.delete}">
                                     <f:param name="dragonId" value="#{dragon.id}"/>
@@ -192,15 +194,17 @@
                         <td><h:outputText value="#{elf.power}"/></td>
                         <td>
                             <h:form>
-                                <h:commandButton styleClass="btn btn-success" value="Modify"
-                                                 action="#{elfBean.modify}">
-                                    <f:param name="elfId" value="#{elf.id}"/>
-                                    <f:param name="name" value="#{elf.name}"/>
-                                    <f:param name="arrowCount" value="#{elf.arrowCount}"/>
-                                    <f:param name="bowType" value="#{elf.bowType}"/>
-                                    <f:param name="power" value="#{elf.power}"/>
-                                    <f:param name="forestId" value="#{forest.id}"/>
-                                </h:commandButton>
+                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true">
+                                    <i class="glyphicon glyphicon-pencil" style="width: auto"/>
+                                    <f:param value="Elf" name="heroType"/>
+                                    <f:param value="#{forest.id}" name="categoryId"/>
+                                    <f:param value="#{elf.id}" name="heroId"/>
+                                    <f:param value="#{elf.name}" name="name"/>
+                                    <f:param value="#{elf.arrowCount}" name="integerParameter"/>
+                                    <f:param value="#{elf.bowType}" name="bowType"/>
+                                    <f:param value="#{elf.power}" name="power"/>
+                                </h:link>
+
                                 <h:commandButton styleClass="btn btn-danger" value="Delete Elf"
                                                  action="#{elfBean.delete}">
                                     <f:param name="elfId" value="#{elf.id}"/>
@@ -282,15 +286,17 @@
                         <td><h:outputText value="#{mag.power}"/></td>
                         <td>
                             <h:form>
-                                <h:commandButton styleClass="btn btn-success" value="Modify"
-                                                 action="#{magBean.modify}">
-                                    <f:param name="magId" value="#{mag.id}"/>
-                                    <f:param name="name" value="#{mag.name}"/>
-                                    <f:param name="mana" value="#{mag.mana}"/>
-                                    <f:param name="element" value="#{mag.element}"/>
-                                    <f:param name="power" value="#{mag.power}"/>
-                                    <f:param name="towerId" value="#{tower.id}"/>
-                                </h:commandButton>
+                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true">
+                                    <i class="glyphicon glyphicon-pencil" style="width: auto"/>
+                                    <f:param value="Mag" name="heroType"/>
+                                    <f:param value="#{tower.id}" name="categoryId"/>
+                                    <f:param value="#{mag.id}" name="heroId"/>
+                                    <f:param value="#{mag.name}" name="name"/>
+                                    <f:param value="#{mag.mana}" name="integerParameter"/>
+                                    <f:param value="#{mag.element}" name="element"/>
+                                    <f:param value="#{mag.power}" name="power"/>
+                                </h:link>
+
                                 <h:commandButton styleClass="btn btn-danger" value="Delete Mag"
                                                  action="#{magBean.delete}">
                                     <f:param name="magId" value="#{mag.id}"/>
