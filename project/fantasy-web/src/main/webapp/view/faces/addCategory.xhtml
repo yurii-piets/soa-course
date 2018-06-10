@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
+    <style>
+        h1 {
+            font-size: 25px;
+        }
+
+        h2 {
+            font-size: 19px;
+        }
+    </style>
+</head>
+<h:body>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Add category: <h:outputText value="#{addCategoryBean.category}"/></h1>
+            <div class="card-text">
+                <h:form>
+                    <h:outputLabel rendered="#{addCategoryBean.category == 'Cave'}">Square: </h:outputLabel>
+                    <h:outputLabel rendered="#{addCategoryBean.category == 'Forest'}">Amount of trees: </h:outputLabel>
+                    <h:outputLabel rendered="#{addCategoryBean.category == 'Tower'}">Height: </h:outputLabel>
+
+                    <h:inputText type="text" value="#{addCategoryBean.mainParameter}"/>
+                    <h:commandButton styleClass="btn btn-primary" action="#{addCategoryBean.save}" value="Save">
+                        <f:param name="category" value="#{addCategoryBean.category}"/>
+                    </h:commandButton>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>

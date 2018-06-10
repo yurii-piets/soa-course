@@ -36,6 +36,10 @@ public class Tower implements Serializable {
     @OneToMany(mappedBy = "tower", fetch = FetchType.LAZY)
     private List<Mag> mags;
 
+    public Tower(Integer height) {
+        this.height = height;
+    }
+
     public void addMag(Mag mag) {
         if (mags == null) {
             mags = new ArrayList<>();

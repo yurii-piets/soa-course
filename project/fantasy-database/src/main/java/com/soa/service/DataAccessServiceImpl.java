@@ -86,6 +86,21 @@ public class DataAccessServiceImpl implements DataAccessService {
     }
 
     @Override
+    public void save(Cave cave) {
+        caveRepository.save(cave);
+    }
+
+    @Override
+    public void save(Forest forest) {
+        forestRepository.save(forest);
+    }
+
+    @Override
+    public void save(Tower tower) {
+        towerRepository.save(tower);
+    }
+
+    @Override
     public void save(UserData user) {
         userRepository.save(user);
     }

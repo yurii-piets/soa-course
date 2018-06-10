@@ -35,7 +35,14 @@
     </script>
 
     <div>
-        <h1>Caves</h1>
+        <h1 style="display: inline">Caves<h:form>
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+                <i class="glyphicon glyphicon-plus" style="width: auto"/>
+                <f:param value="Cave" name="category"/>
+            </h:link>
+            <br/>
+        </h:form>
+        </h1>
         <table class="table table-hover table-striped">
             <thead class="thead-dark">
             <tr>
@@ -112,7 +119,14 @@
     </div>
 
     <div>
-        <h1>Forests</h1>
+        <h1 style="display: inline">Forests<h:form>
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+                <i class="glyphicon glyphicon-plus" style="width: auto"/>
+                <f:param value="Forest" name="category"/>
+            </h:link>
+            <br/>
+        </h:form>
+        </h1>
         <table class="table table-hover table-striped">
             <thead class="thead-dark">
             <tr>
@@ -127,7 +141,7 @@
             <ui:repeat value="#{catalogBean.forests}" var="forest">
                 <tr onclick="toogle('el', '#{forest.id}')">
                     <th scope="row">#{forest.id}</th>
-                    <td>Cave</td>
+                    <td>Forest</td>
                     <td><h:outputText value="#{forest.amountOfTrees}"/></td>
                     <td><h:outputText value="#{fn:length(forest.elfs)}"/></td>
                     <td>
@@ -189,7 +203,14 @@
     </div>
 
     <div>
-        <h1>Towers</h1>
+        <h1 style="display: inline">Towers<h:form>
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+                <i class="glyphicon glyphicon-plus" style="width: auto"/>
+                <f:param value="Tower" name="category"/>
+            </h:link>
+            <br/>
+        </h:form>
+        </h1>
         <table class="table table-hover table-striped">
             <thead class="thead-dark">
             <tr>
@@ -204,7 +225,7 @@
             <ui:repeat value="#{catalogBean.towers}" var="tower">
                 <tr onclick="toogle('mg', '#{tower.id}')">
                     <th scope="row">#{tower.id}</th>
-                    <td>Cave</td>
+                    <td>Tower</td>
                     <td><h:outputText value="#{tower.height}"/></td>
                     <td><h:outputText value="#{fn:length(tower.mags)}"/></td>
                     <td>
