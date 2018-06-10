@@ -33,6 +33,7 @@
                     <h:inputText type="text" value="#{addCategoryBean.mainParameter}"/>
                     <h:commandButton styleClass="btn btn-primary" action="#{addCategoryBean.save}" value="Save">
                         <f:param name="category" value="#{addCategoryBean.category}"/>
+                        <f:param name="categoryId" value="#{addCategoryBean.categoryId}"/>
                     </h:commandButton>
                 </h:form>
             </div>

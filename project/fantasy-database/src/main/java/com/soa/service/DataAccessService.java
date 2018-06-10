@@ -20,12 +20,6 @@ public interface DataAccessService {
 
     List<Tower> findAllTowers();
 
-    void save(Cave cave);
-
-    void save(Tower tower);
-
-    void save(Forest forest);
-
     void save(UserData user);
 
     void save(Dragon dragon);
@@ -33,6 +27,12 @@ public interface DataAccessService {
     void save(Elf elf);
 
     void save(Mag mag);
+
+    void update(Cave cave);
+
+    void update(Tower tower);
+
+    void update(Forest forest);
 
     void update(Dragon dragon);
 

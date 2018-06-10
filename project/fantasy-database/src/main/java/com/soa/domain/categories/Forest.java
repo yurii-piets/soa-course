@@ -37,7 +37,8 @@ public class Forest implements Serializable {
     @OneToMany(mappedBy = "forest", fetch = FetchType.LAZY)
     private List<Elf> elfs;
 
-    public Forest(Integer amountOfTrees) {
+    public Forest(Long id, Integer amountOfTrees) {
+        this.id = id;
         this.amountOfTrees = amountOfTrees;
     }
 

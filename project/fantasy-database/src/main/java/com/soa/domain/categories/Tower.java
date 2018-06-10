@@ -36,7 +36,8 @@ public class Tower implements Serializable {
     @OneToMany(mappedBy = "tower", fetch = FetchType.LAZY)
     private List<Mag> mags;
 
-    public Tower(Integer height) {
+    public Tower(Long id, Integer height) {
+        this.id = id;
         this.height = height;
     }
 

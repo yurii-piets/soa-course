@@ -68,6 +68,13 @@
                                 <f:param value="${cave.id}" name="categoryId"/>
                             </h:link>
 
+                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+                                <i class="glyphicon glyphicon-pencil" style="width: auto"/>
+                                <f:param value="Cave" name="category"/>
+                                <f:param value="#{cave.square}" name="mainParameter"/>
+                                <f:param value="#{cave.id}" name="categoryId"/>
+                            </h:link>
+
                             <h:commandButton styleClass="btn btn-danger" value="Drop Category"
                                              action="#{dragonBean.deleteCave}">
                                 <f:param name="caveId" value="#{cave.id}"/>
@@ -160,6 +167,13 @@
                                 <f:param value="${forest.id}" name="categoryId"/>
                             </h:link>
 
+                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+                                <i class="glyphicon glyphicon-pencil" style="width: auto"/>
+                                <f:param value="Forest" name="category"/>
+                                <f:param value="#{forest.amountOfTrees}" name="mainParameter"/>
+                                <f:param value="#{forest.id}" name="categoryId"/>
+                            </h:link>
+
                             <h:commandButton styleClass="btn btn-danger" value="Drop Category"
                                              action="#{elfBean.deleteForest}">
                                 <f:param name="forestId" value="#{forest.id}"/>
@@ -250,6 +264,13 @@
                                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                                 <f:param value="Mag" name="heroType"/>
                                 <f:param value="${tower.id}" name="categoryId"/>
+                            </h:link>
+
+                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+                                <i class="glyphicon glyphicon-pencil" style="width: auto"/>
+                                <f:param value="Tower" name="category"/>
+                                <f:param value="#{tower.height}" name="mainParameter"/>
+                                <f:param value="#{tower.id}" name="categoryId"/>
                             </h:link>
 
                             <h:commandButton styleClass="btn btn-danger" value="Drop Category"

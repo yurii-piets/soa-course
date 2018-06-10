@@ -22,21 +22,25 @@ public class AddCategoryBean {
     @EJB
     private DataAccessService dataService;
 
+    @ManagedProperty("#{param.categoryId}")
+    private Long categoryId;
+
     @ManagedProperty("#{param.category}")
     private String category;
 
+    @ManagedProperty("#{param.mainParameter}")
     private Integer mainParameter;
 
     public void save() throws IOException {
         switch (category) {
             case "Cave":
-                dataService.save(new Cave(mainParameter));
+                dataService.update(new Cave(categoryId, mainParameter));
                 break;
             case "Forest":
-                dataService.save(new Tower(mainParameter));
+                dataService.update(new Forest(categoryId, mainParameter));
                 break;
             case "Tower":
-                dataService.save(new Forest(mainParameter));
+                dataService.update(new Tower(categoryId, mainParameter));
                 break;
 
         }

@@ -35,7 +35,8 @@ public class Cave implements Serializable {
     @OneToMany(mappedBy = "cave")
     private List<Dragon> dragons;
 
-    public Cave(Integer square) {
+    public Cave(Long id, Integer square) {
+        this.id = id;
         this.square = square;
     }
 
