@@ -62,6 +62,12 @@
                     <td><h:outputText value="#{fn:length(cave.dragons)}"/></td>
                     <td>
                         <h:form>
+                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true">
+                                <i class="glyphicon glyphicon-plus" style="width: auto"/>
+                                <f:param value="Dragon" name="heroType"/>
+                                <f:param value="${cave.id}" name="categoryId"/>
+                            </h:link>
+
                             <h:commandButton styleClass="btn btn-danger" value="Drop Category"
                                              action="#{dragonBean.deleteCave}">
                                 <f:param name="caveId" value="#{cave.id}"/>
@@ -146,6 +152,12 @@
                     <td><h:outputText value="#{fn:length(forest.elfs)}"/></td>
                     <td>
                         <h:form>
+                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true">
+                                <i class="glyphicon glyphicon-plus" style="width: auto"/>
+                                <f:param value="Elf" name="heroType"/>
+                                <f:param value="${forest.id}" name="categoryId"/>
+                            </h:link>
+
                             <h:commandButton styleClass="btn btn-danger" value="Drop Category"
                                              action="#{elfBean.deleteForest}">
                                 <f:param name="forestId" value="#{forest.id}"/>
@@ -230,6 +242,12 @@
                     <td><h:outputText value="#{fn:length(tower.mags)}"/></td>
                     <td>
                         <h:form>
+                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true">
+                                <i class="glyphicon glyphicon-plus" style="width: auto"/>
+                                <f:param value="Mag" name="heroType"/>
+                                <f:param value="${tower.id}" name="categoryId"/>
+                            </h:link>
+
                             <h:commandButton styleClass="btn btn-danger" value="Drop Category"
                                              action="#{magBean.deleteTower}">
                                 <f:param name="towerId" value="#{tower.id}"/>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Add Hero</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
+    <style>
+        h1 {
+            font-size: 25px;
+        }
+
+        h2 {
+            font-size: 19px;
+        }
+    </style>
+</head>
+<h:body>
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Add hero: <h:outputText value="#{addHeroBean.heroType}"/></h1>
+            <div class="card-text">
+                <h:form>
+                    Name: <h:inputText type="text" value="#{addHeroBean.name}"/><br/>
+
+                    <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Gold: </h:outputLabel>
+                    <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Arrow Count: </h:outputLabel>
+                    <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Mana: </h:outputLabel>
+                    <h:inputText type="text" value="#{addHeroBean.integerParameter}"/><br/>
+
+                    <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Color: </h:outputLabel>
+                    <h:selectOneMenu value="#{addHeroBean.color}" rendered="${addHeroBean.heroType == 'Dragon'}">
+                        <f:selectItems value="#{addHeroBean.colorValues}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Bow Type: </h:outputLabel>
+                    <h:selectOneMenu value="#{addHeroBean.bowType}" rendered="${addHeroBean.heroType == 'Elf'}">
+                        <f:selectItems value="#{addHeroBean.bowTypes}"/>
+                    </h:selectOneMenu>
+
+                    <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Element: </h:outputLabel>
+                    <h:selectOneMenu value="#{addHeroBean.element}" rendered="${addHeroBean.heroType == 'Mag'}">
+                        <f:selectItems value="#{addHeroBean.elements}"/>
+                    </h:selectOneMenu>
+                    <br/>
+
+                    Power:
+                    <h:selectOneMenu value="#{addHeroBean.power}">
+                        <f:selectItems value="#{addHeroBean.powerValues}"/>
+                    </h:selectOneMenu>
+                    <br/>
+
+                    <h:commandButton styleClass="btn btn-primary" action="#{addHeroBean.save}" value="Save">
+                        <f:param name="heroType" value="#{addHeroBean.heroType}"/>
+                        <f:param name="categoryId" value="#{addHeroBean.categoryId}"/>
+                    </h:commandButton>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</h:body>
+</html>

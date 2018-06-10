@@ -22,11 +22,17 @@ public interface DataAccessService {
 
     void save(Cave cave);
 
-    void save(Tower cave);
+    void save(Tower tower);
 
-    void save(Forest cave);
+    void save(Forest forest);
 
     void save(UserData user);
+
+    void save(Dragon dragon);
+
+    void save(Elf elf);
+
+    void save(Mag mag);
 
     void update(Dragon dragon);
 

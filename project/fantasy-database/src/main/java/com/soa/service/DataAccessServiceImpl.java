@@ -106,6 +106,21 @@ public class DataAccessServiceImpl implements DataAccessService {
     }
 
     @Override
+    public void save(Elf elf) {
+        elfRepository.save(elf);
+    }
+
+    @Override
+    public void save(Mag mag) {
+        magRepository.save(mag);
+    }
+
+    @Override
+    public void save(Dragon dragon) {
+        dragonRepository.save(dragon);
+    }
+
+    @Override
     public void update(Dragon dragon) {
         dragonRepository.update(dragon);
     }
