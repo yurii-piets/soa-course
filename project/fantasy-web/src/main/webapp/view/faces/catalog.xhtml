@@ -7,7 +7,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Login</title>
+    <title>Catalog</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
@@ -15,13 +15,17 @@
         h1 {
             font-size: 25px;
         }
+
+        h2 {
+            font-size: 19px;
+        }
     </style>
 </head>
 <h:body>
     <h1>Caves</h1>
     <ui:repeat value="#{catalogBean.caves}" var="cave">
         <h2>Cave</h2>
-        Square: <h:outputText value="#{cave.square}"/>
+        Square: <h:outputText value="#{cave.square}"/><br/>
         <ui:repeat value="#{cave.dragons}" var="dragon">
             Dragon: <h:outputText value="#{dragon.name}"/>
             Gold: <h:outputText value="#{dragon.gold}"/>

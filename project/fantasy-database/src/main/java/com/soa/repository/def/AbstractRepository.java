@@ -7,8 +7,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractRepository<T> implements Repository<T> {
 
@@ -31,6 +31,7 @@ public abstract class AbstractRepository<T> implements Repository<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<T> findAll() {
         Entity entity = type.getAnnotation(Entity.class);
         return entityManager.createQuery("from " + entity.name()).getResultList();

@@ -38,7 +38,20 @@ public class DataAccessServiceImpl implements DataAccessService {
 
     @Override
     public List<Cave> findAllCaves() {
-        return caveRepository.findAll();
+        List<Cave> caves = caveRepository.findAll();
+        List<Dragon> allDragons = dragonRepository.findAll();
+
+        caves.forEach(c -> c.setDragons(allDragons.stream()
+                        .filter(d -> d.getCave().getId().equals(c.getId())
+                        ).collect(Collectors.toList())
+                )
+        );
+        return caves;
+    }
+
+    @Override
+    public List<Dragon> findAllDragons() {
+        return dragonRepository.findAll();
     }
 
     @Override
@@ -73,7 +86,9 @@ public class DataAccessServiceImpl implements DataAccessService {
 
     @Override
     public void deleteDragonById(Long id) {
-        dragonRepository.deleteById(id);
+        Dragon dragon = dragonRepository.findById(id);
+        dragon.getCave().getDragons().remove(dragon);
+        dragonRepository.delete(dragon);
     }
 
     @Override

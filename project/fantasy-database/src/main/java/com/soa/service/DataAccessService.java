@@ -13,7 +13,11 @@ import java.util.List;
 public interface DataAccessService {
 
     List<Cave> findAllCaves();
+
+    List<Dragon> findAllDragons();
+
     List<Forest> findAllForest();
+
     List<Tower> findAllTower();
 
     void save(UserData user);
