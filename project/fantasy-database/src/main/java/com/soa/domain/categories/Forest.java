@@ -1,5 +1,6 @@
 package com.soa.domain.categories;
 
+import com.soa.domain.UserData;
 import com.soa.domain.hero.Elf;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +13,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,7 +25,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = "elfs")
 @ToString(exclude = "elfs")
-public class Forest implements Serializable {
+public class Forest implements Serializable, Category {
 
     public static final String FOREST_ID = "forest_id";
 
@@ -36,6 +39,10 @@ public class Forest implements Serializable {
 
     @OneToMany(mappedBy = "forest", fetch = FetchType.LAZY)
     private List<Elf> elfs;
+
+    @ManyToOne
+    @JoinColumn(name = UserData.USER_ID)
+    private UserData owner;
 
     public Forest(Long id, Integer amountOfTrees) {
         this.id = id;

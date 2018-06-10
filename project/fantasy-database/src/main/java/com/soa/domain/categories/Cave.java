@@ -1,5 +1,6 @@
 package com.soa.domain.categories;
 
+import com.soa.domain.UserData;
 import com.soa.domain.hero.Dragon;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = "dragons")
 @ToString(exclude = "dragons")
-public class Cave implements Serializable {
+public class Cave implements Serializable, Category {
 
     public static final String CAVE_ID = "cave_id";
 
@@ -34,6 +37,10 @@ public class Cave implements Serializable {
 
     @OneToMany(mappedBy = "cave")
     private List<Dragon> dragons;
+
+    @ManyToOne
+    @JoinColumn(name = UserData.USER_ID)
+    private UserData owner;
 
     public Cave(Long id, Integer square) {
         this.id = id;

@@ -15,7 +15,7 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/soa_project"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
-            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="false"/>
             <property name="hibernate.use_sql_comments" value="false"/>
