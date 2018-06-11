@@ -1,5 +1,5 @@
-insert into user_data(user_id, index, login, password, role) values (1, 000001, 'admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec','ADMIN');
-insert into user_data(user_id, index, login, password, role) values (2, 111111, 'user', 'b14361404c078ffd549c03db443c3fede2f3e534d73f78f77301ed97d4a436a9fd9db05ee8b325c0ad36438b43fec8510c204fc1c1edb21d0941c00e9e2c1ce2','User');
+insert into user_data(user_id, index, login, password, role) values (1, 000001, 'admin', 'ISMvKXpXpadDiUoOSoAfww==','ADMIN');
+insert into user_data(user_id, index, login, password, role) values (2, 111111, 'user', '7hHLsZBS5AsHqsDKBgwj7g==','User');
 
 insert into ct_cave (cave_id, square) values (1001, 10);
 insert into ct_cave (cave_id, square) values (1002, 30);
