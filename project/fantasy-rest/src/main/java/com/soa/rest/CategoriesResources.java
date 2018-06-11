@@ -1,9 +1,14 @@
 package com.soa.rest;
 
+import com.soa.domain.categories.Cave;
+import com.soa.domain.categories.Forest;
+import com.soa.domain.categories.Tower;
 import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -56,5 +61,29 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response towerById(@PathParam("towerId") Long towerId){
         return Response.ok(dataService.findTowerById(towerId)).build();
+    }
+
+    @POST
+    @Path("/caves")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response caves(Cave cave){
+        dataService.save(cave);
+        return Response.accepted().build();
+    }
+
+    @POST
+    @Path("/forests")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response forests(Forest forest){
+        dataService.save(forest);
+        return Response.accepted().build();
+    }
+
+    @POST
+    @Path("/towers")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response towers(Tower tower){
+        dataService.save(tower);
+        return Response.accepted().build();
     }
 }

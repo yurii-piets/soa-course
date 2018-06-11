@@ -28,6 +28,12 @@ public interface DataAccessService {
 
     void save(UserData user);
 
+    void save(Cave cave);
+
+    void save(Forest forest);
+
+    void save(Tower tower);
+
     void save(Dragon dragon);
 
     void save(Elf elf);
