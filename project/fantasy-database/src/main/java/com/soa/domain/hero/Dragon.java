@@ -1,5 +1,6 @@
 package com.soa.domain.hero;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Power;
 import com.soa.domain.categories.Cave;
 import lombok.Builder;
@@ -41,6 +42,7 @@ public class Dragon implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = Cave.CAVE_ID)
+    @JsonIgnore
     private Cave cave;
 
     public enum Color {

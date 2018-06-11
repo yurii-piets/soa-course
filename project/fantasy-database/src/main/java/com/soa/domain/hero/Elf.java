@@ -1,5 +1,6 @@
 package com.soa.domain.hero;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Power;
 import com.soa.domain.categories.Forest;
 import lombok.Builder;
@@ -43,6 +44,7 @@ public class Elf implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = Forest.FOREST_ID)
+    @JsonIgnore
     private Forest forest;
 
     public enum BowType {

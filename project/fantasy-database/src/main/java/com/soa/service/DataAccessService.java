@@ -20,6 +20,12 @@ public interface DataAccessService {
 
     List<Tower> findAllTowers();
 
+    List<Dragon> findAllDragons();
+
+    List<Elf> findAllElfs();
+
+    List<Mag> findAllMags();
+
     void save(UserData user);
 
     void save(Dragon dragon);
@@ -42,17 +48,23 @@ public interface DataAccessService {
 
     Cave findCaveById(Long id);
 
+    Forest findForestById(Long id);
+
+    Tower findTowerById(Long id);
+
+    Dragon findDragonById(Long id);
+
+    Elf findElfById(Long id);
+
+    Mag findMagById(Long id);
+
     void deleteDragonById(Long id);
 
     void deleteCaveById(Long id);
 
-    Forest findForestById(Long forestId);
-
     void deleteElfById(Long elfId);
 
     void deleteForestById(Long forestId);
-
-    Tower findTowerById(Long towerId);
 
     void deleteMagById(Long id);
 

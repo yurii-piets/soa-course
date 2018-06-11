@@ -1,0 +1,5 @@
+dependencies {
+    compile project(':project:fantasy-database')
+    compileOnly group: 'org.jboss.resteasy', name: 'resteasy-jaxrs', version: '3.0.19.Final'
+    compile group: 'javax.jws', name: 'jsr181-api', version: '1.0-MR1'
+}

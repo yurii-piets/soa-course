@@ -1,5 +1,6 @@
 package com.soa.domain.hero;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Power;
 import com.soa.domain.categories.Tower;
 import lombok.Builder;
@@ -41,6 +42,7 @@ public class Mag implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = Tower.TOWER_ID)
+    @JsonIgnore
     private Tower tower;
 
     public enum Element {

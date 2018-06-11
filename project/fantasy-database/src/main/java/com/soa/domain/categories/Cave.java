@@ -1,5 +1,6 @@
 package com.soa.domain.categories;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Dragon;
 import lombok.Data;
@@ -40,6 +41,7 @@ public class Cave implements Serializable, Category {
 
     @ManyToOne
     @JoinColumn(name = UserData.USER_ID)
+    @JsonIgnore
     private UserData owner;
 
     public Cave(Long id, Integer square) {

@@ -86,6 +86,21 @@ public class DataAccessServiceImpl implements DataAccessService {
     }
 
     @Override
+    public List<Dragon> findAllDragons() {
+        return dragonRepository.findAll();
+    }
+
+    @Override
+    public List<Elf> findAllElfs() {
+        return elfRepository.findAll();
+    }
+
+    @Override
+    public List<Mag> findAllMags() {
+        return magRepository.findAll();
+    }
+
+    @Override
     public void update(Cave cave) {
         caveRepository.update(cave);
     }
@@ -182,6 +197,21 @@ public class DataAccessServiceImpl implements DataAccessService {
     @Override
     public Tower findTowerById(Long towerId) {
         return towerRepository.findById(towerId);
+    }
+
+    @Override
+    public Dragon findDragonById(Long id) {
+        return dragonRepository.findById(id);
+    }
+
+    @Override
+    public Elf findElfById(Long id) {
+        return elfRepository.findById(id);
+    }
+
+    @Override
+    public Mag findMagById(Long id) {
+        return magRepository.findById(id);
     }
 
     @Override
