@@ -75,10 +75,10 @@
                                 <f:param value="#{cave.id}" name="categoryId"/>
                             </h:link>
 
-                            <h:commandButton styleClass="btn btn-danger" value="Drop Category"
-                                             action="#{dragonBean.deleteCave}">
+                            <h:commandLink action="#{dragonBean.deleteCave}">
+                                <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                 <f:param name="caveId" value="#{cave.id}"/>
-                            </h:commandButton>
+                            </h:commandLink>
                             <br/>
                         </h:form>
                     </td>
@@ -120,10 +120,10 @@
                                     <f:param value="#{dragon.color}" name="color"/>
                                 </h:link>
 
-                                <h:commandButton styleClass="btn btn-danger" value="Delete Dragon"
-                                                 action="#{dragonBean.delete}">
+                                <h:commandLink action="#{dragonBean.delete}">
+                                    <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                     <f:param name="dragonId" value="#{dragon.id}"/>
-                                </h:commandButton>
+                                </h:commandLink>
                             </h:form>
                         </td>
                     </tr>
@@ -174,10 +174,10 @@
                                 <f:param value="#{forest.id}" name="categoryId"/>
                             </h:link>
 
-                            <h:commandButton styleClass="btn btn-danger" value="Drop Category"
-                                             action="#{elfBean.deleteForest}">
+                            <h:commandLink action="#{elfBean.deleteForest}">
+                                <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                 <f:param name="forestId" value="#{forest.id}"/>
-                            </h:commandButton>
+                            </h:commandLink>
                             <br/>
                         </h:form>
                     </td>
@@ -219,10 +219,10 @@
                                     <f:param value="#{elf.power}" name="power"/>
                                 </h:link>
 
-                                <h:commandButton styleClass="btn btn-danger" value="Delete Elf"
-                                                 action="#{elfBean.delete}">
+                                <h:commandLink action="#{elfBean.delete}">
+                                    <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                     <f:param name="elfId" value="#{elf.id}"/>
-                                </h:commandButton>
+                                </h:commandLink>
                             </h:form>
                         </td>
                     </tr>
@@ -273,10 +273,10 @@
                                 <f:param value="#{tower.id}" name="categoryId"/>
                             </h:link>
 
-                            <h:commandButton styleClass="btn btn-danger" value="Drop Category"
-                                             action="#{magBean.deleteTower}">
+                            <h:commandLink action="#{magBean.deleteTower}">
+                                <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                 <f:param name="towerId" value="#{tower.id}"/>
-                            </h:commandButton>
+                            </h:commandLink>
                             <br/>
                         </h:form>
                     </td>
@@ -318,10 +318,10 @@
                                     <f:param value="#{mag.power}" name="power"/>
                                 </h:link>
 
-                                <h:commandButton styleClass="btn btn-danger" value="Delete Mag"
-                                                 action="#{magBean.delete}">
+                                <h:commandLink action="#{magBean.delete}">
+                                    <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                     <f:param name="magId" value="#{mag.id}"/>
-                                </h:commandButton>
+                                </h:commandLink>
                             </h:form>
                         </td>
                     </tr>
