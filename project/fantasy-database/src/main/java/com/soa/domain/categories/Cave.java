@@ -1,6 +1,7 @@
 package com.soa.domain.categories;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.soa.domain.Ownable;
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Dragon;
 import lombok.Data;
@@ -25,7 +26,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = "dragons")
 @ToString(exclude = "dragons")
-public class Cave implements Serializable, Category {
+public class Cave implements Serializable, Category, Ownable {
 
     public static final String CAVE_ID = "cave_id";
 

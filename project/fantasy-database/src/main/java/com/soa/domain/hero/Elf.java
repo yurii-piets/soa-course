@@ -1,7 +1,9 @@
 package com.soa.domain.hero;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.soa.domain.Ownable;
 import com.soa.domain.Power;
+import com.soa.domain.UserData;
 import com.soa.domain.categories.Forest;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +23,7 @@ import java.io.Serializable;
 @Entity(name = "HR_ELF")
 @Data
 @NoArgsConstructor
-public class Elf implements Serializable {
+public class Elf implements Ownable, Serializable {
 
     private static final String ELF_ID = "elf_id";
 
@@ -46,6 +48,11 @@ public class Elf implements Serializable {
     @JoinColumn(name = Forest.FOREST_ID)
     @JsonIgnore
     private Forest forest;
+
+    @Override
+    public UserData getOwner() {
+        return forest.getOwner();
+    }
 
     public enum BowType {
         BAD,

@@ -1,6 +1,7 @@
 package com.soa.domain.categories;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.soa.domain.Ownable;
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Mag;
 import lombok.Data;
@@ -26,7 +27,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = "mags")
 @ToString(exclude = "mags")
-public class Tower implements Serializable, Category {
+public class Tower implements Serializable, Category, Ownable {
 
     public static final String TOWER_ID = "tower_id";
 

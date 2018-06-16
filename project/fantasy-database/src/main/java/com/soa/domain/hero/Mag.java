@@ -1,7 +1,9 @@
 package com.soa.domain.hero;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.soa.domain.Ownable;
 import com.soa.domain.Power;
+import com.soa.domain.UserData;
 import com.soa.domain.categories.Tower;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +23,7 @@ import java.io.Serializable;
 @Entity(name = "HR_MAG")
 @Data
 @NoArgsConstructor
-public class Mag implements Serializable {
+public class Mag implements Ownable, Serializable {
 
     public static final String MAG_ID = "mag_id";
 
@@ -44,6 +46,11 @@ public class Mag implements Serializable {
     @JoinColumn(name = Tower.TOWER_ID)
     @JsonIgnore
     private Tower tower;
+
+    @Override
+    public UserData getOwner() {
+        return tower.getOwner();
+    }
 
     public enum Element {
         STICK_1,

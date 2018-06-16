@@ -1,6 +1,7 @@
 package com.soa.domain.categories;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.soa.domain.Ownable;
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Elf;
 import lombok.Data;
@@ -26,7 +27,7 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode(exclude = "elfs")
 @ToString(exclude = "elfs")
-public class Forest implements Serializable, Category {
+public class Forest implements Serializable, Category, Ownable {
 
     public static final String FOREST_ID = "forest_id";
 
