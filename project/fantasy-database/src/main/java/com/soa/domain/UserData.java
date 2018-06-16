@@ -6,7 +6,9 @@ import com.soa.domain.categories.Forest;
 import com.soa.domain.categories.Tower;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -27,6 +29,8 @@ import java.util.List;
 @Entity(name = "USER_DATA")
 @Data
 @NoArgsConstructor
+@ToString(exclude = {"caves", "forests", "towers"})
+@EqualsAndHashCode(exclude = {"caves", "forests", "towers"})
 public class UserData implements Serializable {
 
     public static final String USER_ID = "user_id";

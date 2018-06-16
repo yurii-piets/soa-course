@@ -1,4 +1,3 @@
 dependencies {
-    compile project(':project:fantasy-rest')
     compile project(':project:fantasy-database')
 }
