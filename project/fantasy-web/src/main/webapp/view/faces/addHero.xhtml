@@ -21,45 +21,70 @@
     </style>
 </head>
 <h:body>
-    <div class="card">
-        <div class="card-body">
-            <h1 class="card-title">Add hero: <h:outputText value="#{addHeroBean.heroType}"/></h1>
-            <div class="card-text">
+    <div class="container col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+        <br/>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="card-title">Add hero: <h:outputText value="#{addHeroBean.heroType}"/></h1>
+            </div>
+            <div class="panel-body">
                 <h:form>
-                    Name: <h:inputText type="text" value="#{addHeroBean.name}"/><br/>
+                    <div class="form-group">
+                        <div class="input-group">
+                            Name: <h:inputText type="text" value="#{addHeroBean.name}"/><br/>
+                        </div>
+                    </div>
 
-                    <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Gold: </h:outputLabel>
-                    <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Arrow Count: </h:outputLabel>
-                    <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Mana: </h:outputLabel>
-                    <h:inputText type="text" value="#{addHeroBean.integerParameter}"/><br/>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Gold: </h:outputLabel>
+                            <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Arrow Count: </h:outputLabel>
+                            <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Mana: </h:outputLabel>
+                            <h:inputText type="text" value="#{addHeroBean.integerParameter}"/><br/>
+                        </div>
+                    </div>
 
-                    <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Color: </h:outputLabel>
-                    <h:selectOneMenu value="#{addHeroBean.color}" rendered="${addHeroBean.heroType == 'Dragon'}">
-                        <f:selectItems value="#{addHeroBean.colorValues}"/>
-                    </h:selectOneMenu>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Color: </h:outputLabel>
+                            <h:selectOneMenu value="#{addHeroBean.color}"
+                                             rendered="${addHeroBean.heroType == 'Dragon'}">
+                                <f:selectItems value="#{addHeroBean.colorValues}"/>
+                            </h:selectOneMenu>
 
-                    <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Bow Type: </h:outputLabel>
-                    <h:selectOneMenu value="#{addHeroBean.bowType}" rendered="${addHeroBean.heroType == 'Elf'}">
-                        <f:selectItems value="#{addHeroBean.bowTypes}"/>
-                    </h:selectOneMenu>
+                            <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Bow Type: </h:outputLabel>
+                            <h:selectOneMenu value="#{addHeroBean.bowType}" rendered="${addHeroBean.heroType == 'Elf'}">
+                                <f:selectItems value="#{addHeroBean.bowTypes}"/>
+                            </h:selectOneMenu>
 
-                    <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Element: </h:outputLabel>
-                    <h:selectOneMenu value="#{addHeroBean.element}" rendered="${addHeroBean.heroType == 'Mag'}">
-                        <f:selectItems value="#{addHeroBean.elements}"/>
-                    </h:selectOneMenu>
-                    <br/>
+                            <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Element: </h:outputLabel>
+                            <h:selectOneMenu value="#{addHeroBean.element}" rendered="${addHeroBean.heroType == 'Mag'}">
+                                <f:selectItems value="#{addHeroBean.elements}"/>
+                            </h:selectOneMenu>
+                            <br/>
 
-                    Power:
-                    <h:selectOneMenu value="#{addHeroBean.power}">
-                        <f:selectItems value="#{addHeroBean.powerValues}"/>
-                    </h:selectOneMenu>
-                    <br/>
+                        </div>
+                    </div>
 
-                    <h:commandButton styleClass="btn btn-primary" action="#{addHeroBean.save}" value="Save">
-                        <f:param name="heroType" value="#{addHeroBean.heroType}"/>
-                        <f:param name="categoryId" value="#{addHeroBean.categoryId}"/>
-                        <f:param name="heroId" value="#{addHeroBean.heroId}"/>
-                    </h:commandButton>
+                    <div class="form-group">
+                        <div class="input-group">
+                            Power:
+                            <h:selectOneMenu value="#{addHeroBean.power}">
+                                <f:selectItems value="#{addHeroBean.powerValues}"/>
+                            </h:selectOneMenu>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <h:commandButton styleClass="btn btn-primary" action="#{addHeroBean.save}" value="Save">
+                                <f:param name="heroType" value="#{addHeroBean.heroType}"/>
+                                <f:param name="categoryId" value="#{addHeroBean.categoryId}"/>
+                                <f:param name="heroId" value="#{addHeroBean.heroId}"/>
+                            </h:commandButton>
+                        </div>
+                    </div>
                 </h:form>
             </div>
         </div>
