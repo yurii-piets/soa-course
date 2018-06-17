@@ -105,4 +105,9 @@
         <location>/view/faces/forbidden.xhtml</location>
     </error-page>
 
+    <error-page>
+        <error-code>423</error-code>
+        <location>/view/faces/error/locked.xhtml</location>
+    </error-page>
+
 </web-app>
