@@ -1,8 +1,8 @@
 package com.soa.soap;
 
-import com.soa.domain.categories.Cave;
-import com.soa.domain.categories.Forest;
-import com.soa.domain.categories.Tower;
+import com.soa.ws.category.WSCave;
+import com.soa.ws.category.WSForest;
+import com.soa.ws.category.WSTower;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -11,11 +11,11 @@ import javax.jws.WebService;
 public interface CategoryService {
 
     @WebMethod
-    void saveCave(Cave cave);
+    void saveCave(WSCave wsCave);
 
     @WebMethod
-    void saveTower(Tower tower);
+    void saveTower(WSTower wsTower);
 
     @WebMethod
-    void saveForest(Forest forest);
+    void saveForest(WSForest wsForest);
 }

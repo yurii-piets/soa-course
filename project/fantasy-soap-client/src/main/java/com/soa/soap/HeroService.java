@@ -31,7 +31,7 @@ public interface HeroService {
     @ResponseWrapper(localName = "saveElfResponse", targetNamespace = "http://soap.soa.com/", className = "com.soa.soap.SaveElfResponse")
     public void saveElf(
         @WebParam(name = "arg0", targetNamespace = "")
-        WsElfRequest arg0);
+        WsElf arg0);
 
     /**
      * 
@@ -56,7 +56,7 @@ public interface HeroService {
     @ResponseWrapper(localName = "saveMagResponse", targetNamespace = "http://soap.soa.com/", className = "com.soa.soap.SaveMagResponse")
     public void saveMag(
         @WebParam(name = "arg0", targetNamespace = "")
-        WsMagRequest arg0);
+        WsMag arg0);
 
     /**
      * 
@@ -95,6 +95,6 @@ public interface HeroService {
     @ResponseWrapper(localName = "saveDragonResponse", targetNamespace = "http://soap.soa.com/", className = "com.soa.soap.SaveDragonResponse")
     public void saveDragon(
         @WebParam(name = "arg0", targetNamespace = "")
-        WsDragonRequest arg0);
+        WsDragon arg0);
 
 }

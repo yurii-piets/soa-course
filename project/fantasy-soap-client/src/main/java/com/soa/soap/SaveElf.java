@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://soap.soa.com/}wsElfRequest" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://soap.soa.com/}wsElf" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SaveElf {
 
-    protected WsElfRequest arg0;
+    protected WsElf arg0;
 
     /**
      * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
-     *     {@link WsElfRequest }
+     *     {@link WsElf }
      *     
      */
-    public WsElfRequest getArg0() {
+    public WsElf getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class SaveElf {
      * 
      * @param value
      *     allowed object is
-     *     {@link WsElfRequest }
+     *     {@link WsElf }
      *     
      */
-    public void setArg0(WsElfRequest value) {
+    public void setArg0(WsElf value) {
         this.arg0 = value;
     }
 

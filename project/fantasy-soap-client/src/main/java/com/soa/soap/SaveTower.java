@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://soap.soa.com/}tower" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://soap.soa.com/}wsTower" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SaveTower {
 
-    protected Tower arg0;
+    protected WsTower arg0;
 
     /**
      * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
-     *     {@link Tower }
+     *     {@link WsTower }
      *     
      */
-    public Tower getArg0() {
+    public WsTower getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class SaveTower {
      * 
      * @param value
      *     allowed object is
-     *     {@link Tower }
+     *     {@link WsTower }
      *     
      */
-    public void setArg0(Tower value) {
+    public void setArg0(WsTower value) {
         this.arg0 = value;
     }
 

@@ -24,12 +24,18 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _SaveCave_QNAME = new QName("http://soap.soa.com/", "saveCave");
-    private final static QName _SaveCaveResponse_QNAME = new QName("http://soap.soa.com/", "saveCaveResponse");
-    private final static QName _SaveForest_QNAME = new QName("http://soap.soa.com/", "saveForest");
-    private final static QName _SaveForestResponse_QNAME = new QName("http://soap.soa.com/", "saveForestResponse");
-    private final static QName _SaveTower_QNAME = new QName("http://soap.soa.com/", "saveTower");
-    private final static QName _SaveTowerResponse_QNAME = new QName("http://soap.soa.com/", "saveTowerResponse");
+    private final static QName _ModifyArrows_QNAME = new QName("http://soap.soa.com/", "modifyArrows");
+    private final static QName _ModifyArrowsResponse_QNAME = new QName("http://soap.soa.com/", "modifyArrowsResponse");
+    private final static QName _ModifyGold_QNAME = new QName("http://soap.soa.com/", "modifyGold");
+    private final static QName _ModifyGoldResponse_QNAME = new QName("http://soap.soa.com/", "modifyGoldResponse");
+    private final static QName _ModifyMana_QNAME = new QName("http://soap.soa.com/", "modifyMana");
+    private final static QName _ModifyManaResponse_QNAME = new QName("http://soap.soa.com/", "modifyManaResponse");
+    private final static QName _SaveDragon_QNAME = new QName("http://soap.soa.com/", "saveDragon");
+    private final static QName _SaveDragonResponse_QNAME = new QName("http://soap.soa.com/", "saveDragonResponse");
+    private final static QName _SaveElf_QNAME = new QName("http://soap.soa.com/", "saveElf");
+    private final static QName _SaveElfResponse_QNAME = new QName("http://soap.soa.com/", "saveElfResponse");
+    private final static QName _SaveMag_QNAME = new QName("http://soap.soa.com/", "saveMag");
+    private final static QName _SaveMagResponse_QNAME = new QName("http://soap.soa.com/", "saveMagResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.soa.soap
@@ -39,185 +45,279 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SaveCave }
+     * Create an instance of {@link ModifyArrows }
      * 
      */
-    public SaveCave createSaveCave() {
-        return new SaveCave();
+    public ModifyArrows createModifyArrows() {
+        return new ModifyArrows();
     }
 
     /**
-     * Create an instance of {@link SaveCaveResponse }
+     * Create an instance of {@link ModifyArrowsResponse }
      * 
      */
-    public SaveCaveResponse createSaveCaveResponse() {
-        return new SaveCaveResponse();
+    public ModifyArrowsResponse createModifyArrowsResponse() {
+        return new ModifyArrowsResponse();
     }
 
     /**
-     * Create an instance of {@link SaveForest }
+     * Create an instance of {@link ModifyGold }
      * 
      */
-    public SaveForest createSaveForest() {
-        return new SaveForest();
+    public ModifyGold createModifyGold() {
+        return new ModifyGold();
     }
 
     /**
-     * Create an instance of {@link SaveForestResponse }
+     * Create an instance of {@link ModifyGoldResponse }
      * 
      */
-    public SaveForestResponse createSaveForestResponse() {
-        return new SaveForestResponse();
+    public ModifyGoldResponse createModifyGoldResponse() {
+        return new ModifyGoldResponse();
     }
 
     /**
-     * Create an instance of {@link SaveTower }
+     * Create an instance of {@link ModifyMana }
      * 
      */
-    public SaveTower createSaveTower() {
-        return new SaveTower();
+    public ModifyMana createModifyMana() {
+        return new ModifyMana();
     }
 
     /**
-     * Create an instance of {@link SaveTowerResponse }
+     * Create an instance of {@link ModifyManaResponse }
      * 
      */
-    public SaveTowerResponse createSaveTowerResponse() {
-        return new SaveTowerResponse();
+    public ModifyManaResponse createModifyManaResponse() {
+        return new ModifyManaResponse();
     }
 
     /**
-     * Create an instance of {@link Forest }
+     * Create an instance of {@link SaveDragon }
      * 
      */
-    public Forest createForest() {
-        return new Forest();
+    public SaveDragon createSaveDragon() {
+        return new SaveDragon();
     }
 
     /**
-     * Create an instance of {@link Elf }
+     * Create an instance of {@link SaveDragonResponse }
      * 
      */
-    public Elf createElf() {
-        return new Elf();
+    public SaveDragonResponse createSaveDragonResponse() {
+        return new SaveDragonResponse();
     }
 
     /**
-     * Create an instance of {@link UserData }
+     * Create an instance of {@link SaveElf }
      * 
      */
-    public UserData createUserData() {
-        return new UserData();
+    public SaveElf createSaveElf() {
+        return new SaveElf();
     }
 
     /**
-     * Create an instance of {@link Cave }
+     * Create an instance of {@link SaveElfResponse }
      * 
      */
-    public Cave createCave() {
-        return new Cave();
+    public SaveElfResponse createSaveElfResponse() {
+        return new SaveElfResponse();
     }
 
     /**
-     * Create an instance of {@link Dragon }
+     * Create an instance of {@link SaveMag }
      * 
      */
-    public Dragon createDragon() {
-        return new Dragon();
+    public SaveMag createSaveMag() {
+        return new SaveMag();
     }
 
     /**
-     * Create an instance of {@link Tower }
+     * Create an instance of {@link SaveMagResponse }
      * 
      */
-    public Tower createTower() {
-        return new Tower();
+    public SaveMagResponse createSaveMagResponse() {
+        return new SaveMagResponse();
     }
 
     /**
-     * Create an instance of {@link Mag }
+     * Create an instance of {@link WsElf }
      * 
      */
-    public Mag createMag() {
-        return new Mag();
+    public WsElf createWsElf() {
+        return new WsElf();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveCave }{@code >}
+     * Create an instance of {@link WsMag }
+     * 
+     */
+    public WsMag createWsMag() {
+        return new WsMag();
+    }
+
+    /**
+     * Create an instance of {@link WsDragon }
+     * 
+     */
+    public WsDragon createWsDragon() {
+        return new WsDragon();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyArrows }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SaveCave }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ModifyArrows }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveCave")
-    public JAXBElement<SaveCave> createSaveCave(SaveCave value) {
-        return new JAXBElement<SaveCave>(_SaveCave_QNAME, SaveCave.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "modifyArrows")
+    public JAXBElement<ModifyArrows> createModifyArrows(ModifyArrows value) {
+        return new JAXBElement<ModifyArrows>(_ModifyArrows_QNAME, ModifyArrows.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveCaveResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyArrowsResponse }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SaveCaveResponse }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ModifyArrowsResponse }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveCaveResponse")
-    public JAXBElement<SaveCaveResponse> createSaveCaveResponse(SaveCaveResponse value) {
-        return new JAXBElement<SaveCaveResponse>(_SaveCaveResponse_QNAME, SaveCaveResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "modifyArrowsResponse")
+    public JAXBElement<ModifyArrowsResponse> createModifyArrowsResponse(ModifyArrowsResponse value) {
+        return new JAXBElement<ModifyArrowsResponse>(_ModifyArrowsResponse_QNAME, ModifyArrowsResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveForest }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyGold }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SaveForest }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ModifyGold }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveForest")
-    public JAXBElement<SaveForest> createSaveForest(SaveForest value) {
-        return new JAXBElement<SaveForest>(_SaveForest_QNAME, SaveForest.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "modifyGold")
+    public JAXBElement<ModifyGold> createModifyGold(ModifyGold value) {
+        return new JAXBElement<ModifyGold>(_ModifyGold_QNAME, ModifyGold.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveForestResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyGoldResponse }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SaveForestResponse }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ModifyGoldResponse }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveForestResponse")
-    public JAXBElement<SaveForestResponse> createSaveForestResponse(SaveForestResponse value) {
-        return new JAXBElement<SaveForestResponse>(_SaveForestResponse_QNAME, SaveForestResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "modifyGoldResponse")
+    public JAXBElement<ModifyGoldResponse> createModifyGoldResponse(ModifyGoldResponse value) {
+        return new JAXBElement<ModifyGoldResponse>(_ModifyGoldResponse_QNAME, ModifyGoldResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTower }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyMana }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SaveTower }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ModifyMana }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveTower")
-    public JAXBElement<SaveTower> createSaveTower(SaveTower value) {
-        return new JAXBElement<SaveTower>(_SaveTower_QNAME, SaveTower.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "modifyMana")
+    public JAXBElement<ModifyMana> createModifyMana(ModifyMana value) {
+        return new JAXBElement<ModifyMana>(_ModifyMana_QNAME, ModifyMana.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link SaveTowerResponse }{@code >}
+     * Create an instance of {@link JAXBElement }{@code <}{@link ModifyManaResponse }{@code >}
      * 
      * @param value
      *     Java instance representing xml element's value.
      * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link SaveTowerResponse }{@code >}
+     *     the new instance of {@link JAXBElement }{@code <}{@link ModifyManaResponse }{@code >}
      */
-    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveTowerResponse")
-    public JAXBElement<SaveTowerResponse> createSaveTowerResponse(SaveTowerResponse value) {
-        return new JAXBElement<SaveTowerResponse>(_SaveTowerResponse_QNAME, SaveTowerResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "modifyManaResponse")
+    public JAXBElement<ModifyManaResponse> createModifyManaResponse(ModifyManaResponse value) {
+        return new JAXBElement<ModifyManaResponse>(_ModifyManaResponse_QNAME, ModifyManaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveDragon }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SaveDragon }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveDragon")
+    public JAXBElement<SaveDragon> createSaveDragon(SaveDragon value) {
+        return new JAXBElement<SaveDragon>(_SaveDragon_QNAME, SaveDragon.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveDragonResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SaveDragonResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveDragonResponse")
+    public JAXBElement<SaveDragonResponse> createSaveDragonResponse(SaveDragonResponse value) {
+        return new JAXBElement<SaveDragonResponse>(_SaveDragonResponse_QNAME, SaveDragonResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveElf }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SaveElf }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveElf")
+    public JAXBElement<SaveElf> createSaveElf(SaveElf value) {
+        return new JAXBElement<SaveElf>(_SaveElf_QNAME, SaveElf.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveElfResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SaveElfResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveElfResponse")
+    public JAXBElement<SaveElfResponse> createSaveElfResponse(SaveElfResponse value) {
+        return new JAXBElement<SaveElfResponse>(_SaveElfResponse_QNAME, SaveElfResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveMag }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SaveMag }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveMag")
+    public JAXBElement<SaveMag> createSaveMag(SaveMag value) {
+        return new JAXBElement<SaveMag>(_SaveMag_QNAME, SaveMag.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SaveMagResponse }{@code >}
+     * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link SaveMagResponse }{@code >}
+     */
+    @XmlElementDecl(namespace = "http://soap.soa.com/", name = "saveMagResponse")
+    public JAXBElement<SaveMagResponse> createSaveMagResponse(SaveMagResponse value) {
+        return new JAXBElement<SaveMagResponse>(_SaveMagResponse_QNAME, SaveMagResponse.class, null, value);
     }
 
 }

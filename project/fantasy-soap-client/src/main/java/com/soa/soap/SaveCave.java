@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://soap.soa.com/}cave" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://soap.soa.com/}wsCave" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SaveCave {
 
-    protected Cave arg0;
+    protected WsCave arg0;
 
     /**
      * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
-     *     {@link Cave }
+     *     {@link WsCave }
      *     
      */
-    public Cave getArg0() {
+    public WsCave getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class SaveCave {
      * 
      * @param value
      *     allowed object is
-     *     {@link Cave }
+     *     {@link WsCave }
      *     
      */
-    public void setArg0(Cave value) {
+    public void setArg0(WsCave value) {
         this.arg0 = value;
     }
 

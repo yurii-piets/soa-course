@@ -31,7 +31,7 @@ public interface CategoryService {
     @ResponseWrapper(localName = "saveForestResponse", targetNamespace = "http://soap.soa.com/", className = "com.soa.soap.SaveForestResponse")
     public void saveForest(
         @WebParam(name = "arg0", targetNamespace = "")
-        Forest arg0);
+        WsForest arg0);
 
     /**
      * 
@@ -42,7 +42,7 @@ public interface CategoryService {
     @ResponseWrapper(localName = "saveTowerResponse", targetNamespace = "http://soap.soa.com/", className = "com.soa.soap.SaveTowerResponse")
     public void saveTower(
         @WebParam(name = "arg0", targetNamespace = "")
-        Tower arg0);
+        WsTower arg0);
 
     /**
      * 
@@ -53,6 +53,6 @@ public interface CategoryService {
     @ResponseWrapper(localName = "saveCaveResponse", targetNamespace = "http://soap.soa.com/", className = "com.soa.soap.SaveCaveResponse")
     public void saveCave(
         @WebParam(name = "arg0", targetNamespace = "")
-        Cave arg0);
+        WsCave arg0);
 
 }

@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://soap.soa.com/}wsDragonRequest" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://soap.soa.com/}wsDragon" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SaveDragon {
 
-    protected WsDragonRequest arg0;
+    protected WsDragon arg0;
 
     /**
      * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
-     *     {@link WsDragonRequest }
+     *     {@link WsDragon }
      *     
      */
-    public WsDragonRequest getArg0() {
+    public WsDragon getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class SaveDragon {
      * 
      * @param value
      *     allowed object is
-     *     {@link WsDragonRequest }
+     *     {@link WsDragon }
      *     
      */
-    public void setArg0(WsDragonRequest value) {
+    public void setArg0(WsDragon value) {
         this.arg0 = value;
     }
 

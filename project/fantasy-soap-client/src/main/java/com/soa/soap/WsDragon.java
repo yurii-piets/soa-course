@@ -8,21 +8,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for mag complex type.
+ * <p>Java class for wsDragon complex type.
  * 
  * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="mag"&gt;
+ * &lt;complexType name="wsDragon"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="element" type="{http://soap.soa.com/}element" minOccurs="0"/&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
- *         &lt;element name="mana" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="caveId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="color" type="{http://soap.soa.com/}color" minOccurs="0"/&gt;
+ *         &lt;element name="gold" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="power" type="{http://soap.soa.com/}power" minOccurs="0"/&gt;
- *         &lt;element name="tower" type="{http://soap.soa.com/}tower" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,95 +31,93 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "mag", propOrder = {
-    "element",
-    "id",
-    "mana",
+@XmlType(name = "wsDragon", propOrder = {
+    "caveId",
+    "color",
+    "gold",
     "name",
-    "power",
-    "tower"
+    "power"
 })
-public class Mag {
+public class WsDragon {
 
+    protected Long caveId;
     @XmlSchemaType(name = "string")
-    protected Element element;
-    protected Long id;
-    protected Integer mana;
+    protected Color color;
+    protected Integer gold;
     protected String name;
     @XmlSchemaType(name = "string")
     protected Power power;
-    protected Tower tower;
 
     /**
-     * Gets the value of the element property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Element }
-     *     
-     */
-    public Element getElement() {
-        return element;
-    }
-
-    /**
-     * Sets the value of the element property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Element }
-     *     
-     */
-    public void setElement(Element value) {
-        this.element = value;
-    }
-
-    /**
-     * Gets the value of the id property.
+     * Gets the value of the caveId property.
      * 
      * @return
      *     possible object is
      *     {@link Long }
      *     
      */
-    public Long getId() {
-        return id;
+    public Long getCaveId() {
+        return caveId;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the caveId property.
      * 
      * @param value
      *     allowed object is
      *     {@link Long }
      *     
      */
-    public void setId(Long value) {
-        this.id = value;
+    public void setCaveId(Long value) {
+        this.caveId = value;
     }
 
     /**
-     * Gets the value of the mana property.
+     * Gets the value of the color property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Color }
+     *     
+     */
+    public Color getColor() {
+        return color;
+    }
+
+    /**
+     * Sets the value of the color property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Color }
+     *     
+     */
+    public void setColor(Color value) {
+        this.color = value;
+    }
+
+    /**
+     * Gets the value of the gold property.
      * 
      * @return
      *     possible object is
      *     {@link Integer }
      *     
      */
-    public Integer getMana() {
-        return mana;
+    public Integer getGold() {
+        return gold;
     }
 
     /**
-     * Sets the value of the mana property.
+     * Sets the value of the gold property.
      * 
      * @param value
      *     allowed object is
      *     {@link Integer }
      *     
      */
-    public void setMana(Integer value) {
-        this.mana = value;
+    public void setGold(Integer value) {
+        this.gold = value;
     }
 
     /**
@@ -169,30 +166,6 @@ public class Mag {
      */
     public void setPower(Power value) {
         this.power = value;
-    }
-
-    /**
-     * Gets the value of the tower property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Tower }
-     *     
-     */
-    public Tower getTower() {
-        return tower;
-    }
-
-    /**
-     * Sets the value of the tower property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Tower }
-     *     
-     */
-    public void setTower(Tower value) {
-        this.tower = value;
     }
 
 }

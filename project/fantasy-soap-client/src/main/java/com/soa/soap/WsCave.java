@@ -1,27 +1,26 @@
 
 package com.soa.soap;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
- * <p>Java class for cave complex type.
+ * <p>Java class for wsCave complex type.
  * 
  * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="cave"&gt;
+ * &lt;complexType name="wsCave"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="dragons" type="{http://soap.soa.com/}dragon" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="dragons" type="{http://soap.soa.com/}wsDragon" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
- *         &lt;element name="owner" type="{http://soap.soa.com/}userData" minOccurs="0"/&gt;
  *         &lt;element name="square" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
@@ -32,18 +31,16 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "cave", propOrder = {
+@XmlType(name = "wsCave", propOrder = {
     "dragons",
     "id",
-    "owner",
     "square"
 })
-public class Cave {
+public class WsCave {
 
     @XmlElement(nillable = true)
-    protected List<Dragon> dragons;
+    protected List<WsDragon> dragons;
     protected Long id;
-    protected UserData owner;
     protected Integer square;
 
     /**
@@ -64,13 +61,13 @@ public class Cave {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Dragon }
+     * {@link WsDragon }
      * 
      * 
      */
-    public List<Dragon> getDragons() {
+    public List<WsDragon> getDragons() {
         if (dragons == null) {
-            dragons = new ArrayList<Dragon>();
+            dragons = new ArrayList<WsDragon>();
         }
         return this.dragons;
     }
@@ -97,30 +94,6 @@ public class Cave {
      */
     public void setId(Long value) {
         this.id = value;
-    }
-
-    /**
-     * Gets the value of the owner property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserData }
-     *     
-     */
-    public UserData getOwner() {
-        return owner;
-    }
-
-    /**
-     * Sets the value of the owner property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserData }
-     *     
-     */
-    public void setOwner(UserData value) {
-        this.owner = value;
     }
 
     /**

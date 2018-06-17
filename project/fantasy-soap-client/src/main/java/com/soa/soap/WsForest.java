@@ -10,19 +10,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for forest complex type.
+ * <p>Java class for wsForest complex type.
  * 
  * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="forest"&gt;
+ * &lt;complexType name="wsForest"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="amountOfTrees" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="elfs" type="{http://soap.soa.com/}elf" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *         &lt;element name="elfs" type="{http://soap.soa.com/}wsElf" maxOccurs="unbounded" minOccurs="0"/&gt;
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
- *         &lt;element name="owner" type="{http://soap.soa.com/}userData" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,19 +31,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "forest", propOrder = {
+@XmlType(name = "wsForest", propOrder = {
     "amountOfTrees",
     "elfs",
-    "id",
-    "owner"
+    "id"
 })
-public class Forest {
+public class WsForest {
 
     protected Integer amountOfTrees;
     @XmlElement(nillable = true)
-    protected List<Elf> elfs;
+    protected List<WsElf> elfs;
     protected Long id;
-    protected UserData owner;
 
     /**
      * Gets the value of the amountOfTrees property.
@@ -88,13 +85,13 @@ public class Forest {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link Elf }
+     * {@link WsElf }
      * 
      * 
      */
-    public List<Elf> getElfs() {
+    public List<WsElf> getElfs() {
         if (elfs == null) {
-            elfs = new ArrayList<Elf>();
+            elfs = new ArrayList<WsElf>();
         }
         return this.elfs;
     }
@@ -121,30 +118,6 @@ public class Forest {
      */
     public void setId(Long value) {
         this.id = value;
-    }
-
-    /**
-     * Gets the value of the owner property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link UserData }
-     *     
-     */
-    public UserData getOwner() {
-        return owner;
-    }
-
-    /**
-     * Sets the value of the owner property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link UserData }
-     *     
-     */
-    public void setOwner(UserData value) {
-        this.owner = value;
     }
 
 }

@@ -8,21 +8,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for elf complex type.
+ * <p>Java class for wsMag complex type.
  * 
  * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="elf"&gt;
+ * &lt;complexType name="wsMag"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arrowCount" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
- *         &lt;element name="bowType" type="{http://soap.soa.com/}bowType" minOccurs="0"/&gt;
- *         &lt;element name="forest" type="{http://soap.soa.com/}forest" minOccurs="0"/&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="element" type="{http://soap.soa.com/}element" minOccurs="0"/&gt;
+ *         &lt;element name="mana" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="power" type="{http://soap.soa.com/}power" minOccurs="0"/&gt;
+ *         &lt;element name="towerId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -32,119 +31,69 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "elf", propOrder = {
-    "arrowCount",
-    "bowType",
-    "forest",
-    "id",
+@XmlType(name = "wsMag", propOrder = {
+    "element",
+    "mana",
     "name",
-    "power"
+    "power",
+    "towerId"
 })
-public class Elf {
+public class WsMag {
 
-    protected Integer arrowCount;
     @XmlSchemaType(name = "string")
-    protected BowType bowType;
-    protected Forest forest;
-    protected Long id;
+    protected Element element;
+    protected Integer mana;
     protected String name;
     @XmlSchemaType(name = "string")
     protected Power power;
+    protected Long towerId;
 
     /**
-     * Gets the value of the arrowCount property.
+     * Gets the value of the element property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Element }
+     *     
+     */
+    public Element getElement() {
+        return element;
+    }
+
+    /**
+     * Sets the value of the element property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Element }
+     *     
+     */
+    public void setElement(Element value) {
+        this.element = value;
+    }
+
+    /**
+     * Gets the value of the mana property.
      * 
      * @return
      *     possible object is
      *     {@link Integer }
      *     
      */
-    public Integer getArrowCount() {
-        return arrowCount;
+    public Integer getMana() {
+        return mana;
     }
 
     /**
-     * Sets the value of the arrowCount property.
+     * Sets the value of the mana property.
      * 
      * @param value
      *     allowed object is
      *     {@link Integer }
      *     
      */
-    public void setArrowCount(Integer value) {
-        this.arrowCount = value;
-    }
-
-    /**
-     * Gets the value of the bowType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BowType }
-     *     
-     */
-    public BowType getBowType() {
-        return bowType;
-    }
-
-    /**
-     * Sets the value of the bowType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BowType }
-     *     
-     */
-    public void setBowType(BowType value) {
-        this.bowType = value;
-    }
-
-    /**
-     * Gets the value of the forest property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Forest }
-     *     
-     */
-    public Forest getForest() {
-        return forest;
-    }
-
-    /**
-     * Sets the value of the forest property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Forest }
-     *     
-     */
-    public void setForest(Forest value) {
-        this.forest = value;
-    }
-
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
-     */
-    public void setId(Long value) {
-        this.id = value;
+    public void setMana(Integer value) {
+        this.mana = value;
     }
 
     /**
@@ -193,6 +142,30 @@ public class Elf {
      */
     public void setPower(Power value) {
         this.power = value;
+    }
+
+    /**
+     * Gets the value of the towerId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getTowerId() {
+        return towerId;
+    }
+
+    /**
+     * Sets the value of the towerId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setTowerId(Long value) {
+        this.towerId = value;
     }
 
 }

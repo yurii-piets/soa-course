@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "CategoryServiceImplService", targetNamespace = "http://soap.soa.com/", wsdlLocation = "http://localhost:8080/fantasy/api/CategoryServiceImpl?wsdl")
+@WebServiceClient(name = "CategoryServiceImplService", targetNamespace = "http://soap.soa.com/", wsdlLocation = "http://localhost:8080/fantasy/soap-api/CategoryServiceImpl?wsdl")
 public class CategoryServiceImplService
     extends Service
 {
@@ -30,7 +30,7 @@ public class CategoryServiceImplService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/fantasy/api/CategoryServiceImpl?wsdl");
+            url = new URL("http://localhost:8080/fantasy/soap-api/CategoryServiceImpl?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "HeroServiceImplService", targetNamespace = "http://soap.soa.com/", wsdlLocation = "http://localhost:8080/fantasy/api/HeroServiceImpl?wsdl")
+@WebServiceClient(name = "HeroServiceImplService", targetNamespace = "http://soap.soa.com/", wsdlLocation = "http://localhost:8080/fantasy/soap-api/HeroServiceImpl?wsdl")
 public class HeroServiceImplService
     extends Service
 {
@@ -30,7 +30,7 @@ public class HeroServiceImplService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:8080/fantasy/api/HeroServiceImpl?wsdl");
+            url = new URL("http://localhost:8080/fantasy/soap-api/HeroServiceImpl?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

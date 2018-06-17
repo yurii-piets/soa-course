@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://soap.soa.com/}forest" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://soap.soa.com/}wsForest" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,17 +31,17 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class SaveForest {
 
-    protected Forest arg0;
+    protected WsForest arg0;
 
     /**
      * Gets the value of the arg0 property.
      * 
      * @return
      *     possible object is
-     *     {@link Forest }
+     *     {@link WsForest }
      *     
      */
-    public Forest getArg0() {
+    public WsForest getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class SaveForest {
      * 
      * @param value
      *     allowed object is
-     *     {@link Forest }
+     *     {@link WsForest }
      *     
      */
-    public void setArg0(Forest value) {
+    public void setArg0(WsForest value) {
         this.arg0 = value;
     }
 
