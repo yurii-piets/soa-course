@@ -75,4 +75,6 @@ public interface DataAccessService {
     void deleteMagById(Long id);
 
     void deleteTowerById(Long id);
+
+    UserData findUserDataByLogin(String name);
 }

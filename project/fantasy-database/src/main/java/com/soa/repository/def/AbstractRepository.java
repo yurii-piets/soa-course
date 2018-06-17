@@ -14,7 +14,7 @@ public abstract class AbstractRepository<T> implements Repository<T> {
 
     private final static String PERSISTENCE_UNIT_NAME = "SOA_PROJECT";
 
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     private Class<T> type;
 

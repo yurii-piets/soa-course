@@ -25,6 +25,9 @@ public class AddHeroBean {
     @EJB
     private DataAccessService dataService;
 
+    @EJB
+    private AccessBean accessBean;
+
     @ManagedProperty("#{param.heroId}")
     private Long heroId;
 
@@ -52,9 +55,12 @@ public class AddHeroBean {
     @ManagedProperty("#{param.element}")
     private Mag.Element element;
 
-    public void save() throws IOException {
+    public void save() throws IOException, IllegalAccessException {
         switch (heroType) {
             case "Dragon":
+                if (heroId != null && heroId != 0L) {
+                    accessBean.checkAccess(dataService.findDragonById(heroId));
+                }
                 Dragon dragon = Dragon.builder()
                         .id(heroId)
                         .name(name)
@@ -64,13 +70,12 @@ public class AddHeroBean {
                         .cave(dataService.findCaveById(categoryId))
                         .build();
 
-                if (heroId == null) {
-                    dataService.save(dragon);
-                } else {
-                    dataService.update(dragon);
-                }
+                dataService.update(dragon);
                 break;
             case "Elf":
+                if (heroId != null && heroId != 0L) {
+                    accessBean.checkAccess(dataService.findElfById(heroId));
+                }
                 Elf elf = Elf.builder()
                         .id(heroId)
                         .name(name)
@@ -79,13 +84,12 @@ public class AddHeroBean {
                         .power(power)
                         .forest(dataService.findForestById(categoryId))
                         .build();
-                if (heroId == null) {
-                    dataService.save(elf);
-                } else {
-                    dataService.update(elf);
-                }
+                dataService.update(elf);
                 break;
             case "Mag":
+                if (heroId != null && heroId != 0L) {
+                    accessBean.checkAccess(dataService.findMagById(heroId));
+                }
                 Mag mag = Mag.builder()
                         .id(heroId)
                         .name(name)
@@ -94,11 +98,7 @@ public class AddHeroBean {
                         .power(power)
                         .tower(dataService.findTowerById(categoryId))
                         .build();
-                if (heroId == null) {
-                    dataService.save(mag);
-                } else {
-                    dataService.update(mag);
-                }
+                dataService.update(mag);
                 break;
         }
 

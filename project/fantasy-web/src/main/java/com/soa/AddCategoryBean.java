@@ -22,6 +22,9 @@ public class AddCategoryBean {
     @EJB
     private DataAccessService dataService;
 
+    @EJB
+    private AccessBean accessBean;
+
     @ManagedProperty("#{param.categoryId}")
     private Long categoryId;
 
@@ -31,16 +34,25 @@ public class AddCategoryBean {
     @ManagedProperty("#{param.mainParameter}")
     private Integer mainParameter;
 
-    public void save() throws IOException {
+    public void save() throws IOException, IllegalAccessException {
         switch (category) {
             case "Cave":
-                dataService.update(new Cave(categoryId, mainParameter));
+                if (categoryId != null && categoryId != 0L) {
+                    accessBean.checkAccess(dataService.findCaveById(categoryId));
+                }
+                dataService.update(new Cave(categoryId, mainParameter, accessBean.getCurrentUser()));
                 break;
             case "Forest":
-                dataService.update(new Forest(categoryId, mainParameter));
+                if (categoryId != null && categoryId != 0L) {
+                    accessBean.checkAccess(dataService.findForestById(categoryId));
+                }
+                dataService.update(new Forest(categoryId, mainParameter, accessBean.getCurrentUser()));
                 break;
             case "Tower":
-                dataService.update(new Tower(categoryId, mainParameter));
+                if (categoryId != null && categoryId != 0L) {
+                    accessBean.checkAccess(dataService.findTowerById(categoryId));
+                }
+                dataService.update(new Tower(categoryId, mainParameter, accessBean.getCurrentUser()));
                 break;
 
         }

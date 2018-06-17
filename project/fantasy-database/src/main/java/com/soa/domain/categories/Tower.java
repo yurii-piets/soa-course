@@ -46,9 +46,10 @@ public class Tower implements Serializable, Category, Ownable {
     @JoinColumn(name = UserData.USER_ID)
     private UserData owner;
 
-    public Tower(Long id, Integer height) {
+    public Tower(Long id, Integer height, UserData owner) {
         this.id = id;
         this.height = height;
+        this.owner = owner;
     }
 
     public void addMag(Mag mag) {

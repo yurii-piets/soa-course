@@ -245,4 +245,9 @@ public class DataAccessServiceImpl implements DataAccessService {
         magRepository.delete(linkedMags);
         towerRepository.deleteById(id);
     }
+
+    @Override
+    public UserData findUserDataByLogin(String name) {
+        return userRepository.findUserDataByLogin(name);
+    }
 }

@@ -47,9 +47,10 @@ public class Forest implements Serializable, Category, Ownable {
     @JsonIgnore
     private UserData owner;
 
-    public Forest(Long id, Integer amountOfTrees) {
+    public Forest(Long id, Integer amountOfTrees, UserData owner) {
         this.id = id;
         this.amountOfTrees = amountOfTrees;
+        this.owner = owner;
     }
 
     public void addElf(Elf elf) {

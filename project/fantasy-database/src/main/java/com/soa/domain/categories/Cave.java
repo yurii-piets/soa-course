@@ -45,9 +45,10 @@ public class Cave implements Serializable, Category, Ownable {
     @JsonIgnore
     private UserData owner;
 
-    public Cave(Long id, Integer square) {
+    public Cave(Long id, Integer square, UserData owner) {
         this.id = id;
         this.square = square;
+        this.owner = owner;
     }
 
     public void addDragon(Dragon dragon) {

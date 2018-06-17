@@ -19,14 +19,19 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "USER_DATA")
+@Entity
+@Table(name = "USER_DATA")
+@NamedQueries({@NamedQuery(name = "USER_DATA_BY_LOGIN", query = "SELECT user FROM com.soa.domain.UserData user WHERE user.login = :login")})
 @Data
 @NoArgsConstructor
 @ToString(exclude = {"caves", "forests", "towers"})
