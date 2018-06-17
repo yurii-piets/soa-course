@@ -36,14 +36,14 @@ public class AuthorizationFilter implements Filter {
                 return;
             }
             String name = httpServletRequest.getUserPrincipal().getName();
-            if (sessionManagerBean.isOnline(name)) {
+            if (sessionManagerBean.isLocked(name, httpServletRequest.getSession())) {
                 if (response instanceof HttpServletResponse) {
                     ((HttpServletResponse) response).sendError(423);
                     httpServletRequest.logout();
                 }
                 return;
             } else {
-                httpServletRequest.getSession().setAttribute(LOGIN_SESSION_PARAMETER, name);
+                httpServletRequest.getSession(true).setAttribute(LOGIN_SESSION_PARAMETER, name);
             }
         }
         chain.doFilter(request, response);
