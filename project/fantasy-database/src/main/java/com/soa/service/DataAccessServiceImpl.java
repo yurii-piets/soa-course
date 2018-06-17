@@ -146,6 +146,11 @@ public class DataAccessServiceImpl implements DataAccessService {
     }
 
     @Override
+    public void update(UserData user) {
+        userRepository.update(user);
+    }
+
+    @Override
     public void save(Dragon dragon) {
         dragonRepository.save(dragon);
     }

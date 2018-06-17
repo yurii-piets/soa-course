@@ -40,6 +40,8 @@ public interface DataAccessService {
 
     void save(Mag mag);
 
+    void update(UserData user);
+
     void update(Cave cave);
 
     void update(Tower tower);
