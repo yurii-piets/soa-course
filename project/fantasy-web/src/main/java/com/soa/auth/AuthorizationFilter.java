@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.soa.session.HttpSessionListenerImpl.LOGIN_SESSION_PARAMETER;
+
 public class AuthorizationFilter implements Filter {
 
     @EJB
@@ -33,12 +35,15 @@ public class AuthorizationFilter implements Filter {
                 }
                 return;
             }
-            if (sessionManagerBean.isOnline(httpServletRequest.getUserPrincipal().getName())) {
+            String name = httpServletRequest.getUserPrincipal().getName();
+            if (sessionManagerBean.isOnline(name)) {
                 if (response instanceof HttpServletResponse) {
                     ((HttpServletResponse) response).sendError(423);
                     httpServletRequest.logout();
                 }
                 return;
+            } else {
+                httpServletRequest.getSession().setAttribute(LOGIN_SESSION_PARAMETER, name);
             }
         }
         chain.doFilter(request, response);

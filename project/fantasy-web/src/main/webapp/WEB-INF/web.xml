@@ -110,4 +110,12 @@
         <location>/view/faces/error/locked.xhtml</location>
     </error-page>
 
+    <session-config>
+        <session-timeout>5</session-timeout>
+    </session-config>
+
+    <listener>
+        <listener-class>com.soa.session.HttpSessionListenerImpl</listener-class>
+    </listener>
+
 </web-app>
