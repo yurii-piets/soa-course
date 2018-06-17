@@ -1,5 +1,6 @@
 package com.soa;
 
+import com.soa.domain.UserData;
 import com.soa.domain.categories.Cave;
 import com.soa.domain.categories.Forest;
 import com.soa.domain.categories.Tower;
@@ -40,19 +41,19 @@ public class AddCategoryBean {
                 if (categoryId != null && categoryId != 0L) {
                     accessBean.checkAccess(dataService.findCaveById(categoryId));
                 }
-                dataService.update(new Cave(categoryId, mainParameter, accessBean.getCurrentUser()));
+                dataService.update(new Cave(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
                 break;
             case "Forest":
                 if (categoryId != null && categoryId != 0L) {
                     accessBean.checkAccess(dataService.findForestById(categoryId));
                 }
-                dataService.update(new Forest(categoryId, mainParameter, accessBean.getCurrentUser()));
+                dataService.update(new Forest(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
                 break;
             case "Tower":
                 if (categoryId != null && categoryId != 0L) {
                     accessBean.checkAccess(dataService.findTowerById(categoryId));
                 }
-                dataService.update(new Tower(categoryId, mainParameter, accessBean.getCurrentUser()));
+                dataService.update(new Tower(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
                 break;
 
         }
