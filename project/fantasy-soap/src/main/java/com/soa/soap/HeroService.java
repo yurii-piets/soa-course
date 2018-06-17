@@ -1,8 +1,8 @@
 package com.soa.soap;
 
-import com.soa.request.WSDragonRequest;
-import com.soa.request.WSElfRequest;
-import com.soa.request.WSMagRequest;
+import com.soa.request.WSDragon;
+import com.soa.request.WSElf;
+import com.soa.request.WSMag;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -11,13 +11,13 @@ import javax.jws.WebService;
 public interface HeroService {
 
     @WebMethod
-    void saveDragon(WSDragonRequest dragon);
+    void saveDragon(WSDragon dragon);
 
     @WebMethod
-    void saveElf(WSElfRequest elf);
+    void saveElf(WSElf elf);
 
     @WebMethod
-    void saveMag(WSMagRequest mag);
+    void saveMag(WSMag mag);
 
     @WebMethod
     void modifyGold(Long dragonId, Integer gold);

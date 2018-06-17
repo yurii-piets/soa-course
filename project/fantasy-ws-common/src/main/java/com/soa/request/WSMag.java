@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class WSMagRequest {
+public class WSMag {
 
     private String name;
 
@@ -19,7 +19,7 @@ public class WSMagRequest {
 
     private Long towerId;
 
-    public WSMagRequest(Mag mag) {
+    public WSMag(Mag mag) {
         this.name = mag.getName();
         this.mana = mag.getMana();
         this.element = mag.getElement();

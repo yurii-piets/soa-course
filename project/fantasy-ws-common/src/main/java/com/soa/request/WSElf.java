@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class WSElfRequest {
+public class WSElf {
 
     private String name;
 
@@ -19,7 +19,7 @@ public class WSElfRequest {
 
     private Long forestId;
 
-    public WSElfRequest(Elf elf) {
+    public WSElf(Elf elf) {
         this.name = elf.getName();
         this.arrowCount = elf.getArrowCount();
         this.bowType = elf.getBowType();

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class WSDragonRequest {
+public class WSDragon {
 
     private String name;
 
@@ -19,7 +19,7 @@ public class WSDragonRequest {
 
     private Long caveId;
 
-    public WSDragonRequest(Dragon dragon) {
+    public WSDragon(Dragon dragon) {
         this.name = dragon.getName();
         this.gold = dragon.getGold();
         this.color = dragon.getColor();

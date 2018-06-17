@@ -3,9 +3,9 @@ package com.soa.rest;
 import com.soa.domain.categories.Cave;
 import com.soa.domain.categories.Forest;
 import com.soa.domain.categories.Tower;
-import com.soa.request.WSCaveRequest;
-import com.soa.request.WSForestRequest;
-import com.soa.request.WSTowerRequest;
+import com.soa.request.WSCave;
+import com.soa.request.WSForest;
+import com.soa.request.WSTower;
 import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;
@@ -31,8 +31,8 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response caves() {
         List<Cave> allCaves = dataService.findAllCaves();
-        List<WSCaveRequest> wsCave = allCaves.stream()
-                .map(WSCaveRequest::new)
+        List<WSCave> wsCave = allCaves.stream()
+                .map(WSCave::new)
                 .collect(Collectors.toList());
         return Response.ok(wsCave).build();
     }
@@ -42,8 +42,8 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response forests() {
         List<Forest> forests = dataService.findAllForests();
-        List<WSForestRequest> wsForests = forests.stream()
-                .map(WSForestRequest::new)
+        List<WSForest> wsForests = forests.stream()
+                .map(WSForest::new)
                 .collect(Collectors.toList());
         return Response.ok(wsForests).build();
     }
@@ -53,8 +53,8 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response towers() {
         List<Tower> towers = dataService.findAllTowers();
-        List<WSTowerRequest> wsTowers = towers.stream()
-                .map(WSTowerRequest::new)
+        List<WSTower> wsTowers = towers.stream()
+                .map(WSTower::new)
                 .collect(Collectors.toList());
         return Response.ok(wsTowers).build();
     }
@@ -64,7 +64,7 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response cavesById(@PathParam("caveId") Long caveId) {
         Cave caveById = dataService.findCaveById(caveId);
-        return Response.ok(new WSCaveRequest(caveById)).build();
+        return Response.ok(new WSCave(caveById)).build();
     }
 
     @GET
@@ -72,7 +72,7 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response forestById(@PathParam("forestId") Long forestId) {
         Forest forestById = dataService.findForestById(forestId);
-        return Response.ok(new WSForestRequest(forestById)).build();
+        return Response.ok(new WSForest(forestById)).build();
     }
 
     @GET
@@ -80,13 +80,13 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response towerById(@PathParam("towerId") Long towerId) {
         Tower towerById = dataService.findTowerById(towerId);
-        return Response.ok(new WSTowerRequest(towerById)).build();
+        return Response.ok(new WSTower(towerById)).build();
     }
 
     @POST
     @Path("/caves")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response caves(WSCaveRequest wsCave) {
+    public Response caves(WSCave wsCave) {
         dataService.save(wsCave.toCave());
         return Response.accepted().build();
     }
@@ -94,7 +94,7 @@ public class CategoriesResources {
     @POST
     @Path("/forests")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response forests(WSForestRequest wsForest) {
+    public Response forests(WSForest wsForest) {
         dataService.save(wsForest.toForest());
         return Response.accepted().build();
     }
@@ -102,7 +102,7 @@ public class CategoriesResources {
     @POST
     @Path("/towers")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response towers(WSTowerRequest wsTower) {
+    public Response towers(WSTower wsTower) {
         dataService.save(wsTower.toTower());
         return Response.accepted().build();
     }

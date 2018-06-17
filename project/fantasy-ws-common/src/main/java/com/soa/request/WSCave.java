@@ -11,15 +11,15 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
-public class WSCaveRequest {
+public class WSCave {
 
     private Long id;
 
     private Integer square;
 
-    private List<WSDragonRequest> dragons = new ArrayList<>();
+    private List<WSDragon> dragons = new ArrayList<>();
 
-    public WSCaveRequest(Cave cave) {
+    public WSCave(Cave cave) {
         this.id = cave.getId();
         this.square = cave.getSquare();
         mapDragons(cave.getDragons());
@@ -30,7 +30,7 @@ public class WSCaveRequest {
             return;
         }
         this.dragons = dragons.stream()
-                .map(WSDragonRequest::new)
+                .map(WSDragon::new)
                 .collect(Collectors.toList());
     }
 
@@ -39,7 +39,7 @@ public class WSCaveRequest {
         cave.setId(this.id);
         cave.setSquare(this.square);
         cave.setDragons(this.dragons.stream()
-                .map(WSDragonRequest::toDragon)
+                .map(WSDragon::toDragon)
                 .collect(Collectors.toList()));
         return cave;
     }

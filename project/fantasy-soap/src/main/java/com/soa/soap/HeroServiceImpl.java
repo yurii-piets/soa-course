@@ -3,9 +3,9 @@ package com.soa.soap;
 import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
-import com.soa.request.WSDragonRequest;
-import com.soa.request.WSElfRequest;
-import com.soa.request.WSMagRequest;
+import com.soa.request.WSDragon;
+import com.soa.request.WSElf;
+import com.soa.request.WSMag;
 import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;
@@ -18,21 +18,21 @@ public class HeroServiceImpl implements HeroService {
     private DataAccessService dataService;
 
     @Override
-    public void saveDragon(WSDragonRequest dragonRequest) {
+    public void saveDragon(WSDragon dragonRequest) {
         Dragon dragon = dragonRequest.toDragon();
         dragon.setCave(dataService.findCaveById(dragonRequest.getCaveId()));
         dataService.save(dragon);
     }
 
     @Override
-    public void saveElf(WSElfRequest elfRequest) {
+    public void saveElf(WSElf elfRequest) {
         Elf elf = elfRequest.toElf();
         elf.setForest(dataService.findForestById(elfRequest.getForestId()));
         dataService.save(elf);
     }
 
     @Override
-    public void saveMag(WSMagRequest magRequest) {
+    public void saveMag(WSMag magRequest) {
         Mag mag = magRequest.toMag();
         mag.setTower(dataService.findTowerById(magRequest.getTowerId()));
         dataService.save(mag);

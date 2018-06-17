@@ -11,15 +11,15 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
-public class WSTowerRequest {
+public class WSTower {
 
     private Long id;
 
     private Integer height;
 
-    private List<WSMagRequest> mags = new ArrayList<>();
+    private List<WSMag> mags = new ArrayList<>();
 
-    public WSTowerRequest(Tower tower) {
+    public WSTower(Tower tower) {
         this.id = tower.getId();
         this.height = tower.getHeight();
         mapMags(tower.getMags());
@@ -30,7 +30,7 @@ public class WSTowerRequest {
         tower.setId(this.id);
         tower.setHeight(this.height);
         tower.setMags(this.mags.stream()
-                .map(WSMagRequest::toMag)
+                .map(WSMag::toMag)
                 .collect(Collectors.toList()));
         return tower;
     }
@@ -40,7 +40,7 @@ public class WSTowerRequest {
             return;
         }
         this.mags = mags.stream()
-                .map(WSMagRequest::new)
+                .map(WSMag::new)
                 .collect(Collectors.toList());
     }
 }

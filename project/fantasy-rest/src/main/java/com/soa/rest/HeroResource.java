@@ -3,9 +3,9 @@ package com.soa.rest;
 import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
-import com.soa.request.WSDragonRequest;
-import com.soa.request.WSElfRequest;
-import com.soa.request.WSMagRequest;
+import com.soa.request.WSDragon;
+import com.soa.request.WSElf;
+import com.soa.request.WSMag;
 import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;
@@ -30,8 +30,8 @@ public class HeroResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response dragons() {
         List<Dragon> allDragons = dataService.findAllDragons();
-        List<WSDragonRequest> wsDragons = allDragons.stream()
-                .map(WSDragonRequest::new)
+        List<WSDragon> wsDragons = allDragons.stream()
+                .map(WSDragon::new)
                 .collect(Collectors.toList());
         return Response.ok(wsDragons).build();
     }
@@ -41,8 +41,8 @@ public class HeroResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response elfs() {
         List<Elf> allElfs = dataService.findAllElfs();
-        List<WSElfRequest> wsElfs = allElfs.stream()
-                .map(WSElfRequest::new)
+        List<WSElf> wsElfs = allElfs.stream()
+                .map(WSElf::new)
                 .collect(Collectors.toList());
         return Response.ok(wsElfs).build();
     }
@@ -52,8 +52,8 @@ public class HeroResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response mags() {
         List<Mag> mags = dataService.findAllMags();
-        List<WSMagRequest> wsMags = mags.stream()
-                .map(WSMagRequest::new)
+        List<WSMag> wsMags = mags.stream()
+                .map(WSMag::new)
                 .collect(Collectors.toList());
         return Response.ok(wsMags).build();
     }
@@ -66,7 +66,7 @@ public class HeroResource {
         if (dragonById == null) {
             return Response.status(404).build();
         }
-        return Response.ok(new WSDragonRequest(dragonById)).build();
+        return Response.ok(new WSDragon(dragonById)).build();
     }
 
     @GET
@@ -77,7 +77,7 @@ public class HeroResource {
         if (elfById == null) {
             return Response.status(404).build();
         }
-        return Response.ok(new WSElfRequest(elfById)).build();
+        return Response.ok(new WSElf(elfById)).build();
     }
 
     @GET
@@ -88,13 +88,13 @@ public class HeroResource {
         if (magById == null) {
             return Response.status(404).build();
         }
-        return Response.ok(new WSMagRequest(magById)).build();
+        return Response.ok(new WSMag(magById)).build();
     }
 
     @POST
     @Path("/dragons")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response dragons(WSDragonRequest dragonRequest) {
+    public Response dragons(WSDragon dragonRequest) {
         Dragon dragon = dragonRequest.toDragon();
         dragon.setCave(dataService.findCaveById(dragonRequest.getCaveId()));
         dataService.save(dragon);
@@ -104,7 +104,7 @@ public class HeroResource {
     @POST
     @Path("/elfs")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response elfs(WSElfRequest elfRequest) {
+    public Response elfs(WSElf elfRequest) {
         Elf elf = elfRequest.toElf();
         elf.setForest(dataService.findForestById(elfRequest.getForestId()));
         dataService.save(elf);
@@ -114,7 +114,7 @@ public class HeroResource {
     @POST
     @Path("/mags")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response mags(WSMagRequest magRequest) {
+    public Response mags(WSMag magRequest) {
         Mag mag = magRequest.toMag();
         mag.setTower(dataService.findTowerById(magRequest.getTowerId()));
         dataService.save(mag);

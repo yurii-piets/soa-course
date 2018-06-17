@@ -11,15 +11,15 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
-public class WSForestRequest {
+public class WSForest {
 
     private Long id;
 
     private Integer amountOfTrees;
 
-    private List<WSElfRequest> elfs = new ArrayList<>();
+    private List<WSElf> elfs = new ArrayList<>();
 
-    public WSForestRequest(Forest forest) {
+    public WSForest(Forest forest) {
         this.id = forest.getId();
         this.amountOfTrees = forest.getAmountOfTrees();
         mapElfs(forest.getElfs());
@@ -30,7 +30,7 @@ public class WSForestRequest {
         forest.setId(this.id);
         forest.setAmountOfTrees(this.amountOfTrees);
         forest.setElfs(this.elfs.stream()
-                .map(WSElfRequest::toElf)
+                .map(WSElf::toElf)
                 .collect(Collectors.toList()));
         return forest;
     }
@@ -40,7 +40,7 @@ public class WSForestRequest {
             return;
         }
         this.elfs = elfs.stream()
-                .map(WSElfRequest::new)
+                .map(WSElf::new)
                 .collect(Collectors.toList());
     }
 }
