@@ -1,5 +1,10 @@
 insert into user_data(user_id, index, login, password, role) values (1, 000001, 'admin', 'ISMvKXpXpadDiUoOSoAfww==','ADMIN');
 insert into user_data(user_id, index, login, password, role) values (2, 111111, 'user', '7hHLsZBS5AsHqsDKBgwj7g==','USER');
+insert into user_data(user_id, index, login, password, role) values (8, 111111, 'pietsy', 'wXy/kdFyHasXk07j6c9UAg==','USER');
+
+update user_data set password = 'ISMvKXpXpadDiUoOSoAfww==' where login = 'admin';
+update user_data set password = '7hHLsZBS5AsHqsDKBgwj7g==' where login = 'user';
+update user_data set password = 'wXy/kdFyHasXk07j6c9UAg==' where login = 'pietsy';
 
 insert into ct_cave (cave_id, square, user_id) values (1001, 10, 2);
 insert into ct_cave (cave_id, square, user_id) values (1002, 30, 2);

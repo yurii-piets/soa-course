@@ -5,12 +5,14 @@ import com.soa.domain.UserData;
 import com.soa.service.DataAccessService;
 import lombok.Data;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.security.Principal;
+import java.util.stream.Collectors;
 
 @Data
 @ManagedBean
@@ -39,8 +41,20 @@ public class AccessBean {
         }
     }
 
+    @RolesAllowed({"ADMIN", "USER"})
     public UserData getCurrentUser(){
         String name = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
         return dataService.findUserDataByLogin(name);
+    }
+
+    public boolean isIsAdmin() {
+        return getCurrentUser().getRole() == UserData.UserRole.ADMIN;
+    }
+
+    @RolesAllowed("ADMIN")
+    public Object getGetUsersNames() {
+        return dataService.findAllUsers().stream()
+                .map(UserData::getLogin)
+                .collect(Collectors.toList());
     }
 }

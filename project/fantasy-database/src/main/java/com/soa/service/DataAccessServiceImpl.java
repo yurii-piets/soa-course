@@ -255,4 +255,9 @@ public class DataAccessServiceImpl implements DataAccessService {
     public UserData findUserDataByLogin(String name) {
         return userRepository.findUserDataByLogin(name);
     }
+
+    @Override
+    public List<UserData> findAllUsers() {
+        return userRepository.findAll();
+    }
 }

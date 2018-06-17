@@ -29,7 +29,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "USER_DATA")
 @Table(name = "USER_DATA")
 @NamedQueries({@NamedQuery(name = "USER_DATA_BY_LOGIN", query = "SELECT user FROM com.soa.domain.UserData user WHERE user.login = :login")})
 @Data
@@ -42,7 +42,13 @@ public class UserData implements Serializable {
 
     public enum UserRole {
         ADMIN,
-        USER
+        USER;
+
+
+        @Override
+        public String toString() {
+            return super.toString();
+        }
     }
 
     @Id
