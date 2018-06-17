@@ -1,4 +1,4 @@
-package com.soa.request;
+package com.soa.ws.hero;
 
 import com.soa.domain.Power;
 import com.soa.domain.hero.Dragon;

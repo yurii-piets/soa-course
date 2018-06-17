@@ -1,8 +1,8 @@
 package com.soa.soap;
 
-import com.soa.request.WSDragon;
-import com.soa.request.WSElf;
-import com.soa.request.WSMag;
+import com.soa.ws.hero.WSDragon;
+import com.soa.ws.hero.WSElf;
+import com.soa.ws.hero.WSMag;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;

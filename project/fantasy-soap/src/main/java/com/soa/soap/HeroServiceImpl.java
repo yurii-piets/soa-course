@@ -3,9 +3,9 @@ package com.soa.soap;
 import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
-import com.soa.request.WSDragon;
-import com.soa.request.WSElf;
-import com.soa.request.WSMag;
+import com.soa.ws.hero.WSDragon;
+import com.soa.ws.hero.WSElf;
+import com.soa.ws.hero.WSMag;
 import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;

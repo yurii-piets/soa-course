@@ -3,9 +3,9 @@ package com.soa.rest;
 import com.soa.domain.categories.Cave;
 import com.soa.domain.categories.Forest;
 import com.soa.domain.categories.Tower;
-import com.soa.request.WSCave;
-import com.soa.request.WSForest;
-import com.soa.request.WSTower;
+import com.soa.ws.category.WSCave;
+import com.soa.ws.category.WSForest;
+import com.soa.ws.category.WSTower;
 import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;

@@ -1,7 +1,8 @@
-package com.soa.request;
+package com.soa.ws.category;
 
 import com.soa.domain.categories.Tower;
 import com.soa.domain.hero.Mag;
+import com.soa.ws.hero.WSMag;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

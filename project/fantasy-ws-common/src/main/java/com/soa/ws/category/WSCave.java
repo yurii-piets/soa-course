@@ -1,7 +1,8 @@
-package com.soa.request;
+package com.soa.ws.category;
 
 import com.soa.domain.categories.Cave;
 import com.soa.domain.hero.Dragon;
+import com.soa.ws.hero.WSDragon;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
