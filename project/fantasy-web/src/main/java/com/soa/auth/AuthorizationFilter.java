@@ -29,12 +29,14 @@ public class AuthorizationFilter implements Filter {
             if (httpServletRequest.getHeader("User-Agent").contains("Firefox")) {
                 if (response instanceof HttpServletResponse) {
                     ((HttpServletResponse) response).sendError(403);
+                    httpServletRequest.logout();
                 }
                 return;
             }
             if (sessionManagerBean.isOnline(httpServletRequest.getUserPrincipal().getName())) {
                 if (response instanceof HttpServletResponse) {
                     ((HttpServletResponse) response).sendError(423);
+                    httpServletRequest.logout();
                 }
                 return;
             }
