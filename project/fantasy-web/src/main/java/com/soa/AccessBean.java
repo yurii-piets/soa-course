@@ -23,6 +23,7 @@ public class AccessBean {
     @EJB
     private DataAccessService dataService;
 
+    @RolesAllowed({"ADMIN", "USER"})
     public boolean hasAccess(Ownable ownable) {
         if (FacesContext.getCurrentInstance().getExternalContext().isUserInRole(UserData.UserRole.ADMIN.toString())) {
             return true;
@@ -35,6 +36,7 @@ public class AccessBean {
         return principal.getName().equals(userData.getLogin());
     }
 
+    @RolesAllowed({"ADMIN", "USER"})
     public void checkAccess(Ownable ownable) throws IllegalAccessException {
         if(!hasAccess(ownable)) {
             throw new IllegalAccessException();
@@ -47,6 +49,7 @@ public class AccessBean {
         return dataService.findUserDataByLogin(name);
     }
 
+    @RolesAllowed({"ADMIN", "USER"})
     public boolean isIsAdmin() {
         return getCurrentUser().getRole() == UserData.UserRole.ADMIN;
     }

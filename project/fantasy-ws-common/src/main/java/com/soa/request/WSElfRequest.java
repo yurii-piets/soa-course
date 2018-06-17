@@ -19,6 +19,14 @@ public class WSElfRequest {
 
     private Long forestId;
 
+    public WSElfRequest(Elf elf) {
+        this.name = elf.getName();
+        this.arrowCount = elf.getArrowCount();
+        this.bowType = elf.getBowType();
+        this.power = elf.getPower();
+        this.forestId = elf.getForest().getId();
+    }
+
     public Elf toElf(){
         return Elf.builder()
                 .name(name)

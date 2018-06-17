@@ -19,6 +19,14 @@ public class WSDragonRequest {
 
     private Long caveId;
 
+    public WSDragonRequest(Dragon dragon) {
+        this.name = dragon.getName();
+        this.gold = dragon.getGold();
+        this.color = dragon.getColor();
+        this.power = dragon.getPower();
+        this.caveId = dragon.getCave().getId();
+    }
+
     public Dragon toDragon(){
         return Dragon.builder()
                 .name(name)

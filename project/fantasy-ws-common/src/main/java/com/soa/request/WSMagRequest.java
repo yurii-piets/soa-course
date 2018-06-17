@@ -19,7 +19,15 @@ public class WSMagRequest {
 
     private Long towerId;
 
-    public Mag toMag(){
+    public WSMagRequest(Mag mag) {
+        this.name = mag.getName();
+        this.mana = mag.getMana();
+        this.element = mag.getElement();
+        this.power = mag.getPower();
+        this.towerId = mag.getTower().getId();
+    }
+
+    public Mag toMag() {
         return Mag.builder()
                 .name(name)
                 .mana(mana)

@@ -1,6 +1,5 @@
 package com.soa.domain.categories;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Ownable;
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Dragon;
@@ -11,6 +10,7 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,12 +37,11 @@ public class Cave implements Serializable, Category, Ownable {
 
     private Integer square;
 
-    @OneToMany(mappedBy = "cave")
+    @OneToMany(mappedBy = "cave", fetch = FetchType.EAGER)
     private List<Dragon> dragons;
 
     @ManyToOne
     @JoinColumn(name = UserData.USER_ID)
-    @JsonIgnore
     private UserData owner;
 
     public Cave(Long id, Integer square, UserData owner) {

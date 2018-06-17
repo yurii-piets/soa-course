@@ -1,6 +1,5 @@
 package com.soa.domain.categories;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Ownable;
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Mag;
@@ -38,8 +37,7 @@ public class Tower implements Serializable, Category, Ownable {
 
     private Integer height;
 
-    @OneToMany(mappedBy = "tower", fetch = FetchType.LAZY)
-    @JsonIgnore
+    @OneToMany(mappedBy = "tower", fetch = FetchType.EAGER)
     private List<Mag> mags;
 
     @ManyToOne

@@ -44,7 +44,6 @@ public class Mag implements Ownable, Serializable {
 
     @ManyToOne
     @JoinColumn(name = Tower.TOWER_ID)
-    @JsonIgnore
     private Tower tower;
 
     @Override

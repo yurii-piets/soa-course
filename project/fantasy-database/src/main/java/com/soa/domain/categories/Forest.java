@@ -1,6 +1,5 @@
 package com.soa.domain.categories;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Ownable;
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Elf;
@@ -39,12 +38,11 @@ public class Forest implements Serializable, Category, Ownable {
     @Column(name = "amount_of_trees")
     private Integer amountOfTrees;
 
-    @OneToMany(mappedBy = "forest", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "forest", fetch = FetchType.EAGER)
     private List<Elf> elfs;
 
     @ManyToOne
     @JoinColumn(name = UserData.USER_ID)
-    @JsonIgnore
     private UserData owner;
 
     public Forest(Long id, Integer amountOfTrees, UserData owner) {

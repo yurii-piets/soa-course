@@ -46,7 +46,6 @@ public class Elf implements Ownable, Serializable {
 
     @ManyToOne
     @JoinColumn(name = Forest.FOREST_ID)
-    @JsonIgnore
     private Forest forest;
 
     @Override

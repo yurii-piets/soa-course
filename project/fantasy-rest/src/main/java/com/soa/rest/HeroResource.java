@@ -16,6 +16,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Path("/heroes")
 public class HeroResource {
@@ -27,42 +29,66 @@ public class HeroResource {
     @Path("/dragons")
     @Produces(MediaType.APPLICATION_JSON)
     public Response dragons() {
-        return Response.ok(dataService.findAllDragons()).build();
+        List<Dragon> allDragons = dataService.findAllDragons();
+        List<WSDragonRequest> wsDragons = allDragons.stream()
+                .map(WSDragonRequest::new)
+                .collect(Collectors.toList());
+        return Response.ok(wsDragons).build();
     }
 
     @GET
     @Path("/elfs")
     @Produces(MediaType.APPLICATION_JSON)
     public Response elfs() {
-        return Response.ok(dataService.findAllElfs()).build();
+        List<Elf> allElfs = dataService.findAllElfs();
+        List<WSElfRequest> wsElfs = allElfs.stream()
+                .map(WSElfRequest::new)
+                .collect(Collectors.toList());
+        return Response.ok(wsElfs).build();
     }
 
     @GET
     @Path("/mags")
     @Produces(MediaType.APPLICATION_JSON)
     public Response mags() {
-        return Response.ok(dataService.findAllMags()).build();
+        List<Mag> mags = dataService.findAllMags();
+        List<WSMagRequest> wsMags = mags.stream()
+                .map(WSMagRequest::new)
+                .collect(Collectors.toList());
+        return Response.ok(wsMags).build();
     }
 
     @GET
     @Path("/dragons/{dragonId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response dragonById(@PathParam("dragonId") Long dragonId) {
-        return Response.ok(dataService.findDragonById(dragonId)).build();
+        Dragon dragonById = dataService.findDragonById(dragonId);
+        if (dragonById == null) {
+            return Response.status(404).build();
+        }
+        return Response.ok(new WSDragonRequest(dragonById)).build();
     }
 
     @GET
     @Path("/elfs/{elfId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response elfById(@PathParam("elfId") Long elfId) {
-        return Response.ok(dataService.findElfById(elfId)).build();
+        Elf elfById = dataService.findElfById(elfId);
+        if (elfById == null) {
+            return Response.status(404).build();
+        }
+        return Response.ok(new WSElfRequest(elfById)).build();
     }
 
     @GET
     @Path("/mags/{magId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response magById(@PathParam("magId") Long magId) {
-        return Response.ok(dataService.findMagById(magId)).build();
+        Mag magById = dataService.findMagById(magId);
+        if (magById == null) {
+            return Response.status(404).build();
+        }
+        return Response.ok(new WSMagRequest(magById)).build();
     }
 
     @POST
