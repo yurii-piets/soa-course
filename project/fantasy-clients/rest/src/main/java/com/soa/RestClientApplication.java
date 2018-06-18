@@ -8,6 +8,16 @@ import com.soa.command.MagsRestCommand;
 import com.soa.command.TowersRestCommand;
 import com.soa.display.ConsoleDisplayer;
 import com.soa.display.Displayer;
+import com.soa.domain.Power;
+import com.soa.domain.hero.Dragon;
+import com.soa.domain.hero.Elf;
+import com.soa.domain.hero.Mag;
+import com.soa.ws.category.WSCave;
+import com.soa.ws.category.WSForest;
+import com.soa.ws.category.WSTower;
+import com.soa.ws.hero.WSDragon;
+import com.soa.ws.hero.WSElf;
+import com.soa.ws.hero.WSMag;
 
 import java.util.Scanner;
 
@@ -64,6 +74,93 @@ public class RestClientApplication {
                     System.out.print("Enter mag id:");
                     displayer.display(new MagsRestCommand().getById((long) scanner.nextInt()));
                     break;
+
+                case 13:
+                    System.out.println("Enter cave square:");
+                    int sqaure = scanner.nextInt();
+                    WSCave cave = new WSCave();
+                    cave.setSquare(sqaure);
+                    new CavesRestCommand().post(cave);
+                    break;
+                case 14:
+                    System.out.println("Enter tower's height:");
+                    int height = scanner.nextInt();
+                    WSTower wsTower = new WSTower();
+                    wsTower.setHeight(height);
+                    new TowersRestCommand().post(wsTower);
+                    break;
+                case 15:
+                    System.out.println("Enter trees amount:");
+                    int treesAmount = scanner.nextInt();
+                    WSForest wsForest = new WSForest();
+                    wsForest.setAmountOfTrees(treesAmount);
+                    new ForestsRestCommand().post(wsForest);
+                    break;
+                case 16: {
+                    System.out.println("Name:");
+                    String name = scanner.nextLine();
+                    System.out.println("Gold:");
+                    Integer gold = scanner.nextInt();
+                    System.out.println("Color:");
+                    String color = scanner.nextLine();
+                    System.out.println("Power:");
+                    String power = scanner.nextLine();
+                    System.out.println("Cave id:");
+                    Long caveId = scanner.nextLong();
+
+                    WSDragon wsDragon = new WSDragon();
+                    wsDragon.setName(name);
+                    wsDragon.setGold(gold);
+                    wsDragon.setColor(Dragon.Color.valueOf(color));
+                    wsDragon.setPower(Power.valueOf(power));
+                    wsDragon.setCaveId(caveId);
+                    new DragonsRestCommand().post(wsDragon);
+                    break;
+                }
+                case 17: {
+                    System.out.println("Name:");
+                    String name = scanner.nextLine();
+                    System.out.println("Arrow count:");
+                    Integer arrowCount = scanner.nextInt();
+                    System.out.println("Bow type:");
+                    String bowType = scanner.nextLine();
+                    System.out.println("Power:");
+                    String power = scanner.nextLine();
+                    System.out.println("Forest id:");
+                    Long forestId = scanner.nextLong();
+
+                    WSElf wsElf = new WSElf();
+                    wsElf.setName(name);
+                    wsElf.setArrowCount(arrowCount);
+                    wsElf.setBowType(Elf.BowType.valueOf(bowType));
+                    wsElf.setPower(Power.valueOf(power));
+                    wsElf.setForestId(forestId);
+
+                    new ElvesRestCommand().post(wsElf);
+                    break;
+                }
+                case 18: {
+                    System.out.println("Name:");
+                    String name = scanner.nextLine();
+                    System.out.println("Mana:");
+                    Integer mana = scanner.nextInt();
+                    System.out.println("element:");
+                    String element = scanner.nextLine();
+                    System.out.println("Power:");
+                    String power = scanner.nextLine();
+                    System.out.println("Tower id:");
+                    Long towerId = scanner.nextLong();
+
+                    WSMag wsMag = new WSMag();
+                    wsMag.setName(name);
+                    wsMag.setMana(mana);
+                    wsMag.setElement(Mag.Element.valueOf(element));
+                    wsMag.setPower(Power.valueOf(power));
+                    wsMag.setTowerId(towerId);
+
+                    new MagsRestCommand().post(wsMag);
+                    break;
+                }
             }
         }
     }
@@ -88,6 +185,7 @@ public class RestClientApplication {
                 + "\t13. Post cave.\n"
                 + "\t14. Post tower.\n"
                 + "\t15. Post forest.\n"
+
                 + "\t16. Post dragon.\n"
                 + "\t17. Post elf.\n"
                 + "\t18. Post mag.\n"
