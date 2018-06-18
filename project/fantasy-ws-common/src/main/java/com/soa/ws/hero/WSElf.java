@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WSElf {
 
+    private Long id;
+
     private String name;
 
     private Integer arrowCount;
@@ -20,6 +22,7 @@ public class WSElf {
     private Long forestId;
 
     public WSElf(Elf elf) {
+        this.id = elf.getId();
         this.name = elf.getName();
         this.arrowCount = elf.getArrowCount();
         this.bowType = elf.getBowType();
@@ -29,6 +32,7 @@ public class WSElf {
 
     public Elf toElf(){
         return Elf.builder()
+                .id(id)
                 .name(name)
                 .arrowCount(arrowCount)
                 .bowType(bowType)

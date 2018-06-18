@@ -1,9 +1,13 @@
 package com.soa;
 
 import com.soa.command.CavesRestCommand;
+import com.soa.command.DragonsRestCommand;
+import com.soa.command.ElvesRestCommand;
+import com.soa.command.ForestsRestCommand;
+import com.soa.command.MagsRestCommand;
 import com.soa.command.TowersRestCommand;
-import com.soa.ws.category.WSCave;
-import com.soa.ws.category.WSTower;
+import com.soa.display.ConsoleDisplayer;
+import com.soa.display.Displayer;
 
 import java.util.Scanner;
 
@@ -11,69 +15,67 @@ public class RestClientApplication {
 
     private final static Scanner scanner = new Scanner(System.in);
 
+    private final static Displayer displayer = new ConsoleDisplayer();
+
     public static void main(String[] args) {
         while (!Thread.interrupted()) {
             printOptions();
             int command = scanner.nextInt();
             switch (command) {
                 case 1:
-                    display(new CavesRestCommand().getAll());
+                    displayer.display(new CavesRestCommand().getAll());
                     break;
                 case 2:
                     System.out.print("Enter cave id:");
-                    display(new CavesRestCommand().getById((long) scanner.nextInt()));
+                    displayer.display(new CavesRestCommand().getById((long) scanner.nextInt()));
                     break;
                 case 3:
-                    display(new TowersRestCommand().getAll());
+                    displayer.display(new TowersRestCommand().getAll());
                     break;
                 case 4:
                     System.out.print("Enter tower id:");
-                    display(new TowersRestCommand().getById((long) scanner.nextInt()));
+                    displayer.display(new TowersRestCommand().getById((long) scanner.nextInt()));
+                    break;
+                case 5:
+                    displayer.display(new ForestsRestCommand().getAll());
+                    break;
+                case 6:
+                    System.out.print("Enter tower id:");
+                    displayer.display(new ForestsRestCommand().getById((long) scanner.nextInt()));
+                    break;
+                case 7:
+                    displayer.display(new DragonsRestCommand().getAll());
+                    break;
+                case 8:
+                    System.out.print("Enter dragon id:");
+                    displayer.display(new DragonsRestCommand().getById((long) scanner.nextInt()));
+                    break;
+                case 9:
+                    displayer.display(new ElvesRestCommand().getAll());
+                    break;
+                case 10:
+                    System.out.print("Enter elf id:");
+                    displayer.display(new ElvesRestCommand().getById((long) scanner.nextInt()));
+                    break;
+                case 11:
+                    displayer.display(new MagsRestCommand().getAll());
+                    break;
+                case 12:
+                    System.out.print("Enter mag id:");
+                    displayer.display(new MagsRestCommand().getById((long) scanner.nextInt()));
                     break;
             }
         }
     }
 
-    private static void display(WSTower wsTower) {
-        System.out.println(wsTower);
-    }
 
-    private static void display(WSCave wsCave) {
-        System.out.println(wsCave);
-    }
-
-    private static void display(WSTower[] wsTowers) {
-        if (wsTowers.length > 0) {
-            System.out.println("|\tId\t|\tHeight\t|\tMags amount\t");
-        }
-        StringBuilder builder = new StringBuilder();
-        for (WSTower wsTower : wsTowers) {
-            builder.append("|\t").append(wsTower.getId()).append("\t")
-                    .append("|\t").append(wsTower.getHeight()).append("\t")
-                    .append("|\t").append(wsTower.getMags().size()).append("\t|\n");
-        }
-        System.out.println(builder.toString());
-    }
-
-    private static void display(WSCave[] wsCaves) {
-        if (wsCaves.length > 0) {
-            System.out.println("|\tId\t|\tSquare\t|\tDragons amount\t");
-        }
-        StringBuilder builder = new StringBuilder();
-        for (WSCave wsCave : wsCaves) {
-            builder.append("|\t").append(wsCave.getId()).append("\t")
-                    .append("|\t").append(wsCave.getSquare()).append("\t")
-                    .append("|\t").append(wsCave.getDragons().size()).append("\t|\n");
-        }
-        System.out.println(builder.toString());
-    }
 
     private static void printOptions() {
         System.out.println("Choose action:\n"
-                + "[OK]\t1. Get caves.\n"
-                + "[OK]\t2. Get cave by id.\n"
-                + "[OK]\t3. Get towers.\n"
-                + "[OK]\t4. Get tower by id.\n"
+                + "\t1. Get caves.\n"
+                + "\t2. Get cave by id.\n"
+                + "\t3. Get towers.\n"
+                + "\t4. Get tower by id.\n"
                 + "\t5. Get forest.\n"
                 + "\t6. Get forest by id.\n"
                 + "\t7. Get dragons.\n"
@@ -86,7 +88,6 @@ public class RestClientApplication {
                 + "\t13. Post cave.\n"
                 + "\t14. Post tower.\n"
                 + "\t15. Post forest.\n"
-
                 + "\t16. Post dragon.\n"
                 + "\t17. Post elf.\n"
                 + "\t18. Post mag.\n"

@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WSMag {
 
+    private Long id;
+
     private String name;
 
     private Integer mana;
@@ -20,6 +22,7 @@ public class WSMag {
     private Long towerId;
 
     public WSMag(Mag mag) {
+        this.id = mag.getId();
         this.name = mag.getName();
         this.mana = mag.getMana();
         this.element = mag.getElement();
@@ -29,6 +32,7 @@ public class WSMag {
 
     public Mag toMag() {
         return Mag.builder()
+                .id(id)
                 .name(name)
                 .mana(mana)
                 .element(element)

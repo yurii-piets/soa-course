@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WSDragon {
 
+    private Long id;
+
     private String name;
 
     private Integer gold;
@@ -20,6 +22,7 @@ public class WSDragon {
     private Long caveId;
 
     public WSDragon(Dragon dragon) {
+        this.id = dragon.getId();
         this.name = dragon.getName();
         this.gold = dragon.getGold();
         this.color = dragon.getColor();
@@ -29,6 +32,7 @@ public class WSDragon {
 
     public Dragon toDragon(){
         return Dragon.builder()
+                .id(id)
                 .name(name)
                 .gold(gold)
                 .color(color)
