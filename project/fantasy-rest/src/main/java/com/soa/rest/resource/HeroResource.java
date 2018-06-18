@@ -1,17 +1,22 @@
-package com.soa.rest;
+package com.soa.rest.resource;
 
 import com.soa.domain.UserData;
 import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
+import com.soa.rest.service.TranslateService;
 import com.soa.service.DataAccessService;
 import com.soa.ws.hero.WSDragon;
 import com.soa.ws.hero.WSElf;
 import com.soa.ws.hero.WSMag;
+import com.soa.ws.hero.response.WSDragonResponse;
+import com.soa.ws.hero.response.WSElfResponse;
+import com.soa.ws.hero.response.WSMagResponse;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -25,41 +30,67 @@ import java.util.stream.Collectors;
 @Path("/heroes")
 public class HeroResource {
 
+    public static final MediaType PL_APPLICATION_JSON = new MediaType("application", "json-pl");
+
     @EJB
     private DataAccessService dataService;
 
     @Inject
     private Principal principal;
 
+    @EJB
+    private TranslateService transalateService;
+
     @GET
     @Path("/dragons")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response dragons() {
+    public Response dragons(@HeaderParam("Content-Type") MediaType mediaType) {
         List<Dragon> allDragons = dataService.findAllDragons();
-        List<WSDragon> wsDragons = allDragons.stream()
-                .map(WSDragon::new)
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            List<WSDragonResponse> wsDragons = allDragons.stream()
+                    .map(WSDragonResponse::new)
+                    .map(transalateService::translate)
+                    .collect(Collectors.toList());
+            return Response.ok(wsDragons).build();
+        }
+        List<WSDragonResponse> wsDragons = allDragons.stream()
+                .map(WSDragonResponse::new)
                 .collect(Collectors.toList());
         return Response.ok(wsDragons).build();
     }
 
     @GET
-    @Path("/elfs")
+    @Path("/elves")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response elfs() {
-        List<Elf> allElfs = dataService.findAllElfs();
-        List<WSElf> wsElfs = allElfs.stream()
-                .map(WSElf::new)
+    public Response elves(@HeaderParam("Content-Type") MediaType mediaType) {
+        List<Elf> allElves = dataService.findAllElfs();
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            List<WSElfResponse> wsElves = allElves.stream()
+                    .map(WSElfResponse::new)
+                    .map(transalateService::translate)
+                    .collect(Collectors.toList());
+            return Response.ok(wsElves).build();
+        }
+        List<WSElfResponse> wsElves = allElves.stream()
+                .map(WSElfResponse::new)
                 .collect(Collectors.toList());
-        return Response.ok(wsElfs).build();
+        return Response.ok(wsElves).build();
     }
 
     @GET
     @Path("/mags")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response mags() {
+    public Response mags(@HeaderParam("Content-Type") MediaType mediaType) {
         List<Mag> mags = dataService.findAllMags();
-        List<WSMag> wsMags = mags.stream()
-                .map(WSMag::new)
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            List<WSMagResponse> wsMags = mags.stream()
+                    .map(WSMagResponse::new)
+                    .map(transalateService::translate)
+                    .collect(Collectors.toList());
+            return Response.ok(wsMags).build();
+        }
+        List<WSMagResponse> wsMags = mags.stream()
+                .map(WSMagResponse::new)
                 .collect(Collectors.toList());
         return Response.ok(wsMags).build();
     }
@@ -67,34 +98,43 @@ public class HeroResource {
     @GET
     @Path("/dragons/{dragonId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response dragonById(@PathParam("dragonId") Long dragonId) {
+    public Response dragonById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("dragonId") Long dragonId) {
         Dragon dragonById = dataService.findDragonById(dragonId);
         if (dragonById == null) {
             return Response.status(404).build();
         }
-        return Response.ok(new WSDragon(dragonById)).build();
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            return Response.ok(transalateService.translate(new WSDragonResponse(dragonById))).build();
+        }
+        return Response.ok(new WSDragonResponse(dragonById)).build();
     }
 
     @GET
-    @Path("/elfs/{elfId}")
+    @Path("/elves/{elfId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response elfById(@PathParam("elfId") Long elfId) {
+    public Response elfById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("elfId") Long elfId) {
         Elf elfById = dataService.findElfById(elfId);
         if (elfById == null) {
             return Response.status(404).build();
         }
-        return Response.ok(new WSElf(elfById)).build();
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            return Response.ok(transalateService.translate(new WSElfResponse(elfById))).build();
+        }
+        return Response.ok(new WSElfResponse(elfById)).build();
     }
 
     @GET
     @Path("/mags/{magId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response magById(@PathParam("magId") Long magId) {
+    public Response magById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("magId") Long magId) {
         Mag magById = dataService.findMagById(magId);
         if (magById == null) {
             return Response.status(404).build();
         }
-        return Response.ok(new WSMag(magById)).build();
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            return Response.ok(transalateService.translate(new WSMagResponse(magById))).build();
+        }
+        return Response.ok(new WSMagResponse(magById)).build();
     }
 
     @POST
@@ -114,9 +154,9 @@ public class HeroResource {
     }
 
     @POST
-    @Path("/elfs")
+    @Path("/elves")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response elfs(WSElf elfRequest) {
+    public Response elves(WSElf elfRequest) {
         Elf elf = elfRequest.toElf();
         elf.setForest(dataService.findForestById(elfRequest.getForestId()));
         UserData user = dataService.findUserDataByLogin(principal.getName());

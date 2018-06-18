@@ -1,18 +1,23 @@
-package com.soa.rest;
+package com.soa.rest.resource;
 
 import com.soa.domain.UserData;
 import com.soa.domain.categories.Cave;
 import com.soa.domain.categories.Forest;
 import com.soa.domain.categories.Tower;
+import com.soa.rest.service.TranslateService;
 import com.soa.service.DataAccessService;
 import com.soa.ws.category.WSCave;
 import com.soa.ws.category.WSForest;
 import com.soa.ws.category.WSTower;
+import com.soa.ws.category.response.WSCaveResponse;
+import com.soa.ws.category.response.WSForestResponse;
+import com.soa.ws.category.response.WSTowerResponse;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -23,6 +28,8 @@ import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.soa.rest.resource.HeroResource.PL_APPLICATION_JSON;
+
 @Path("/categories")
 public class CategoriesResources {
 
@@ -32,13 +39,23 @@ public class CategoriesResources {
     @Inject
     private Principal principal;
 
+    @EJB
+    private TranslateService transalateService;
+
     @GET
     @Path("/caves")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response caves() {
+    public Response caves(@HeaderParam("Content-Type") MediaType mediaType) {
         List<Cave> allCaves = dataService.findAllCaves();
-        List<WSCave> wsCave = allCaves.stream()
-                .map(WSCave::new)
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            List<WSCaveResponse> wsCave = allCaves.stream()
+                    .map(WSCaveResponse::new)
+                    .map(transalateService::translate)
+                    .collect(Collectors.toList());
+            return Response.ok(wsCave).build();
+        }
+        List<WSCaveResponse> wsCave = allCaves.stream()
+                .map(WSCaveResponse::new)
                 .collect(Collectors.toList());
         return Response.ok(wsCave).build();
     }
@@ -46,10 +63,17 @@ public class CategoriesResources {
     @GET
     @Path("/forests")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response forests() {
+    public Response forests(@HeaderParam("Content-Type") MediaType mediaType) {
         List<Forest> forests = dataService.findAllForests();
-        List<WSForest> wsForests = forests.stream()
-                .map(WSForest::new)
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            List<WSForestResponse> wsForests = forests.stream()
+                    .map(WSForestResponse::new)
+                    .map(transalateService::translate)
+                    .collect(Collectors.toList());
+            return Response.ok(wsForests).build();
+        }
+        List<WSForestResponse> wsForests = forests.stream()
+                .map(WSForestResponse::new)
                 .collect(Collectors.toList());
         return Response.ok(wsForests).build();
     }
@@ -57,10 +81,17 @@ public class CategoriesResources {
     @GET
     @Path("/towers")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response towers() {
+    public Response towers(@HeaderParam("Content-Type") MediaType mediaType) {
         List<Tower> towers = dataService.findAllTowers();
-        List<WSTower> wsTowers = towers.stream()
-                .map(WSTower::new)
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            List<WSTowerResponse> wsTowers = towers.stream()
+                    .map(WSTowerResponse::new)
+                    .map(transalateService::translate)
+                    .collect(Collectors.toList());
+            return Response.ok(wsTowers).build();
+        }
+        List<WSTowerResponse> wsTowers = towers.stream()
+                .map(WSTowerResponse::new)
                 .collect(Collectors.toList());
         return Response.ok(wsTowers).build();
     }
@@ -68,25 +99,34 @@ public class CategoriesResources {
     @GET
     @Path("/caves/{caveId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response cavesById(@PathParam("caveId") Long caveId) {
+    public Response cavesById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("caveId") Long caveId) {
         Cave caveById = dataService.findCaveById(caveId);
-        return Response.ok(new WSCave(caveById)).build();
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            return Response.ok(transalateService.translate(new WSCaveResponse(caveById))).build();
+        }
+        return Response.ok(new WSCaveResponse(caveById)).build();
     }
 
     @GET
     @Path("/forests/{forestId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response forestById(@PathParam("forestId") Long forestId) {
+    public Response forestById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("forestId") Long forestId) {
         Forest forestById = dataService.findForestById(forestId);
-        return Response.ok(new WSForest(forestById)).build();
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            return Response.ok(transalateService.translate(new WSForestResponse(forestById))).build();
+        }
+        return Response.ok(new WSForestResponse(forestById)).build();
     }
 
     @GET
     @Path("/towers/{towerId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response towerById(@PathParam("towerId") Long towerId) {
+    public Response towerById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("towerId") Long towerId) {
         Tower towerById = dataService.findTowerById(towerId);
-        return Response.ok(new WSTower(towerById)).build();
+        if (PL_APPLICATION_JSON.equals(mediaType)) {
+            return Response.ok(transalateService.translate(new WSTowerResponse(towerById))).build();
+        }
+        return Response.ok(new WSTowerResponse(towerById)).build();
     }
 
     @POST
