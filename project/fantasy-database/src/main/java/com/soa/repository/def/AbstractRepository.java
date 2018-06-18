@@ -14,20 +14,22 @@ public abstract class AbstractRepository<T> implements Repository<T> {
 
     private final static String PERSISTENCE_UNIT_NAME = "SOA_PROJECT";
 
-    protected EntityManager entityManager;
+    protected static EntityManager entityManager;
 
     private Class<T> type;
 
     protected AbstractRepository(Class<T> type) {
         this.type = type;
 
-        Map<String, String> env = System.getenv();
-        Map<String, Object> config = new HashMap<>();
-        config.put("javax.persistence.jdbc.user", env.get("PG_USER"));
-        config.put("javax.persistence.jdbc.password", env.get("PG_PASSWORD"));
+        if (entityManager == null) {
+            Map<String, String> env = System.getenv();
+            Map<String, Object> config = new HashMap<>();
+            config.put("javax.persistence.jdbc.user", env.get("PG_USER"));
+            config.put("javax.persistence.jdbc.password", env.get("PG_PASSWORD"));
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, config);
-        this.entityManager = factory.createEntityManager();
+            EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME, config);
+            entityManager = factory.createEntityManager();
+        }
     }
 
     @Override
