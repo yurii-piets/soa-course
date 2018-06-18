@@ -18,6 +18,6 @@ public class ElfRepository extends HeroRepository<Elf> {
 
     @Override
     public Elf findReachest() {
-        return (Elf) entityManager.createNamedQuery(REACHEST_ELF_QUERY_NAME).getSingleResult();
+        return (Elf) entityManager.createNamedQuery(REACHEST_ELF_QUERY_NAME).getResultList().get(0);
     }
 }

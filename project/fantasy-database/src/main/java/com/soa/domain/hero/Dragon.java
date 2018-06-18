@@ -23,7 +23,7 @@ import javax.persistence.NamedQuery;
 import java.io.Serializable;
 
 @Entity(name = "HR_DRAGON")
-@NamedQueries({@NamedQuery(name = Dragon.REACHEST_DRAGON_QUERY_NAME, query = "SELECT dragon FROM com.soa.domain.hero.Dragon dragon WHERE dragon.gold = (SELECT MAX(dragon.gold) FROM com.soa.domain.hero.Dragon d)")})
+@NamedQueries({@NamedQuery(name = Dragon.REACHEST_DRAGON_QUERY_NAME, query = "SELECT dragon FROM com.soa.domain.hero.Dragon dragon WHERE dragon.gold = (SELECT MAX(d.gold) FROM com.soa.domain.hero.Dragon d)")})
 @Data
 @NoArgsConstructor
 public class Dragon implements Hero, Ownable, Serializable {

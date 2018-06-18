@@ -18,6 +18,6 @@ public class MagRepository extends HeroRepository<Mag> {
 
     @Override
     public Mag findReachest() {
-        return (Mag) entityManager.createNamedQuery(REACHEST_MAG_QUERY_NAME).getSingleResult();
+        return (Mag) entityManager.createNamedQuery(REACHEST_MAG_QUERY_NAME).getResultList().get(0);
     }
 }

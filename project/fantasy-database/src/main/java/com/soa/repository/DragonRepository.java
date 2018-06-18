@@ -17,6 +17,6 @@ public class DragonRepository extends HeroRepository<Dragon> {
     }
 
     public Dragon findReachest() {
-        return (Dragon) entityManager.createNamedQuery(REACHEST_DRAGON_QUERY_NAME).getSingleResult();
+        return (Dragon) entityManager.createNamedQuery(REACHEST_DRAGON_QUERY_NAME).getResultList().get(0);
     }
 }
