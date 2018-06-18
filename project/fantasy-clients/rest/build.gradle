@@ -1,0 +1,7 @@
+dependencies {
+    compile project(':project:fantasy-ws-common')
+    compile group: 'org.springframework', name: 'spring-web', version: '5.0.7.RELEASE'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.6'
+    compile group: 'javax.jws', name: 'jsr181-api', version: '1.0-MR1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.4'
+}
