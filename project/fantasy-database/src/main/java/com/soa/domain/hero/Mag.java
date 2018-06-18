@@ -1,6 +1,5 @@
 package com.soa.domain.hero;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Ownable;
 import com.soa.domain.Power;
 import com.soa.domain.UserData;
@@ -18,14 +17,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.io.Serializable;
 
 @Entity(name = "HR_MAG")
 @Data
 @NoArgsConstructor
-public class Mag implements Ownable, Serializable {
+@NamedQueries({@NamedQuery(name = Mag.REACHEST_MAG_QUERY_NAME, query = "SELECT mag FROM com.soa.domain.hero.Mag mag WHERE mag.mana = (SELECT MAX(m.mana) FROM com.soa.domain.hero.Mag m)")})
+public class Mag implements Hero, Ownable, Serializable {
 
     public static final String MAG_ID = "mag_id";
+
+    public static final String REACHEST_MAG_QUERY_NAME = "REACHEST_MAG_QUERY_NAME";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

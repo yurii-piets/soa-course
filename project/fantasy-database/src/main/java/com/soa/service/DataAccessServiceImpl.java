@@ -7,6 +7,7 @@ import com.soa.domain.categories.Tower;
 import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
+import com.soa.interceptor.Balanced;
 import com.soa.repository.CaveRepository;
 import com.soa.repository.DragonRepository;
 import com.soa.repository.ElfRepository;
@@ -135,11 +136,13 @@ public class DataAccessServiceImpl implements DataAccessService {
         towerRepository.save(tower);
     }
 
+    @Balanced
     @Override
     public void save(Elf elf) {
         elfRepository.save(elf);
     }
 
+    @Balanced
     @Override
     public void save(Mag mag) {
         magRepository.save(mag);
@@ -150,21 +153,25 @@ public class DataAccessServiceImpl implements DataAccessService {
         userRepository.update(user);
     }
 
+    @Balanced
     @Override
     public void save(Dragon dragon) {
         dragonRepository.save(dragon);
     }
 
+    @Balanced
     @Override
     public void update(Dragon dragon) {
         dragonRepository.update(dragon);
     }
 
+    @Balanced
     @Override
     public void update(Elf elf) {
         elfRepository.update(elf);
     }
 
+    @Balanced
     @Override
     public void update(Mag mag) {
         magRepository.update(mag);
@@ -259,5 +266,35 @@ public class DataAccessServiceImpl implements DataAccessService {
     @Override
     public List<UserData> findAllUsers() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public Dragon findStrongestDragon() {
+        return dragonRepository.findStrongest();
+    }
+
+    @Override
+    public Elf findStrongestElf() {
+        return elfRepository.findStrongest();
+    }
+
+    @Override
+    public Mag findStrongestMag() {
+        return magRepository.findStrongest();
+    }
+
+    @Override
+    public Dragon findReachestDragon() {
+        return dragonRepository.findReachest();
+    }
+
+    @Override
+    public Elf findReachestElf() {
+        return elfRepository.findReachest();
+    }
+
+    @Override
+    public Mag findReachestMag() {
+        return magRepository.findReachest();
     }
 }

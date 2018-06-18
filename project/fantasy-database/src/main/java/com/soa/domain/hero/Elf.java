@@ -1,6 +1,5 @@
 package com.soa.domain.hero;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.soa.domain.Ownable;
 import com.soa.domain.Power;
 import com.soa.domain.UserData;
@@ -18,14 +17,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import java.io.Serializable;
 
 @Entity(name = "HR_ELF")
 @Data
 @NoArgsConstructor
-public class Elf implements Ownable, Serializable {
+@NamedQueries({@NamedQuery(name = Elf.REACHEST_ELF_QUERY_NAME, query = "SELECT elf FROM com.soa.domain.hero.Elf elf WHERE elf.arrowCount = (SELECT MAX(e.arrowCount) FROM com.soa.domain.hero.Elf e)")})
+public class Elf implements Hero, Ownable, Serializable {
 
     private static final String ELF_ID = "elf_id";
+
+    public static final String REACHEST_ELF_QUERY_NAME = "REACHEST_ELF_QUERY_NAME";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

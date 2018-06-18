@@ -81,4 +81,16 @@ public interface DataAccessService {
     UserData findUserDataByLogin(String name);
 
     List<UserData> findAllUsers();
+
+    Dragon findStrongestDragon();
+
+    Elf findStrongestElf();
+
+    Mag findStrongestMag();
+
+    Dragon findReachestDragon();
+
+    Elf findReachestElf();
+
+    Mag findReachestMag();
 }
