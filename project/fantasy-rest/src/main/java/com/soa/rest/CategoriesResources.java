@@ -1,14 +1,16 @@
 package com.soa.rest;
 
+import com.soa.domain.UserData;
 import com.soa.domain.categories.Cave;
 import com.soa.domain.categories.Forest;
 import com.soa.domain.categories.Tower;
+import com.soa.service.DataAccessService;
 import com.soa.ws.category.WSCave;
 import com.soa.ws.category.WSForest;
 import com.soa.ws.category.WSTower;
-import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,6 +19,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +28,9 @@ public class CategoriesResources {
 
     @EJB
     private DataAccessService dataService;
+
+    @Inject
+    private Principal principal;
 
     @GET
     @Path("/caves")
@@ -87,7 +93,12 @@ public class CategoriesResources {
     @Path("/caves")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response caves(WSCave wsCave) {
-        dataService.save(wsCave.toCave());
+        Cave cave = wsCave.toCave();
+        UserData user = dataService.findUserDataByLogin(principal.getName());
+        if (user.getRole() != UserData.UserRole.ADMIN) {
+            cave.setOwner(user);
+        }
+        dataService.save(cave);
         return Response.accepted().build();
     }
 
@@ -95,7 +106,12 @@ public class CategoriesResources {
     @Path("/forests")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response forests(WSForest wsForest) {
-        dataService.save(wsForest.toForest());
+        Forest forest = wsForest.toForest();
+        UserData user = dataService.findUserDataByLogin(principal.getName());
+        if (user.getRole() != UserData.UserRole.ADMIN) {
+            forest.setOwner(user);
+        }
+        dataService.save(forest);
         return Response.accepted().build();
     }
 
@@ -103,7 +119,12 @@ public class CategoriesResources {
     @Path("/towers")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response towers(WSTower wsTower) {
-        dataService.save(wsTower.toTower());
+        Tower tower = wsTower.toTower();
+        UserData user = dataService.findUserDataByLogin(principal.getName());
+        if (user.getRole() != UserData.UserRole.ADMIN) {
+            tower.setOwner(user);
+        }
+        dataService.save(tower);
         return Response.accepted().build();
     }
 }

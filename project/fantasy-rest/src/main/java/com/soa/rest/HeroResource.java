@@ -1,14 +1,16 @@
 package com.soa.rest;
 
+import com.soa.domain.UserData;
 import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
+import com.soa.service.DataAccessService;
 import com.soa.ws.hero.WSDragon;
 import com.soa.ws.hero.WSElf;
 import com.soa.ws.hero.WSMag;
-import com.soa.service.DataAccessService;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -16,6 +18,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +27,9 @@ public class HeroResource {
 
     @EJB
     private DataAccessService dataService;
+
+    @Inject
+    private Principal principal;
 
     @GET
     @Path("/dragons")
@@ -97,6 +103,12 @@ public class HeroResource {
     public Response dragons(WSDragon dragonRequest) {
         Dragon dragon = dragonRequest.toDragon();
         dragon.setCave(dataService.findCaveById(dragonRequest.getCaveId()));
+        UserData user = dataService.findUserDataByLogin(principal.getName());
+        if (user.getRole() != UserData.UserRole.ADMIN) {
+            if (!user.getId().equals(dragon.getOwner().getId())) {
+                return Response.status(403).build();
+            }
+        }
         dataService.save(dragon);
         return Response.accepted().build();
     }
@@ -107,6 +119,12 @@ public class HeroResource {
     public Response elfs(WSElf elfRequest) {
         Elf elf = elfRequest.toElf();
         elf.setForest(dataService.findForestById(elfRequest.getForestId()));
+        UserData user = dataService.findUserDataByLogin(principal.getName());
+        if (user.getRole() != UserData.UserRole.ADMIN) {
+            if (!user.getId().equals(elf.getOwner().getId())) {
+                return Response.status(403).build();
+            }
+        }
         dataService.save(elf);
         return Response.accepted().build();
     }
@@ -117,6 +135,12 @@ public class HeroResource {
     public Response mags(WSMag magRequest) {
         Mag mag = magRequest.toMag();
         mag.setTower(dataService.findTowerById(magRequest.getTowerId()));
+        UserData user = dataService.findUserDataByLogin(principal.getName());
+        if (user.getRole() != UserData.UserRole.ADMIN) {
+            if (!user.getId().equals(mag.getOwner().getId())) {
+                return Response.status(403).build();
+            }
+        }
         dataService.save(mag);
         return Response.accepted().build();
     }
