@@ -7,8 +7,6 @@ import com.soa.service.DataAccessService;
 import com.soa.ws.hero.WSDragon;
 import com.soa.ws.hero.WSElf;
 import com.soa.ws.hero.WSMag;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.ejb.EJB;
 import javax.jws.WebService;
@@ -16,13 +14,14 @@ import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 @WebService(endpointInterface = "com.soa.soap.HeroService")
 public class HeroServiceImpl implements HeroService {
 
-    ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
+    private ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
 
-    private Logger logger = LogManager.getLogger(this.getClass());
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
     @EJB
     private DataAccessService dataService;
