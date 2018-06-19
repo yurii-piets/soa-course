@@ -3,16 +3,26 @@ package com.soa.soap;
 import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
+import com.soa.service.DataAccessService;
 import com.soa.ws.hero.WSDragon;
 import com.soa.ws.hero.WSElf;
 import com.soa.ws.hero.WSMag;
-import com.soa.service.DataAccessService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.ejb.EJB;
 import javax.jws.WebService;
+import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @WebService(endpointInterface = "com.soa.soap.HeroService")
 public class HeroServiceImpl implements HeroService {
+
+    ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
+
+    private Logger logger = LogManager.getLogger(this.getClass());
 
     @EJB
     private DataAccessService dataService;
@@ -43,6 +53,8 @@ public class HeroServiceImpl implements HeroService {
         Dragon dragon = dataService.findDragonById(dragonId);
         dragon.setGold(gold);
         dataService.update(dragon);
+
+        executor.schedule(() -> logger.info("Sending power to corresponding game: " + new Random(-2).nextInt(2)), 1, TimeUnit.MINUTES);
     }
 
     @Override
@@ -50,6 +62,8 @@ public class HeroServiceImpl implements HeroService {
         Elf elf = dataService.findElfById(elfId);
         elf.setArrowCount(arrowsAmount);
         dataService.update(elf);
+
+        executor.schedule(() -> logger.info("Sending power to corresponding game: " + new Random(-2).nextInt(2)), 1, TimeUnit.MINUTES);
     }
 
     @Override
@@ -57,5 +71,7 @@ public class HeroServiceImpl implements HeroService {
         Mag mag = dataService.findMagById(magId);
         mag.setMana(mana);
         dataService.update(mag);
+
+        executor.schedule(() -> logger.info("Sending power to corresponding game: " + new Random(-2).nextInt(2)), 1, TimeUnit.MINUTES);
     }
 }
