@@ -10,9 +10,9 @@ import com.soa.ws.hero.WSMag;
 
 import javax.ejb.EJB;
 import javax.jws.WebService;
-import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -53,7 +53,7 @@ public class HeroServiceImpl implements HeroService {
         dragon.setGold(gold);
         dataService.update(dragon);
 
-        executor.schedule(() -> logger.info("Sending power to corresponding game: " + new Random(-2).nextInt(2)), 1, TimeUnit.MINUTES);
+        executor.schedule(() -> logger.info("Sending power to corresponding game: " + randPower()), 1, TimeUnit.MINUTES);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class HeroServiceImpl implements HeroService {
         elf.setArrowCount(arrowsAmount);
         dataService.update(elf);
 
-        executor.schedule(() -> logger.info("Sending power to corresponding game: " + new Random(-2).nextInt(2)), 1, TimeUnit.MINUTES);
+        executor.schedule(() -> logger.info("Sending power to corresponding game: " + randPower()), 1, TimeUnit.MINUTES);
     }
 
     @Override
@@ -71,6 +71,10 @@ public class HeroServiceImpl implements HeroService {
         mag.setMana(mana);
         dataService.update(mag);
 
-        executor.schedule(() -> logger.info("Sending power to corresponding game: " + new Random(-2).nextInt(2)), 1, TimeUnit.MINUTES);
+        executor.schedule(() -> logger.info("Sending power to corresponding game: " + randPower()), 1, TimeUnit.MINUTES);
+    }
+
+    private int randPower() {
+        return ThreadLocalRandom.current().nextInt(-2, 2 + 1);
     }
 }
