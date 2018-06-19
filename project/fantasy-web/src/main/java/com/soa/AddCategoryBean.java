@@ -40,18 +40,24 @@ public class AddCategoryBean {
             case "Cave":
                 if (categoryId != null && categoryId != 0L) {
                     accessBean.checkAccess(dataService.findCaveById(categoryId));
+                } else {
+                    accessBean.checkCreate(category);
                 }
                 dataService.update(new Cave(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
                 break;
             case "Forest":
                 if (categoryId != null && categoryId != 0L) {
                     accessBean.checkAccess(dataService.findForestById(categoryId));
+                } else {
+                    accessBean.checkCreate(category);
                 }
                 dataService.update(new Forest(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
                 break;
             case "Tower":
                 if (categoryId != null && categoryId != 0L) {
                     accessBean.checkAccess(dataService.findTowerById(categoryId));
+                } else {
+                    accessBean.checkCreate(category);
                 }
                 dataService.update(new Tower(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
                 break;

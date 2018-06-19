@@ -24,6 +24,30 @@ public class AccessBean {
     private DataAccessService dataService;
 
     @RolesAllowed({"ADMIN", "USER"})
+    public boolean canCreate(String category) {
+        if (FacesContext.getCurrentInstance().getExternalContext().isUserInRole(UserData.UserRole.ADMIN.toString())) {
+            return true;
+        }
+        Integer userIndex = getCurrentUser().getIndex();
+        switch (category) {
+            case "Cave":
+                return userIndex % 3 == 0 && userIndex % 2 != 0;
+            case "Tower":
+                return userIndex % 2 == 0 && userIndex % 3 != 0;
+            case "Forest":
+                return (userIndex % 2 == 0 && userIndex % 3 == 0) || (userIndex % 2 != 0 && userIndex % 3 != 0);
+        }
+        return false;
+    }
+
+    @RolesAllowed({"ADMIN", "USER"})
+    public void checkCreate(String category) throws IllegalAccessException {
+        if (!canCreate(category)) {
+            throw new IllegalAccessException();
+        }
+    }
+
+    @RolesAllowed({"ADMIN", "USER"})
     public boolean hasAccess(Ownable ownable) {
         if (FacesContext.getCurrentInstance().getExternalContext().isUserInRole(UserData.UserRole.ADMIN.toString())) {
             return true;
@@ -38,13 +62,13 @@ public class AccessBean {
 
     @RolesAllowed({"ADMIN", "USER"})
     public void checkAccess(Ownable ownable) throws IllegalAccessException {
-        if(!hasAccess(ownable)) {
+        if (!hasAccess(ownable)) {
             throw new IllegalAccessException();
         }
     }
 
     @RolesAllowed({"ADMIN", "USER"})
-    public UserData getCurrentUser(){
+    public UserData getCurrentUser() {
         String name = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
         return dataService.findUserDataByLogin(name);
     }

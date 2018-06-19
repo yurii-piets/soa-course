@@ -36,7 +36,7 @@
 
     <div>
         <h1 style="display: inline">Caves<h:form>
-            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.canCreate('Cave')}">
                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                 <f:param value="Cave" name="category"/>
             </h:link>
@@ -135,7 +135,7 @@
 
     <div>
         <h1 style="display: inline">Forests<h:form>
-            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.canCreate('Forest')}">
                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                 <f:param value="Forest" name="category"/>
             </h:link>
@@ -234,7 +234,7 @@
 
     <div>
         <h1 style="display: inline">Towers<h:form>
-            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true">
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.canCreate('Elf')}">
                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                 <f:param value="Tower" name="category"/>
             </h:link>
