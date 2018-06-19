@@ -18,6 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="element" type="{http://soap.soa.com/}element" minOccurs="0"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
  *         &lt;element name="mana" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="power" type="{http://soap.soa.com/}power" minOccurs="0"/&gt;
@@ -33,6 +34,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "wsMag", propOrder = {
     "element",
+    "id",
     "mana",
     "name",
     "power",
@@ -42,6 +44,7 @@ public class WsMag {
 
     @XmlSchemaType(name = "string")
     protected Element element;
+    protected Long id;
     protected Integer mana;
     protected String name;
     @XmlSchemaType(name = "string")
@@ -70,6 +73,30 @@ public class WsMag {
      */
     public void setElement(Element value) {
         this.element = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
     }
 
     /**

@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="arrowCount" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="bowType" type="{http://soap.soa.com/}bowType" minOccurs="0"/&gt;
  *         &lt;element name="forestId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="power" type="{http://soap.soa.com/}power" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
@@ -35,6 +36,7 @@ import javax.xml.bind.annotation.XmlType;
     "arrowCount",
     "bowType",
     "forestId",
+    "id",
     "name",
     "power"
 })
@@ -44,6 +46,7 @@ public class WsElf {
     @XmlSchemaType(name = "string")
     protected BowType bowType;
     protected Long forestId;
+    protected Long id;
     protected String name;
     @XmlSchemaType(name = "string")
     protected Power power;
@@ -118,6 +121,30 @@ public class WsElf {
      */
     public void setForestId(Long value) {
         this.forestId = value;
+    }
+
+    /**
+     * Gets the value of the id property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Sets the value of the id property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
     }
 
     /**
