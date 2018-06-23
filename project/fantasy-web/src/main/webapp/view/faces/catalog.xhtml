@@ -13,12 +13,10 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
     <style>
-        h1 {
+        h1, .plus-form {
             font-size: 25px;
-        }
-
-        h2 {
-            font-size: 19px;
+            display: inline;
+            padding-right: 10px;
         }
     </style>
 </head>
@@ -35,14 +33,24 @@
     </script>
 
     <div>
-        <h1 style="display: inline">Caves<h:form>
-            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.canCreate('Cave')}">
+        <h:form>
+            <h:link styleClass="btn btn-primary" value="Messages" outcome="/view/faces/messages.xhtml"/>
+            <h:link styleClass="btn btn-primary" value="Change Password" outcome="/view/faces/changePassword.xhtml"/>
+            <h:commandButton styleClass="btn btn-primary" value="Logout" action="${accessBean.logout}"/>
+        </h:form>
+    </div>
+
+    <div>
+        <h1>Caves</h1>
+        <h:form styleClass="plus-form">
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true"
+                    disabled="#{!accessBean.canCreate('Cave')}">
                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                 <f:param value="Cave" name="category"/>
             </h:link>
             <br/>
         </h:form>
-        </h1>
+
         <table class="table table-hover table-striped">
             <thead class="thead-dark">
             <tr>
@@ -62,13 +70,15 @@
                     <td><h:outputText value="#{fn:length(cave.dragons)}"/></td>
                     <td>
                         <h:form>
-                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(cave)}">
+                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true"
+                                    disabled="#{!accessBean.hasAccess(cave)}">
                                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                                 <f:param value="Dragon" name="heroType"/>
                                 <f:param value="${cave.id}" name="categoryId"/>
                             </h:link>
 
-                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(cave)}">
+                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true"
+                                    disabled="#{!accessBean.hasAccess(cave)}">
                                 <i class="glyphicon glyphicon-pencil" style="width: auto"/>
                                 <f:param value="Cave" name="category"/>
                                 <f:param value="#{cave.square}" name="mainParameter"/>
@@ -109,7 +119,8 @@
                         <td><h:outputText value="#{dragon.power}"/></td>
                         <td>
                             <h:form>
-                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(dragon)}">
+                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true"
+                                        disabled="#{!accessBean.hasAccess(dragon)}">
                                     <i class="glyphicon glyphicon-pencil" style="width: auto"/>
                                     <f:param value="Dragon" name="heroType"/>
                                     <f:param value="#{cave.id}" name="categoryId"/>
@@ -120,7 +131,8 @@
                                     <f:param value="#{dragon.color}" name="color"/>
                                 </h:link>
 
-                                <h:commandLink action="#{dragonBean.delete}" disabled="#{!accessBean.hasAccess(dragon)}">
+                                <h:commandLink action="#{dragonBean.delete}"
+                                               disabled="#{!accessBean.hasAccess(dragon)}">
                                     <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                     <f:param name="dragonId" value="#{dragon.id}"/>
                                 </h:commandLink>
@@ -134,14 +146,15 @@
     </div>
 
     <div>
-        <h1 style="display: inline">Forests<h:form>
-            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.canCreate('Forest')}">
+        <h1>Forests</h1>
+        <h:form styleClass="plus-form">
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true"
+                    disabled="#{!accessBean.canCreate('Forest')}">
                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                 <f:param value="Forest" name="category"/>
             </h:link>
             <br/>
         </h:form>
-        </h1>
         <table class="table table-hover table-striped">
             <thead class="thead-dark">
             <tr>
@@ -161,13 +174,15 @@
                     <td><h:outputText value="#{fn:length(forest.elfs)}"/></td>
                     <td>
                         <h:form>
-                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(forest)}">
+                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true"
+                                    disabled="#{!accessBean.hasAccess(forest)}">
                                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                                 <f:param value="Elf" name="heroType"/>
                                 <f:param value="${forest.id}" name="categoryId"/>
                             </h:link>
 
-                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(forest)}">
+                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true"
+                                    disabled="#{!accessBean.hasAccess(forest)}">
                                 <i class="glyphicon glyphicon-pencil" style="width: auto"/>
                                 <f:param value="Forest" name="category"/>
                                 <f:param value="#{forest.amountOfTrees}" name="mainParameter"/>
@@ -208,7 +223,8 @@
                         <td><h:outputText value="#{elf.power}"/></td>
                         <td>
                             <h:form>
-                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(elf)}">
+                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true"
+                                        disabled="#{!accessBean.hasAccess(elf)}">
                                     <i class="glyphicon glyphicon-pencil" style="width: auto"/>
                                     <f:param value="Elf" name="heroType"/>
                                     <f:param value="#{forest.id}" name="categoryId"/>
@@ -233,14 +249,15 @@
     </div>
 
     <div>
-        <h1 style="display: inline">Towers<h:form>
-            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.canCreate('Elf')}">
+        <h1>Towers</h1>
+        <h:form styleClass="plus-form">
+            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true"
+                    disabled="#{!accessBean.canCreate('Elf')}">
                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                 <f:param value="Tower" name="category"/>
             </h:link>
             <br/>
         </h:form>
-        </h1>
         <table class="table table-hover table-striped">
             <thead class="thead-dark">
             <tr>
@@ -260,20 +277,22 @@
                     <td><h:outputText value="#{fn:length(tower.mags)}"/></td>
                     <td>
                         <h:form>
-                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(tower)}">
+                            <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true"
+                                    disabled="#{!accessBean.hasAccess(tower)}">
                                 <i class="glyphicon glyphicon-plus" style="width: auto"/>
                                 <f:param value="Mag" name="heroType"/>
                                 <f:param value="${tower.id}" name="categoryId"/>
                             </h:link>
 
-                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(tower)}">
+                            <h:link outcome="/view/faces/addCategory.xhtml" includeViewParams="true"
+                                    disabled="#{!accessBean.hasAccess(tower)}">
                                 <i class="glyphicon glyphicon-pencil" style="width: auto"/>
                                 <f:param value="Tower" name="category"/>
                                 <f:param value="#{tower.height}" name="mainParameter"/>
                                 <f:param value="#{tower.id}" name="categoryId"/>
                             </h:link>
 
-                            <h:commandLink action="#{magBean.deleteTower}" disabled="#{!accessBean.hasAccess(tower)}" >
+                            <h:commandLink action="#{magBean.deleteTower}" disabled="#{!accessBean.hasAccess(tower)}">
                                 <i class="glyphicon glyphicon-minus" style="width: auto"/>
                                 <f:param name="towerId" value="#{tower.id}"/>
                             </h:commandLink>
@@ -307,7 +326,8 @@
                         <td><h:outputText value="#{mag.power}"/></td>
                         <td>
                             <h:form>
-                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true" disabled="#{!accessBean.hasAccess(mag)}">
+                                <h:link outcome="/view/faces/addHero.xhtml" includeViewParams="true"
+                                        disabled="#{!accessBean.hasAccess(mag)}">
                                     <i class="glyphicon glyphicon-pencil" style="width: auto"/>
                                     <f:param value="Mag" name="heroType"/>
                                     <f:param value="#{tower.id}" name="categoryId"/>

@@ -8,6 +8,7 @@ import com.soa.domain.hero.Dragon;
 import com.soa.domain.hero.Elf;
 import com.soa.domain.hero.Mag;
 import com.soa.interceptor.Balanced;
+import com.soa.interceptor.Tracked;
 import com.soa.repository.CaveRepository;
 import com.soa.repository.DragonRepository;
 import com.soa.repository.ElfRepository;
@@ -136,27 +137,30 @@ public class DataAccessServiceImpl implements DataAccessService {
         towerRepository.save(tower);
     }
 
+    @Tracked
     @Balanced
     @Override
     public void save(Elf elf) {
         elfRepository.save(elf);
     }
 
+    @Tracked
     @Balanced
     @Override
     public void save(Mag mag) {
         magRepository.save(mag);
     }
 
-    @Override
-    public void update(UserData user) {
-        userRepository.update(user);
-    }
-
+    @Tracked
     @Balanced
     @Override
     public void save(Dragon dragon) {
         dragonRepository.save(dragon);
+    }
+
+    @Override
+    public void update(UserData user) {
+        userRepository.update(user);
     }
 
     @Balanced

@@ -1,5 +1,7 @@
 package com.soa.command;
 
+import com.soa.AuthContext;
+import org.springframework.http.client.support.BasicAuthorizationInterceptor;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +16,7 @@ public abstract class AbstractRestCommand<R> {
     protected AbstractRestCommand(Class<R> type) {
         this.type = type;
         this.restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+        this.restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor(AuthContext.getUsername(), AuthContext.getPassword()));
     }
 
     protected static final String BASIC_API_URI = "http://127.0.0.1:8080/fantasy/api";

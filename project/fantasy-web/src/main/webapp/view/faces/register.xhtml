@@ -25,7 +25,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-user" style="width: auto"/>
                             </span>
-                            <h:inputText type="text" value="#{registerBean.name}" a:placeholder="Login"/>
+                            <h:inputText styleClass="form-control" type="text" value="#{registerBean.name}" a:placeholder="Login"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -33,7 +33,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-barcode" style="width: auto"/>
                             </span>
-                            <h:inputText type="number" value="#{registerBean.index}" a:placeholder="Index"/>
+                            <h:inputText styleClass="form-control" type="number" value="#{registerBean.index}" a:placeholder="Index"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,7 +41,7 @@
                             <span class="input-group-addon">
                                 <i class="glyphicon glyphicon-lock" style="width: auto"/>
                             </span>
-                            <h:inputSecret type="password" value="#{registerBean.password}" a:placeholder="Password"/><br/>
+                            <h:inputSecret styleClass="form-control" type="password" value="#{registerBean.password}" a:placeholder="Password"/><br/>
                         </div>
                     </div>
                     <h:commandButton styleClass="btn btn-primary" value="Enter" action="#{registerBean.submit}"/><br/>

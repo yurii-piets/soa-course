@@ -5,11 +5,16 @@ import com.soa.soap.CategoryServiceImplService;
 import com.soa.soap.HeroService;
 import com.soa.soap.HeroServiceImplService;
 
+import javax.xml.ws.BindingProvider;
+
 public class SoapClientApplication {
 
     public static void main(String[] args) {
         CategoryServiceImplService categoryServiceImplService = new CategoryServiceImplService();
         CategoryService categoryService = categoryServiceImplService.getCategoryServiceImplPort();
+        BindingProvider prov = (BindingProvider) categoryService;
+        prov.getRequestContext().put(BindingProvider.USERNAME_PROPERTY, "user");
+        prov.getRequestContext().put(BindingProvider.PASSWORD_PROPERTY, "user");
 
 //        WsCave cave = new WsCave();
 //        cave.setSquare(314);

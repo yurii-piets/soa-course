@@ -31,7 +31,7 @@
                 <h:form>
                     <div class="form-group">
                         <div class="input-group">
-                            Name: <h:inputText type="text" value="#{addHeroBean.name}"/><br/>
+                            Name: <h:inputText styleClass="form-control" type="text" value="#{addHeroBean.name}"/><br/>
                         </div>
                     </div>
 
@@ -40,25 +40,27 @@
                             <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Gold: </h:outputLabel>
                             <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Arrow Count: </h:outputLabel>
                             <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Mana: </h:outputLabel>
-                            <h:inputText type="text" value="#{addHeroBean.integerParameter}"/><br/>
+                            <h:inputText styleClass="form-control" type="text" value="#{addHeroBean.integerParameter}"/><br/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="input-group">
                             <h:outputLabel rendered="${addHeroBean.heroType == 'Dragon'}">Color: </h:outputLabel>
-                            <h:selectOneMenu value="#{addHeroBean.color}"
-                                             rendered="${addHeroBean.heroType == 'Dragon'}">
+                            <h:selectOneMenu
+                                    styleClass="form-control"
+                                    value="#{addHeroBean.color}"
+                                    rendered="${addHeroBean.heroType == 'Dragon'}">
                                 <f:selectItems value="#{addHeroBean.colorValues}"/>
                             </h:selectOneMenu>
 
                             <h:outputLabel rendered="${addHeroBean.heroType == 'Elf'}">Bow Type: </h:outputLabel>
-                            <h:selectOneMenu value="#{addHeroBean.bowType}" rendered="${addHeroBean.heroType == 'Elf'}">
+                            <h:selectOneMenu styleClass="form-control" value="#{addHeroBean.bowType}" rendered="${addHeroBean.heroType == 'Elf'}">
                                 <f:selectItems value="#{addHeroBean.bowTypes}"/>
                             </h:selectOneMenu>
 
                             <h:outputLabel rendered="${addHeroBean.heroType == 'Mag'}">Element: </h:outputLabel>
-                            <h:selectOneMenu value="#{addHeroBean.element}" rendered="${addHeroBean.heroType == 'Mag'}">
+                            <h:selectOneMenu styleClass="form-control" value="#{addHeroBean.element}" rendered="${addHeroBean.heroType == 'Mag'}">
                                 <f:selectItems value="#{addHeroBean.elements}"/>
                             </h:selectOneMenu>
                             <br/>
@@ -69,7 +71,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             Power:
-                            <h:selectOneMenu value="#{addHeroBean.power}">
+                            <h:selectOneMenu styleClass="form-control" value="#{addHeroBean.power}">
                                 <f:selectItems value="#{addHeroBean.powerValues}"/>
                             </h:selectOneMenu>
 

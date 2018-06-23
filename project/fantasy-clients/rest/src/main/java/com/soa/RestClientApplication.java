@@ -18,6 +18,8 @@ import com.soa.ws.category.WSTower;
 import com.soa.ws.hero.WSDragon;
 import com.soa.ws.hero.WSElf;
 import com.soa.ws.hero.WSMag;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.Scanner;
 
@@ -28,6 +30,31 @@ public class RestClientApplication {
     private final static Displayer displayer = new ConsoleDisplayer();
 
     public static void main(String[] args) {
+        getCredentials();
+        try {
+            go();
+        } catch (HttpClientErrorException e) {
+            if (HttpStatus.UNAUTHORIZED.equals(e.getStatusCode())) {
+                getCredentials();
+            }
+            go();
+            e.getMessage();
+        }
+    }
+
+    private static void getCredentials() {
+        System.out.println("Provide credentials.");
+        System.out.println("Username: ");
+        String username = scanner.next();
+
+        System.out.println("Password: ");
+        String password = scanner.next();
+
+        AuthContext.setUsername(username);
+        AuthContext.setPassword(password);
+    }
+
+    public static void go() {
         while (!Thread.interrupted()) {
             printOptions();
             int command = scanner.nextInt();
@@ -164,7 +191,6 @@ public class RestClientApplication {
             }
         }
     }
-
 
 
     private static void printOptions() {

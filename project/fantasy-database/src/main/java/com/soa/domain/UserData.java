@@ -29,9 +29,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.soa.domain.UserData.USER_DATA_QUERY_NAME;
+
 @Entity(name = "USER_DATA")
 @Table(name = "USER_DATA")
-@NamedQueries({@NamedQuery(name = "USER_DATA_BY_LOGIN", query = "SELECT user FROM com.soa.domain.UserData user WHERE user.login = :login")})
+@NamedQueries({@NamedQuery(name = USER_DATA_QUERY_NAME, query = "SELECT user FROM com.soa.domain.UserData user WHERE user.login = :login")})
 @Data
 @NoArgsConstructor
 @ToString(exclude = {"caves", "forests", "towers"})
@@ -39,6 +41,8 @@ import java.util.List;
 public class UserData implements Serializable {
 
     public static final String USER_ID = "user_id";
+
+    public static final String USER_DATA_QUERY_NAME = "USER_DATA_BY_LOGIN";
 
     public enum UserRole {
         ADMIN,
@@ -72,15 +76,15 @@ public class UserData implements Serializable {
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "owner")
-    private List<Cave> caves;
+    private List<Cave> caves = new ArrayList<>();
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "owner")
-    private List<Forest> forests;
+    private List<Forest> forests = new ArrayList<>();
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "owner")
-    private List<Tower> towers;
+    private List<Tower> towers = new ArrayList<>();
 
     @Builder
     public UserData(Integer index, String login, String password, UserRole role) {

@@ -4,6 +4,7 @@ import com.soa.domain.UserData;
 import com.soa.service.DataAccessService;
 import com.soa.util.CryptoUtil;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -13,11 +14,13 @@ import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import java.io.IOException;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ManagedBean
 @RequestScoped
-public class ChangePassBean {
+public class ChangePassBean extends AbstractManagedBean {
 
     @EJB
     private AccessBean accessBean;
@@ -35,7 +38,7 @@ public class ChangePassBean {
 
     private String userLogin;
 
-    public void submit() {
+    public void submit() throws IOException {
         UserData user;
         if (userLogin == null || userLogin.isEmpty()) {
             user = accessBean.getCurrentUser();
@@ -44,6 +47,7 @@ public class ChangePassBean {
         }
         user.setPassword(CryptoUtil.crypt(newPassword));
         dataService.update(user);
+        reload();
     }
 
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) {

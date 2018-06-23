@@ -35,7 +35,30 @@ public class AddCategoryBean {
     @ManagedProperty("#{param.mainParameter}")
     private Integer mainParameter;
 
+    @ManagedProperty("#{param.userLogin}")
+    private String userLogin;
+
+    @ManagedProperty("#{param.disabledMode}")
+    private boolean disabledMode;
+
+    public void changeMode() {
+        this.disabledMode = !disabledMode;
+    }
+
+    public boolean isDisabledMode() {
+        return disabledMode;
+    }
+
     public void save() throws IOException, IllegalAccessException {
+        UserData owner = null;
+        if (accessBean.getCurrentUser().getRole() == UserData.UserRole.ADMIN) {
+            if (userLogin != null) {
+                owner = dataService.findUserDataByLogin(userLogin);
+            }
+        } else {
+            owner = accessBean.getCurrentUser();
+        }
+
         switch (category) {
             case "Cave":
                 if (categoryId != null && categoryId != 0L) {
@@ -43,7 +66,8 @@ public class AddCategoryBean {
                 } else {
                     accessBean.checkCreate(category);
                 }
-                dataService.update(new Cave(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
+
+                dataService.update(new Cave(categoryId, mainParameter, owner));
                 break;
             case "Forest":
                 if (categoryId != null && categoryId != 0L) {
@@ -51,7 +75,8 @@ public class AddCategoryBean {
                 } else {
                     accessBean.checkCreate(category);
                 }
-                dataService.update(new Forest(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
+
+                dataService.update(new Forest(categoryId, mainParameter, owner));
                 break;
             case "Tower":
                 if (categoryId != null && categoryId != 0L) {
@@ -59,7 +84,8 @@ public class AddCategoryBean {
                 } else {
                     accessBean.checkCreate(category);
                 }
-                dataService.update(new Tower(categoryId, mainParameter, accessBean.getCurrentUser().getRole() != UserData.UserRole.ADMIN ? accessBean.getCurrentUser() : null));
+
+                dataService.update(new Tower(categoryId, mainParameter, owner));
                 break;
 
         }

@@ -56,9 +56,12 @@ public class AddHeroBean {
     private Mag.Element element;
 
     public void save() throws IOException, IllegalAccessException {
+        if(heroId == 0){
+            heroId = null;
+        }
         switch (heroType) {
             case "Dragon":
-                if (heroId != null && heroId != 0L) {
+                if (heroId != null) {
                     accessBean.checkAccess(dataService.findDragonById(heroId));
                 }
                 Dragon dragon = Dragon.builder()
@@ -69,11 +72,14 @@ public class AddHeroBean {
                         .power(power)
                         .cave(dataService.findCaveById(categoryId))
                         .build();
-
-                dataService.update(dragon);
+                if (heroId == null || heroId == 0L) {
+                    dataService.save(dragon);
+                } else {
+                    dataService.update(dragon);
+                }
                 break;
             case "Elf":
-                if (heroId != null && heroId != 0L) {
+                if (heroId != null) {
                     accessBean.checkAccess(dataService.findElfById(heroId));
                 }
                 Elf elf = Elf.builder()
@@ -84,10 +90,14 @@ public class AddHeroBean {
                         .power(power)
                         .forest(dataService.findForestById(categoryId))
                         .build();
-                dataService.update(elf);
+                if (heroId == null || heroId == 0L) {
+                    dataService.save(elf);
+                } else {
+                    dataService.update(elf);
+                }
                 break;
             case "Mag":
-                if (heroId != null && heroId != 0L) {
+                if (heroId != null) {
                     accessBean.checkAccess(dataService.findMagById(heroId));
                 }
                 Mag mag = Mag.builder()
@@ -98,7 +108,11 @@ public class AddHeroBean {
                         .power(power)
                         .tower(dataService.findTowerById(categoryId))
                         .build();
-                dataService.update(mag);
+                if (heroId == null || heroId == 0L) {
+                    dataService.save(mag);
+                } else {
+                    dataService.update(mag);
+                }
                 break;
         }
 

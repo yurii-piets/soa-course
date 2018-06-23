@@ -101,6 +101,9 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response cavesById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("caveId") Long caveId) {
         Cave caveById = dataService.findCaveById(caveId);
+        if(caveById == null){
+            return Response.status(404).build();
+        }
         if (PL_APPLICATION_JSON.equals(mediaType)) {
             return Response.ok(transalateService.translate(new WSCaveResponse(caveById))).build();
         }
@@ -112,6 +115,9 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response forestById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("forestId") Long forestId) {
         Forest forestById = dataService.findForestById(forestId);
+        if(forestById == null){
+            return Response.status(404).build();
+        }
         if (PL_APPLICATION_JSON.equals(mediaType)) {
             return Response.ok(transalateService.translate(new WSForestResponse(forestById))).build();
         }
@@ -123,6 +129,9 @@ public class CategoriesResources {
     @Produces(MediaType.APPLICATION_JSON)
     public Response towerById(@HeaderParam("Content-Type") MediaType mediaType, @PathParam("towerId") Long towerId) {
         Tower towerById = dataService.findTowerById(towerId);
+        if(towerById == null){
+            return Response.status(404).build();
+        }
         if (PL_APPLICATION_JSON.equals(mediaType)) {
             return Response.ok(transalateService.translate(new WSTowerResponse(towerById))).build();
         }

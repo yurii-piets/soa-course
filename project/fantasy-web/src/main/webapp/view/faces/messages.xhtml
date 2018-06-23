@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Register</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"/>
+</head>
+<h:body>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="card-title" style="display: inline">Messages</h1>
+            <div onclick="location.reload();" class="btn" style="width: auto; font-size: 20px">
+                <i class="glyphicon glyphicon-refresh" style="width: auto"/>
+            </div>
+        </div>
+        <div class="panel-body">
+
+            <h:panelGroup rendered="#{empty messageBean.messages()}">
+                <i>No messages available</i>
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{not empty messageBean.messages()}">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Text</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <ui:repeat value="#{messageBean.messages()}" var="message">
+                        <tr>
+                            <th style="width: 20px" scope="row">1</th>
+                            <td><h:outputText value="#{message}"/></td>
+                        </tr>
+                    </ui:repeat>
+                    </tbody>
+                </table>
+            </h:panelGroup>
+        </div>
+    </div>
+</h:body>
+</html>

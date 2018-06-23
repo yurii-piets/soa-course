@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 <head>
@@ -14,10 +15,6 @@
         h1 {
             font-size: 25px;
         }
-
-        h2 {
-            font-size: 19px;
-        }
     </style>
 </head>
 <h:body>
@@ -29,30 +26,84 @@
             </div>
             <div class="panel-body">
                 <h:form>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <h:outputLabel rendered="#{addCategoryBean.category == 'Cave'}">Square: </h:outputLabel>
-                                <h:outputLabel
-                                        rendered="#{addCategoryBean.category == 'Forest'}">Amount of trees: </h:outputLabel>
-                                <h:outputLabel
-                                        rendered="#{addCategoryBean.category == 'Tower'}">Height: </h:outputLabel>
+                    <div class="form-group inputs">
+                        <div class="input-group">
+                            <h:outputLabel rendered="#{addCategoryBean.category == 'Cave'}">Square: </h:outputLabel>
+                            <h:outputLabel
+                                    rendered="#{addCategoryBean.category == 'Forest'}">Amount of trees: </h:outputLabel>
+                            <h:outputLabel
+                                    rendered="#{addCategoryBean.category == 'Tower'}">Height: </h:outputLabel>
 
-                                <h:inputText type="text" value="#{addCategoryBean.mainParameter}"/>
-                            </div>
+                            <h:inputText
+                                    styleClass="form-control"
+                                    type="text"
+                                    required="true"
+                                    id="squareInput"
+                                    value="#{addCategoryBean.mainParameter}"/>
+
+                            <h:panelGroup rendered="#{accessBean.isAdmin}">
+                                <div>
+                                    Select user login:
+                                    <h:selectOneMenu styleClass="form-control"
+                                                     type="password"
+                                                     value="#{addCategoryBean.userLogin}"
+                                                     a:placeholder="Choose user" required="true">
+                                        <f:selectItems value="#{accessBean.getUsersNames()}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                            </h:panelGroup>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="input-group">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div id="nextBtn" style="display: inline">
+                                <h:commandButton styleClass="btn btn-default" value="Next">
+                                    <f:param name="category" value="#{addCategoryBean.category}"/>
+                                    <f:param name="categoryId" value="#{addCategoryBean.categoryId}"/>
+                                    <f:param name="userLogin" value="#{addCategoryBean.userLogin}"/>
+                                    <f:param name="mainParameter" value="#{addCategoryBean.mainParameter}"/>
+                                    <f:param name="disabledMode" value="#{!addCategoryBean.disabledMode}"/>
+                                </h:commandButton>
+                            </div>
+
+                            <div id="backBtn" style="display: inline">
+                                <h:commandButton styleClass="btn btn-default" value="Back">
+                                    <f:param name="category" value="#{addCategoryBean.category}"/>
+                                    <f:param name="categoryId" value="#{addCategoryBean.categoryId}"/>
+                                    <f:param name="userLogin" value="#{addCategoryBean.userLogin}"/>
+                                    <f:param name="mainParameter" value="#{addCategoryBean.mainParameter}"/>
+                                    <f:param name="disabledMode" value="#{!addCategoryBean.disabledMode}"/>
+                                </h:commandButton>
+                            </div>
+
+                            <div id="saveBtn" style="display: inline">
                                 <h:commandButton styleClass="btn btn-primary" action="#{addCategoryBean.save}"
                                                  value="Save">
                                     <f:param name="category" value="#{addCategoryBean.category}"/>
                                     <f:param name="categoryId" value="#{addCategoryBean.categoryId}"/>
+                                    <f:param name="userLogin" value="#{addCategoryBean.userLogin}"/>
+                                    <f:param name="mainParameter" value="#{addCategoryBean.mainParameter}"/>
                                 </h:commandButton>
                             </div>
                         </div>
+                    </div>
                 </h:form>
             </div>
         </div>
     </div>
 </h:body>
+<script type="text/javascript">
+    $('.inputs input').prop('disabled', ${addCategoryBean.disabledMode});
+    $('.inputs select').prop('disabled', ${addCategoryBean.disabledMode});
+    if (${addCategoryBean.disabledMode}) {
+        $('#saveBtn').show();
+        $('#nextBtn').hide();
+        $('#backBtn').show();
+    } else {
+        $('#saveBtn').hide();
+        $('#nextBtn').show();
+        $('#backBtn').hide();
+    }
+</script>
 </html>

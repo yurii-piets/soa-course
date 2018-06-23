@@ -3,5 +3,6 @@
        bean-discovery-mode="all">
     <interceptors>
         <class>com.soa.interceptor.BalanceInterceptor</class>
+        <class>com.soa.interceptor.TrackedInterceptor</class>
     </interceptors>
 </beans>

@@ -7,4 +7,6 @@ public interface Hero {
     Power getPower();
 
     void setPower(Power power);
+
+    Long getId();
 }

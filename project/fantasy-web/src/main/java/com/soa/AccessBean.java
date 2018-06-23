@@ -4,6 +4,7 @@ import com.soa.domain.Ownable;
 import com.soa.domain.UserData;
 import com.soa.service.DataAccessService;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
@@ -11,19 +12,22 @@ import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.stream.Collectors;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ManagedBean
 @SessionScoped
 @Stateless
-public class AccessBean {
+@RolesAllowed({"ADMIN", "USER"})
+public class AccessBean extends AbstractManagedBean {
 
     @EJB
     private DataAccessService dataService;
 
-    @RolesAllowed({"ADMIN", "USER"})
     public boolean canCreate(String category) {
         if (FacesContext.getCurrentInstance().getExternalContext().isUserInRole(UserData.UserRole.ADMIN.toString())) {
             return true;
@@ -40,14 +44,12 @@ public class AccessBean {
         return false;
     }
 
-    @RolesAllowed({"ADMIN", "USER"})
     public void checkCreate(String category) throws IllegalAccessException {
         if (!canCreate(category)) {
             throw new IllegalAccessException();
         }
     }
 
-    @RolesAllowed({"ADMIN", "USER"})
     public boolean hasAccess(Ownable ownable) {
         if (FacesContext.getCurrentInstance().getExternalContext().isUserInRole(UserData.UserRole.ADMIN.toString())) {
             return true;
@@ -60,28 +62,30 @@ public class AccessBean {
         return principal.getName().equals(userData.getLogin());
     }
 
-    @RolesAllowed({"ADMIN", "USER"})
     public void checkAccess(Ownable ownable) throws IllegalAccessException {
         if (!hasAccess(ownable)) {
             throw new IllegalAccessException();
         }
     }
 
-    @RolesAllowed({"ADMIN", "USER"})
     public UserData getCurrentUser() {
         String name = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
         return dataService.findUserDataByLogin(name);
     }
 
-    @RolesAllowed({"ADMIN", "USER"})
     public boolean isIsAdmin() {
         return getCurrentUser().getRole() == UserData.UserRole.ADMIN;
     }
 
     @RolesAllowed("ADMIN")
-    public Object getGetUsersNames() {
+    public List<String> getUsersNames() {
         return dataService.findAllUsers().stream()
                 .map(UserData::getLogin)
                 .collect(Collectors.toList());
+    }
+
+    public void logout() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        reload();
     }
 }
